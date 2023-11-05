@@ -18,9 +18,11 @@ void	_Disk(t_mlx *mlx_s, int cx, int cy, int r) {
 }
 
 int	driver(t_global	*_g) {
-
-	draw_walls(_g->mlx_s, _g->map);
+	
+	image_driver(_g->mlx_s);
 	RaysCast(_g);
+	_fake3d_wall(_g);
+	draw_walls(_g->mlx_s, _g->map);
 	_player(_g, _g->map);
 	mlx_put_image_to_window(_g->mlx_s->mlx_ptr, _g->mlx_s->win, _g->mlx_s->img, 0, 0);
 	return 0;
@@ -43,7 +45,6 @@ int main()
 	_g->player = player;
     _g->mlx_s->mlx_ptr = mlx_init();
     _g->mlx_s->win = mlx_new_window(_g->mlx_s->mlx_ptr, WIDTH, HEIGHT, "Grid Example");
-	image_driver(_g->mlx_s);
 	mlx_loop_hook(_g->mlx_s->mlx_ptr, driver, _g);
 	mlx_hook(_g->mlx_s->win, 2, 5, moveHook, _g->player);
     mlx_loop(_g->mlx_s->mlx_ptr);

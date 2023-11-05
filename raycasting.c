@@ -1,7 +1,5 @@
 #include "minimap.h"
 
-#define FOV_ANGLE		60 * (M_PI / 180)
-#define WallStripWidth	0.50
 double	NUM_RAYS		= (double)WIDTH / WallStripWidth;
 
 void	drawRays (t_global *_g)
@@ -11,15 +9,12 @@ void	drawRays (t_global *_g)
 
 	mlx_s = _g->mlx_s;
 	player = _g->player;
-	for (int column = 0; column < 1; column++)
+	for (int column = 0; _g->rays[column]; column++)
 	{
-		_DaaLine(mlx_s, player->x, player->y,\
-			player->x + cos(_g->rays[column]->angleVeiw) * 100,\
-			player->y + sin(_g->rays[column]->angleVeiw) * 100, BLUECIEL);
-			column++;
+		_DaaLine(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
+			MINIMAP_FCTR * _g->rays[column]->wallhitX,\
+			MINIMAP_FCTR * _g->rays[column]->wallhitY, BLUECIEL);
 	}
-	_g->mlx_s = mlx_s;
-	_g->player = player;
 }
 
 void	ray_facing(t_rays *ray)
@@ -60,8 +55,14 @@ void	cast_ray(t_global *_g, t_rays *ray, int i)
 		dis = dis_ver;
 		washitvertical = 1;
 	}
-	_DaaLine(_g->mlx_s, _g->player->x, _g->player->y, wallhit.x, wallhit.y, BLUECIEL);
+	ray->distance = dis;
+	ray->wallhitX = wallhit.x;
+	ray->wallhitY = wallhit.y;
 }
+
+	// _DaaLine(_g->mlx_s, MINIMAP_FCTR * _g->player->x,
+	// 			MINIMAP_FCTR * _g->player->y, MINIMAP_FCTR * wallhit.x,
+	// 			MINIMAP_FCTR * wallhit.y, BLUECIEL);
 
 double	norm_angle(double my_angle)
 {

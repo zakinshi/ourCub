@@ -21,7 +21,9 @@
 # define HEIGHT				600		// Height of the window
 # define GRID_SIZE			64		// Size of each grid cell
 # define MINIMAP_OFF		0
-
+# define MINIMAP_FCTR		0.2
+# define FOV_ANGLE			60 * (M_PI / 180)
+# define WallStripWidth		1.00
 
 typedef	struct s_coord
 {
@@ -35,7 +37,7 @@ typedef	struct s_rays {
 	double wallhitX;
 	double wallhitY;
 	double distance;
-	// int hitVertical;
+	int hitVertical;
 	int facing_up;
 	int facing_down;
 	int facing_left;
@@ -74,7 +76,7 @@ typedef struct global_s {
 	t_mlx		*mlx_s;
 	t_rays		**rays;
 }	t_global;
-
+void		draw_rect(t_mlx *mlx_s, double x, double y, int size_width, int size_height, int color);
 void		draw_care(t_mlx *mlx_s, double x, double y, int size_care, int color);
 char		**ft_split(char const *str, char c);
 void		_Disk(t_mlx *mlx_s, int cx, int cy, int r);
@@ -107,6 +109,8 @@ int			isin_wall(double x, double y, char **map);
 double		horizontal_distance(t_global *_g, t_rays *ray, t_coord *wallhit, int i);
 
 //	--> ver_ray.c
-double	vertical_distance(t_global *_g, t_rays *ray, t_coord *wallhit, int i);
+double		vertical_distance(t_global *_g, t_rays *ray, t_coord *wallhit, int i);
 
+
+void		_fake3d_wall(t_global *_g);
 #endif
