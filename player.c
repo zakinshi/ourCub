@@ -53,8 +53,8 @@ int	isin_wall(double x, double y, char **map)
 
 	i = (y - MINIMAP_OFF) / GRID_SIZE;
 	j = (x - MINIMAP_OFF) / GRID_SIZE;
-	if (i > 7)
-		return 1;
+	if (i > 5 || 10 < j) // this condition is just t9oliba
+		return 1; // this codition for ignore the segfault whe you passe the map hieght width
 	if (map && map[i] && map[i][j] && map[i][j] == '1')
 		return (1);
 	return (0);
@@ -87,11 +87,10 @@ void _player(t_global *_g, char **map)
 	_Disk(mlx_s, player->x, player->y, player->radius);
 	_DaaLine(mlx_s, player->x, player->y,\
 				player->x + cos(player->rotationAngle) * 20,\
-				player->y + sin(player->rotationAngle) * 20);
+				player->y + sin(player->rotationAngle) * 20, GREEN); // line to know the deriction of player
 	// drawRays(_g);
 	initMove(player);
 	_g->mlx_s = mlx_s;
 	_g->player = player;
-	// add_lile line for the now the redirection
 }
 

@@ -14,7 +14,8 @@
 # define RED				0xff0000
 # define BLACK				0x000000
 # define WHITE				0xFFFFFFF
-# define GREEN				0x008000
+# define GREEN				0x005000
+# define BLUECIEL			0x87CEFA
 
 # define WIDTH				800		// Width of the window
 # define HEIGHT				600		// Height of the window
@@ -90,7 +91,7 @@ void		image_driver(t_mlx *mlx_s);
 // --> dda.c
 double		abs_(double n);
 double		disatnce_between2points(double x1, double y1, double x2, double y2);
-void		_DaaLine(t_mlx *mlx_s, double x0, double y0, double x1, double y2);
+void		_DaaLine(t_mlx *mlx_s, double x0, double y0, double x1, double y2, long color);
 
 int			lenlines(char **rows);
 

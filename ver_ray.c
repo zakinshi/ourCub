@@ -24,28 +24,24 @@ static void	catch_xy_step(t_player *player, t_rays *ray, t_coord *step)
 static int	find_thever_wall(t_rays *ray, t_global *_g, t_coord *inte, t_coord *step, t_coord *wallhit)
 {
 	int		bool_hitWall;
-	// t_coord	next_touch;
-	double	next_x_touch = inte->x;
-	double	next_y_touch = inte->y;
+	t_coord	next_touch;
 
-	// next_touch.x = inte->x;
-	// next_touch.y = inte->y;
+	next_touch.x = inte->x;
+	next_touch.y = inte->y;
 	bool_hitWall = 0;
-	if (ray->facing_left)
-		next_x_touch--;
 	// increment xstep/ystep until we find a wall
-	while (next_x_touch >= 0 && next_x_touch < WIDTH && next_y_touch >= 0 && next_y_touch < HEIGHT)
+	while (next_touch.x >= 0 && next_touch.x <= WIDTH && next_touch.y >= 0 && next_touch.y <= HEIGHT)
 	{
-		if (isin_wall(next_x_touch, next_y_touch, _g->map))
+		if (isin_wall(next_touch.x - ray->facing_left, next_touch.y, _g->map))
 		{
 			bool_hitWall = 1;
-			wallhit->x = next_x_touch;
-			wallhit->y = next_y_touch;
+			wallhit->x = next_touch.x;
+			wallhit->y = next_touch.y;
 			// _DaaLine(_g->mlx_s, _g->player->x, _g->player->y, wallhit->x, wallhit->y);
 			break ;
 		}
-		next_x_touch += step->x;
-		next_y_touch += step->y;
+		next_touch.x += step->x;
+		next_touch.y += step->y;
 	}
 	return bool_hitWall;
 }
@@ -70,5 +66,5 @@ double	vertical_distance(t_global *_g, t_rays *ray, t_coord *wallhit, int i)
 	hit_wall = vertical_inst(_g, ray, wallhit);
 	if (hit_wall)
 		return (disatnce_between2points(_g->player->x, _g->player->y, wallhit->x, wallhit->y));
-	return (-1);
+	return (999999);
 }

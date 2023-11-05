@@ -18,7 +18,7 @@ double	abs_(double n) {
 	return n;
 }
 
-void _DaaLine(t_mlx *mlx_s, double x0, double y0, double x1, double y1)
+void _DaaLine(t_mlx *mlx_s, double x0, double y0, double x1, double y1, long color)
 {
 	double	deltaX = x1 - x0;
 	double	deltaY = y1 - y0;
@@ -33,7 +33,7 @@ void _DaaLine(t_mlx *mlx_s, double x0, double y0, double x1, double y1)
 	double	x = x0, y = y0, i = -1;
 	while (++i <= steps) {
 
-		my_mlx_pixel_put(mlx_s, x, y, GREEN);
+		my_mlx_pixel_put(mlx_s, x, y, color);
 		x += Xinc;
 		y += Yinc;
 	}

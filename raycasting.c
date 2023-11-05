@@ -1,7 +1,7 @@
 #include "minimap.h"
 
 #define FOV_ANGLE		60 * (M_PI / 180)
-#define WallStripWidth	10.00
+#define WallStripWidth	0.50
 double	NUM_RAYS		= (double)WIDTH / WallStripWidth;
 
 void	drawRays (t_global *_g)
@@ -15,7 +15,7 @@ void	drawRays (t_global *_g)
 	{
 		_DaaLine(mlx_s, player->x, player->y,\
 			player->x + cos(_g->rays[column]->angleVeiw) * 100,\
-			player->y + sin(_g->rays[column]->angleVeiw) * 100);
+			player->y + sin(_g->rays[column]->angleVeiw) * 100, BLUECIEL);
 			column++;
 	}
 	_g->mlx_s = mlx_s;
@@ -60,7 +60,7 @@ void	cast_ray(t_global *_g, t_rays *ray, int i)
 		dis = dis_ver;
 		washitvertical = 1;
 	}
-	_DaaLine(_g->mlx_s, _g->player->x, _g->player->y, wallhit.x, wallhit.y);
+	_DaaLine(_g->mlx_s, _g->player->x, _g->player->y, wallhit.x, wallhit.y, BLUECIEL);
 }
 
 double	norm_angle(double my_angle)
@@ -73,29 +73,28 @@ double	norm_angle(double my_angle)
 
 void	RaysCast(t_global *_g)
 {
-	t_rays **rays;
-	int column = 0, i = 0;
+	t_rays	**rays;
+	double	rayAngle;
+	int		column;
+	int		i;
+	t_rays *ray;
 
+	i = -1;
+	column = i;
 	rays = malloc (sizeof(t_rays *) * (NUM_RAYS + 1));
 	if (!rays)
 		return ;
-	// start first ray subtra-half of the fov
-	double	rayAngle	= _g->player->rotationAngle - (FOV_ANGLE / 2);
-	
-	//ray lists
-	while (i < 1)
+	rayAngle	= _g->player->rotationAngle - (FOV_ANGLE / 2); // start first ray subtra-half of the fov
+	while (++i < NUM_RAYS)
 	{
-		t_rays *ray;
 		ray = malloc (sizeof(t_rays));
-		rayAngle = norm_angle(rayAngle);
-		ray->angleVeiw = rayAngle;
+		if (!ray)
+			return ;
+		ray->angleVeiw = norm_angle(rayAngle);
 		cast_ray(_g, ray, i);
-		rays[column] = ray;
+		rays[++column] = ray;
 		rayAngle += FOV_ANGLE / NUM_RAYS;
-		column++;
-		i++;
 	}
 	rays[column] = NULL;
 	_g->rays = rays;
 }
-
