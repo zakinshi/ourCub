@@ -16,7 +16,7 @@ t_player	*init_player(void)
 	return player;
 }
 
-static int	initMove(void *formation)
+int	initMove(void *formation)
 {
 	t_player *player;
 
@@ -40,7 +40,7 @@ int	isin_wall(double x, double y, char **map)
 	return (0);
 }
 
-static void	updatePlayer(t_player *player, char **map)
+void	updatePlayer(t_player *player, char **map)
 {
 	double copyX = player->x, copyY = player->y;
 	double moveStep = player->walkDirection * player->moveSpeed;
@@ -55,21 +55,16 @@ static void	updatePlayer(t_player *player, char **map)
 	}
 }
 
-void	_player(t_global *_g, char **map)
+void	_player(t_global *_g)
 {
-
 	t_mlx		*mlx_s;
 	t_player	*player;
 
 	mlx_s = _g->mlx_s;
 	player = _g->player;
-	updatePlayer(player, map);
 	_Disk(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y, MINIMAP_FCTR * player->radius);
 	drawRays(_g);
 	_DaaLine(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
 				MINIMAP_FCTR * (player->x + cos(player->rotationAngle) * 20),\
 				MINIMAP_FCTR * (player->y + sin(player->rotationAngle) * 20), GREEN); // line to know the deriction of player
-	initMove(player);
-	_g->mlx_s = mlx_s;
-	_g->player = player;
 }

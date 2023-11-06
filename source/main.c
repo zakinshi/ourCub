@@ -8,13 +8,20 @@ int	lenlines(char **rows)
 	return i;
 } 
 
+void	draw_minimap(t_global *_g)
+{
+	draw_walls(_g->mlx_s, _g->map);
+	_player(_g);
+}
+
 static int	driver(t_global	*_g)
 {	
 	image_driver(_g->mlx_s);
 	RaysCast(_g);
 	_fake3d_wall(_g);
-	draw_walls(_g->mlx_s, _g->map);
-	_player(_g, _g->map);
+	updatePlayer(_g->player, _g->map);
+	draw_minimap(_g);
+	initMove(_g->player);
 	mlx_put_image_to_window(_g->mlx_s->mlx_ptr, _g->mlx_s->win, _g->mlx_s->img, 0, 0);
 	return 0;
 }

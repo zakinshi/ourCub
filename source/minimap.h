@@ -93,8 +93,10 @@ int			ft_count_words(char const *str, char c);
 void		draw_walls (t_mlx *mlx_s, char **map);
 void		draw_rect(t_mlx *mlx_s, double x, double y, int size_width, int size_height, int color);
 //			--> player.c
-void		_player(t_global *_g, char **map);
+int			initMove(void *formation);
+void		updatePlayer(t_player *player, char **map);
 int			isin_wall(double x, double y, char **map);
+void		_player(t_global *_g);
 t_player	*init_player(void);
 //			--> tools.c
 void		draw_circle(t_mlx *mlx_s, int x, int y, int r);
