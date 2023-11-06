@@ -31,12 +31,12 @@ void	struct_copy(t_coord *copy_in, t_coord copy_to)
 	copy_in->x = copy_to.x;
 	copy_in->y = copy_to.y;
 }
+
 void	cast_ray(t_global *_g, t_rays *ray, int i)
 {
 	t_coord	wallhit_hor;
 	t_coord	wallhit_ver;
 	t_coord	wallhit;
-	int		washitvertical = 0;
 	double	dis_hor;
 	double	dis_ver;
 	double	dis;
@@ -48,21 +48,18 @@ void	cast_ray(t_global *_g, t_rays *ray, int i)
 	{
 		struct_copy(&wallhit, wallhit_hor);
 		dis = dis_hor;
+		ray->hitVertical = 0;
 	}
 	else
 	{
 		struct_copy(&wallhit, wallhit_ver);
 		dis = dis_ver;
-		washitvertical = 1;
+		ray->hitVertical = 1;
 	}
 	ray->distance = dis;
 	ray->wallhitX = wallhit.x;
 	ray->wallhitY = wallhit.y;
 }
-
-	// _DaaLine(_g->mlx_s, MINIMAP_FCTR * _g->player->x,
-	// 			MINIMAP_FCTR * _g->player->y, MINIMAP_FCTR * wallhit.x,
-	// 			MINIMAP_FCTR * wallhit.y, BLUECIEL);
 
 double	norm_angle(double my_angle)
 {
