@@ -29,7 +29,7 @@ typedef	struct s_coord
 {
 	double x;
 	double y;
-} t_coord;
+}	t_coord;
 
 typedef	struct s_rays {
 
@@ -67,7 +67,7 @@ typedef struct s_mlx {
 	int		b_p_l;
 	int		l_l;
 	int		dian;
-} t_mlx;
+}	t_mlx;
 
 typedef struct global_s {
 
@@ -76,41 +76,47 @@ typedef struct global_s {
 	t_mlx		*mlx_s;
 	t_rays		**rays;
 }	t_global;
-void		draw_rect(t_mlx *mlx_s, double x, double y, int size_width, int size_height, int color);
-void		draw_care(t_mlx *mlx_s, double x, double y, int size_care, int color);
-char		**ft_split(char const *str, char c);
-void		_Disk(t_mlx *mlx_s, int cx, int cy, int r);
 
-t_player	*init_player(void);
-void 		_player(t_global *_g, char **map);
-int			moveHook(int key, void *formation);
-int			initMove(void *formation);
-void		updatePlayer(t_player *player, char **map);
-
+// ****** FOLDER -- source
+// 			--> ft_mlx.c
 void		my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void		image_driver(t_mlx *mlx_s);
+int			moveHook(int key, void *formation);
+// 			--> main.c
+int	lenlines(char **rows);
+// 			--> split.c
+char		**ft_split(char const *str, char c);
+int			ft_count_words(char const *str, char c);
 
-// --> dda.c
-double		abs_(double n);
-double		disatnce_between2points(double x1, double y1, double x2, double y2);
-void		_DaaLine(t_mlx *mlx_s, double x0, double y0, double x1, double y2, long color);
-
-int			lenlines(char **rows);
-
+// ****** FOLDER -- minimap
+//			--> gridWall.c
 void		draw_walls (t_mlx *mlx_s, char **map);
+void		draw_rect(t_mlx *mlx_s, double x, double y, int size_width, int size_height, int color);
+//			--> player.c
+void		_player(t_global *_g, char **map);
+int			isin_wall(double x, double y, char **map);
+t_player	*init_player(void);
+//			--> tools.c
+void		draw_circle(t_mlx *mlx_s, int x, int y, int r);
+void		_Disk(t_mlx *mlx_s, int cx, int cy, int r);
 
-void		RaysCast(t_global *_g);
-
-void		drawRays (t_global *_g);
-
-int			isin_wall(double x, double y, char **map); 
-
-//	--> hori_ray.c
-double		horizontal_distance(t_global *_g, t_rays *ray, t_coord *wallhit, int i);
-
-//	--> ver_ray.c
-double		vertical_distance(t_global *_g, t_rays *ray, t_coord *wallhit, int i);
-
-
+// ****** FOLDER -- projection
+//			--> 3dwall.c
 void		_fake3d_wall(t_global *_g);
+//			--> dda.c
+void		_DaaLine(t_mlx *mlx_s, double x0, double y0, double x1, double y1, long color);
+double		disatnce_between2points(double x1, double y1, double x2, double y2);
+
+// ****** FOLDER -- raycasting
+// 			--> raycasting.c
+void		RaysCast(t_global *_g);
+// 			--> tools.c
+void		drawRays(t_global *_g);
+void		struct_copy(t_coord *copy_in, t_coord copy_to);
+double		norm_angle(double my_angle);
+//			--> hori_ray.c
+double		horizontal_distance(t_global *_g, t_rays *ray, t_coord *wallhit);
+//			--> ver_ray.c
+double		vertical_distance(t_global *_g, t_rays *ray, t_coord *wallhit);
+
 #endif

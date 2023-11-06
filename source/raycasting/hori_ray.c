@@ -1,4 +1,4 @@
-#include "minimap.h"
+#include "../minimap.h"
 
 static void	catch_xy_inte(t_player *player, t_rays *ray, t_coord *inte)
 {
@@ -10,7 +10,7 @@ static void	catch_xy_inte(t_player *player, t_rays *ray, t_coord *inte)
 	inte->x = player->x + ((inte->y - player->y) / tan(ray->angleVeiw));
 }	
 
-static void	catch_xy_step(t_player *player, t_rays *ray, t_coord *step)
+static void	catch_xy_step(t_rays *ray, t_coord *step)
 {
 	// calc the increment xstep and ystep
 	step->y = GRID_SIZE;
@@ -53,13 +53,13 @@ static int	horizontal_inst(t_global *_g, t_rays *ray, t_coord *wallhit)
 	int		bool_hitwall;
 
 	catch_xy_inte(_g->player, ray, &inte); // calc x - y intersection
-	catch_xy_step(_g->player, ray, &step); // catch (x, y) steps
+	catch_xy_step(ray, &step); // catch (x, y) steps
 	bool_hitwall = find_thehiro_wall(ray, _g, &inte, &step, wallhit);
 
 	return bool_hitwall;
 }
 
-double	horizontal_distance(t_global *_g, t_rays *ray, t_coord *wallhit, int i)
+double	horizontal_distance(t_global *_g, t_rays *ray, t_coord *wallhit)
 {
 	int		hit_wall;
 

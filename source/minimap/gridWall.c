@@ -1,6 +1,6 @@
-#include "minimap.h"
+#include "../minimap.h"
 
-void	draw_care(t_mlx *mlx_s, double x, double y, int size_care, int color)
+static void	draw_care(t_mlx *mlx_s, double x, double y, int size_care, int color)
 {
 	
 	double fixy = y;
@@ -34,7 +34,7 @@ void	draw_rect(t_mlx *mlx_s, double x, double y, int size_width, int size_height
 	}
 }
 
-void _grid(t_mlx *mlx_s, double x, double y, int size_care, int color)
+static void _grid(t_mlx *mlx_s, double x, double y, int size_care, int color)
 {
 	
 	double fixy = y;
@@ -62,7 +62,7 @@ void _grid(t_mlx *mlx_s, double x, double y, int size_care, int color)
 	}
 }
 
-void	draw_walls (t_mlx *mlx_s, char **map)
+void	draw_walls(t_mlx *mlx_s, char **map)
 {
 	int NUM_ROWS = lenlines(map);
 	int NUM_COLON = strlen(map[0]);

@@ -1,4 +1,4 @@
-#include "minimap.h"
+#include "../minimap.h"
 
 static int    _trgb(int t, int r, int g, int b)
 {

@@ -1,8 +1,7 @@
-#include "minimap.h"
+#include "../minimap.h"
 
 t_player	*init_player(void)
 {
-
 	t_player *player;
 
 	player = malloc(sizeof(t_player));
@@ -14,30 +13,11 @@ t_player	*init_player(void)
 	player->rotationAngle = M_PI;
 	player->moveSpeed = 5.0;
 	player->rotationSpeed = 4 * (M_PI / 180);
-
 	return player;
 }
 
-int	moveHook(int key, void *formation)
+static int	initMove(void *formation)
 {
-
-	t_player *player;
-
-	player = (t_player *)formation;
-	if (key == 126)			// up 126
-		player->walkDirection = 1;
-	else if (key == 125)	// down 125
-		player->walkDirection = -1;
-	else if (key == 124)	// right 124
-		player->turnDirection = 1;
-	else if (key == 123)	// left 123
-		player->turnDirection = -1;
-	return 0;
-}
-
-int	initMove(void *formation)
-{
-
 	t_player *player;
 
 	player = (t_player *)formation;
@@ -60,7 +40,7 @@ int	isin_wall(double x, double y, char **map)
 	return (0);
 }
 
-void	updatePlayer(t_player *player, char **map)
+static void	updatePlayer(t_player *player, char **map)
 {
 	double copyX = player->x, copyY = player->y;
 	double moveStep = player->walkDirection * player->moveSpeed;
@@ -75,7 +55,7 @@ void	updatePlayer(t_player *player, char **map)
 	}
 }
 
-void _player(t_global *_g, char **map)
+void	_player(t_global *_g, char **map)
 {
 
 	t_mlx		*mlx_s;

@@ -1,38 +1,16 @@
-#include "minimap.h"
+#include "../minimap.h"
 
 double	NUM_RAYS		= (double)WIDTH / WallStripWidth;
 
-void	drawRays (t_global *_g)
-{
-	t_mlx *mlx_s;
-	t_player *player;
-
-	mlx_s = _g->mlx_s;
-	player = _g->player;
-	for (int column = 0; _g->rays[column]; column++)
-	{
-		_DaaLine(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
-			MINIMAP_FCTR * _g->rays[column]->wallhitX,\
-			MINIMAP_FCTR * _g->rays[column]->wallhitY, BLUECIEL);
-	}
-}
-
-void	ray_facing(t_rays *ray)
+static void	ray_facing(t_rays *ray)
 {
 	ray->facing_down = ray->angleVeiw > 0 && ray->angleVeiw < M_PI;
 	ray->facing_up = !ray->facing_down;
-
 	ray->facing_right = ray->angleVeiw < 0.5 * M_PI || ray->angleVeiw > 1.5 * M_PI;
 	ray->facing_left = !ray->facing_right;
 }
 
-void	struct_copy(t_coord *copy_in, t_coord copy_to)
-{
-	copy_in->x = copy_to.x;
-	copy_in->y = copy_to.y;
-}
-
-void	cast_ray(t_global *_g, t_rays *ray, int i)
+static void	cast_ray(t_global *_g, t_rays *ray)
 {
 	t_coord	wallhit_hor;
 	t_coord	wallhit_ver;
@@ -42,8 +20,8 @@ void	cast_ray(t_global *_g, t_rays *ray, int i)
 	double	dis;
 
 	ray_facing(ray);
-	dis_hor = horizontal_distance(_g, ray, &wallhit_hor, i);
-	dis_ver = vertical_distance(_g, ray, &wallhit_ver, i);
+	dis_hor = horizontal_distance(_g, ray, &wallhit_hor);
+	dis_ver = vertical_distance(_g, ray, &wallhit_ver);
 	if (dis_hor <= dis_ver) // only same the smallest dis
 	{
 		struct_copy(&wallhit, wallhit_hor);
@@ -59,14 +37,6 @@ void	cast_ray(t_global *_g, t_rays *ray, int i)
 	ray->distance = dis;
 	ray->wallhitX = wallhit.x;
 	ray->wallhitY = wallhit.y;
-}
-
-double	norm_angle(double my_angle)
-{
-	my_angle = fmod(my_angle ,(2.00 * M_PI));
-	if (my_angle < 0)
-		my_angle += (2 * M_PI);
-	return my_angle;
 }
 
 void	RaysCast(t_global *_g)
@@ -89,7 +59,7 @@ void	RaysCast(t_global *_g)
 		if (!ray)
 			return ;
 		ray->angleVeiw = norm_angle(rayAngle);
-		cast_ray(_g, ray, i);
+		cast_ray(_g, ray);
 		rays[++column] = ray;
 		rayAngle += FOV_ANGLE / NUM_RAYS;
 	}

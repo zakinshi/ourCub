@@ -1,4 +1,4 @@
-#include "minimap.h"
+#include "../minimap.h"
 
 double	disatnce_between2points(double x1, double y1, double x2, double y2)
 {
@@ -12,7 +12,8 @@ double	disatnce_between2points(double x1, double y1, double x2, double y2)
 	return (sqrt(deltax2 + deltay2));
 }
 
-double	abs_(double n) {
+static double	abs_(double n)
+{
 	if (n < 0)
 		return n * -1;
 	return n;
@@ -37,5 +38,4 @@ void _DaaLine(t_mlx *mlx_s, double x0, double y0, double x1, double y1, long col
 		x += Xinc;
 		y += Yinc;
 	}
-
 }

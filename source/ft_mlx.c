@@ -17,3 +17,20 @@ void	image_driver(t_mlx *mlx_s)
 	mlx_s->img = mlx_new_image(mlx_s->mlx_ptr, WIDTH, HEIGHT);
 	mlx_s->addr = mlx_get_data_addr(mlx_s->img, &(mlx_s->b_p_l), &(mlx_s->l_l), &(mlx_s->dian));
 }
+
+int	moveHook(int key, void *formation)
+{
+
+	t_player *player;
+
+	player = (t_player *)formation;
+	if (key == 126)			// up 126
+		player->walkDirection = 1;
+	else if (key == 125)	// down 125
+		player->walkDirection = -1;
+	else if (key == 124)	// right 124
+		player->turnDirection = 1;
+	else if (key == 123)	// left 123
+		player->turnDirection = -1;
+	return 0;
+}

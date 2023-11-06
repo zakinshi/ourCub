@@ -1,4 +1,4 @@
-#include "minimap.h"
+#include "../minimap.h"
 
 static void	catch_xy_inte(t_player *player, t_rays *ray, t_coord *inte)
 {
@@ -10,7 +10,7 @@ static void	catch_xy_inte(t_player *player, t_rays *ray, t_coord *inte)
 	inte->y = player->y + ((inte->x - player->x) * tan(ray->angleVeiw));
 }	
 
-static void	catch_xy_step(t_player *player, t_rays *ray, t_coord *step)
+static void	catch_xy_step(t_rays *ray, t_coord *step)
 {
 	// calc the increment xstep and ystep
 	step->x = GRID_SIZE;
@@ -37,7 +37,6 @@ static int	find_thever_wall(t_rays *ray, t_global *_g, t_coord *inte, t_coord *s
 			bool_hitWall = 1;
 			wallhit->x = next_touch.x;
 			wallhit->y = next_touch.y;
-			// _DaaLine(_g->mlx_s, _g->player->x, _g->player->y, wallhit->x, wallhit->y);
 			break ;
 		}
 		next_touch.x += step->x;
@@ -53,13 +52,13 @@ static int	vertical_inst(t_global *_g, t_rays *ray, t_coord *wallhit)
 	int		bool_hitwall;
 
 	catch_xy_inte(_g->player, ray, &inte); // calc x - y intersection
-	catch_xy_step(_g->player, ray, &step); // catch (x, y) steps
+	catch_xy_step(ray, &step); // catch (x, y) steps
 	bool_hitwall = find_thever_wall(ray, _g, &inte, &step, wallhit);
 
 	return bool_hitwall;
 }
 
-double	vertical_distance(t_global *_g, t_rays *ray, t_coord *wallhit, int i)
+double	vertical_distance(t_global *_g, t_rays *ray, t_coord *wallhit)
 {
 	int		hit_wall;
 
