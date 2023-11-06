@@ -34,3 +34,19 @@ int	moveHook(int key, void *formation)
 		player->turnDirection = -1;
 	return 0;
 }
+
+void	init_mlx_s(t_global *_g)
+{
+	t_mlx		*mlx_s;
+
+	mlx_s =malloc(sizeof(t_mlx));
+	if (!mlx_s)
+		; // exit with a msg
+	_g->mlx_s = mlx_s;
+	_g->mlx_s->mlx_ptr = mlx_init();
+	if (!_g->mlx_s->mlx_ptr)
+		; // exit with a msg
+	_g->mlx_s->win = mlx_new_window(_g->mlx_s->mlx_ptr, WIDTH, HEIGHT, "Grid Example");
+	if (!_g->mlx_s->win)
+		; // exit with a msg
+}

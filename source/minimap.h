@@ -81,6 +81,7 @@ typedef struct global_s {
 // 			--> ft_mlx.c
 void		my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void		image_driver(t_mlx *mlx_s);
+void		init_mlx_s(t_global *_g);
 int			moveHook(int key, void *formation);
 // 			--> main.c
 int	lenlines(char **rows);
