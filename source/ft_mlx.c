@@ -20,17 +20,16 @@ void	image_driver(t_mlx *mlx_s)
 
 int	moveHook(int key, void *formation)
 {
-
-	t_player *player;
+	t_player	*player;
 
 	player = (t_player *)formation;
-	if (key == 126)			// up 126
+	if (key == 13)
 		player->walkDirection = 1;
-	else if (key == 125)	// down 125
+	else if (key == 1)
 		player->walkDirection = -1;
-	else if (key == 124)	// right 124
+	else if (key == 2)
 		player->turnDirection = 1;
-	else if (key == 123)	// left 123
+	else if (key == 0)
 		player->turnDirection = -1;
 	return 0;
 }

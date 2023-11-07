@@ -32,7 +32,7 @@ static int	find_thever_wall(t_rays *ray, t_global *_g, t_coord *inte, t_coord *s
 	// increment xstep/ystep until we find a wall
 	while (next_touch.x >= 0 && next_touch.x <= WIDTH && next_touch.y >= 0 && next_touch.y <= HEIGHT)
 	{
-		if (isin_wall(next_touch.x - ray->facing_left, next_touch.y, _g->map))
+		if (isin_wall(next_touch.x - ray->facing_left, next_touch.y, _g->maps->map))
 		{
 			bool_hitWall = 1;
 			wallhit->x = next_touch.x;

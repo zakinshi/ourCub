@@ -1,6 +1,6 @@
 #include "../minimap.h"
 
-t_player	*init_player(void)
+void	init_player(t_global *_g)
 {
 	t_player *player;
 
@@ -13,7 +13,7 @@ t_player	*init_player(void)
 	player->rotationAngle = M_PI;
 	player->moveSpeed = 5.0;
 	player->rotationSpeed = 4 * (M_PI / 180);
-	return player;
+	_g->player = player;
 }
 
 int	initMove(void *formation)

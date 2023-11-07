@@ -69,12 +69,21 @@ typedef struct s_mlx {
 	int		dian;
 }	t_mlx;
 
+typedef struct s_map
+{
+	char	**map;
+	int		floor_color;
+	int		sky_color;
+	int		hieght_map;
+	int		width_map;
+}	t_map;
+
 typedef struct global_s {
 
-	char		**map;
 	t_player	*player;
 	t_mlx		*mlx_s;
 	t_rays		**rays;
+	t_map		*maps;
 }	t_global;
 
 // ****** FOLDER -- source
@@ -84,10 +93,14 @@ void		image_driver(t_mlx *mlx_s);
 void		init_mlx_s(t_global *_g);
 int			moveHook(int key, void *formation);
 // 			--> main.c
-int	lenlines(char **rows);
+int			lenlines(char **rows);
 // 			--> split.c
 char		**ft_split(char const *str, char c);
 int			ft_count_words(char const *str, char c);
+//			--> draw.c
+void		draw_all(t_global *_g);
+void		color_sky_floor(t_global *_g);
+void		draw_minimap(t_global *_g);
 
 // ****** FOLDER -- minimap
 //			--> gridWall.c
@@ -98,7 +111,7 @@ int			initMove(void *formation);
 void		updatePlayer(t_player *player, char **map);
 int			isin_wall(double x, double y, char **map);
 void		_player(t_global *_g);
-t_player	*init_player(void);
+void		init_player(t_global *_g);
 //			--> tools.c
 void		draw_circle(t_mlx *mlx_s, int x, int y, int r);
 void		_Disk(t_mlx *mlx_s, int cx, int cy, int r);

@@ -1,6 +1,7 @@
 NAME		= Cub3D
 
-CC			= cc
+ADDRESS		= -fsanitize=address
+CC			= cc $(ADDRESS)
 FLAG		= -Wall -Wextra -Werror -Imlx
 GRAPHICS	= -lmlx -framework OpenGL -framework AppKit
 
@@ -43,7 +44,7 @@ PROJ_OBJ	= $(addprefix $(PATH_PROJ_B), $(FILE_PROJ_B))
 #**
 # **	--> SOURCE
 #**
-FILE_SRC_C	= main.c	split.c	ft_mlx.c
+FILE_SRC_C	= main.c	split.c	ft_mlx.c	draw.c
 
 PATH_SRC_B	= $(PATH_OBJ)
 FILE_SRC_B	= $(FILE_SRC_C:.c=.o)
