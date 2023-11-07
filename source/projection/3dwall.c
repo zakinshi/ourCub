@@ -1,11 +1,11 @@
 #include "../minimap.h"
 
-static int    _trgb(int t, int r, int g, int b)
+int	_trgb(int t, int r, int g, int b)
 {
-    return (t << 24 | r << 16 | g << 8 | b);
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-static int    grade_color(double it, int hitvertical)
+static int	grade_color(double it, int hitvertical)
 {
 	int color;
 

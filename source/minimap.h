@@ -106,6 +106,7 @@ void		_Disk(t_mlx *mlx_s, int cx, int cy, int r);
 // ****** FOLDER -- projection
 //			--> 3dwall.c
 void		_fake3d_wall(t_global *_g);
+int			_trgb(int t, int r, int g, int b);
 //			--> dda.c
 void		_DaaLine(t_mlx *mlx_s, double x0, double y0, double x1, double y1, long color);
 double		disatnce_between2points(double x1, double y1, double x2, double y2);
