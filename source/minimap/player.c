@@ -8,21 +8,23 @@ void	init_player(t_global *_g)
 	player->x = WIDTH / 2;
 	player->y = HEIGHT / 2;
 	player->radius	= 3;
-	player->turnDirection = 0;
-	player->walkDirection = 0;
-	player->rotationAngle = M_PI;
-	player->moveSpeed = 5.0;
-	player->rotationSpeed = 4 * (M_PI / 180);
+	player->turn_direction = 0;
+	player->walk_direction = 0;
+	player->side_walk = 0;
+	player->rotation_angle = M_PI;
+	player->move_speed = 5.0;
+	player->rotation_speed = 4 * (M_PI / 180);
 	_g->player = player;
 }
 
-int	initMove(void *formation)
+int	init_move(void *formation)
 {
 	t_player *player;
 
 	player = (t_player *)formation;
-	player->walkDirection = 0; 
-	player->turnDirection = 0;
+	player->walk_direction = 0; 
+	player->turn_direction = 0;
+	player->side_walk = 0;
 	return 0;
 }
 
@@ -40,14 +42,19 @@ int	isin_wall(double x, double y, char **map)
 	return (0);
 }
 
-void	updatePlayer(t_player *player, char **map)
+void	update_player(t_player *player, char **map)
 {
-	double copyX = player->x, copyY = player->y;
-	double moveStep = player->walkDirection * player->moveSpeed;
-	player->x += cos(player->rotationAngle) * moveStep;
-	player->y += sin(player->rotationAngle) * moveStep;
+	double	copyX = player->x, copyY = player->y;
+	double	moveStep;
+	double	stepwlak;
 
-	player->rotationAngle += player->turnDirection * player->rotationSpeed;
+	moveStep = player->walk_direction * player->move_speed;
+	stepwlak = player->side_walk * player->move_speed;;
+	player->x += cos(player->rotation_angle) * moveStep;
+	player->y += sin(player->rotation_angle) * moveStep;
+	player->x += cos((M_PI / 2) + player->rotation_angle) * stepwlak;
+	player->y += sin((M_PI / 2) + player->rotation_angle) * stepwlak;
+	player->rotation_angle += player->turn_direction * player->rotation_speed;
 	if (isin_wall(player->x, player->y, map))
 	{
 		player->y = copyY;
@@ -62,9 +69,9 @@ void	_player(t_global *_g)
 
 	mlx_s = _g->mlx_s;
 	player = _g->player;
-	_Disk(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y, MINIMAP_FCTR * player->radius);
-	drawRays(_g);
-	_DaaLine(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
-				MINIMAP_FCTR * (player->x + cos(player->rotationAngle) * 20),\
-				MINIMAP_FCTR * (player->y + sin(player->rotationAngle) * 20), GREEN); // line to know the deriction of player
+	_disk(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y, MINIMAP_FCTR * player->radius);
+	draw_rays(_g);
+	_daa_line(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
+				MINIMAP_FCTR * (player->x + cos(player->rotation_angle) * 20),\
+				MINIMAP_FCTR * (player->y + sin(player->rotation_angle) * 20), GREEN); // line to know the deriction of player
 }

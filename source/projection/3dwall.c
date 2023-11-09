@@ -26,12 +26,12 @@ void	_fake3d_wall(t_global *_g)
 	for (int i = 0; _g->rays[i]; i++)
 	{
 		ray = _g->rays[i];
-		raydistance = ray->distance * cos(ray->angleVeiw - _g->player->rotationAngle);	// that fixed the fishi-blow-view
+		raydistance = ray->distance * cos(ray->angle_veiw - _g->player->rotation_angle);	// that fixed the fishi-blow-view
 		dis_projectplane = (WIDTH / 2) / tan(FOV_ANGLE / 2);							// Calculate the distance to the projection plane
 		wallheight = (GRID_SIZE / raydistance) * dis_projectplane;						// project wall height
 		draw_rect(_g->mlx_s, i * WallStripWidth,
 				(HEIGHT / 2) - (wallheight / 2),
 				WallStripWidth,
-				wallheight, grade_color(raydistance, ray->hitVertical));
+				wallheight, grade_color(raydistance, ray->hit_vertical));
 	}
 }

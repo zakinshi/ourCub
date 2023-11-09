@@ -1,6 +1,6 @@
 #include "../minimap.h"
 
-void	drawRays(t_global *_g)
+void	draw_rays(t_global *_g)
 {
 	t_mlx		*mlx_s;
 	t_player	*player;
@@ -11,9 +11,9 @@ void	drawRays(t_global *_g)
 	player = _g->player;
 	while (_g->rays[column])
 	{
-		_DaaLine(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
-			MINIMAP_FCTR * _g->rays[column]->wallhitX,\
-			MINIMAP_FCTR * _g->rays[column]->wallhitY, BLUECIEL);
+		_daa_line(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
+			MINIMAP_FCTR * _g->rays[column]->wallhitx,\
+			MINIMAP_FCTR * _g->rays[column]->wallhity, BLUECIEL);
 		column++;
 	}
 }

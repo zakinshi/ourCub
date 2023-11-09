@@ -4,9 +4,9 @@ double	NUM_RAYS		= (double)WIDTH / WallStripWidth;
 
 static void	ray_facing(t_rays *ray)
 {
-	ray->facing_down = ray->angleVeiw > 0 && ray->angleVeiw < M_PI;
+	ray->facing_down = ray->angle_veiw > 0 && ray->angle_veiw < M_PI;
 	ray->facing_up = !ray->facing_down;
-	ray->facing_right = ray->angleVeiw < 0.5 * M_PI || ray->angleVeiw > 1.5 * M_PI;
+	ray->facing_right = ray->angle_veiw < 0.5 * M_PI || ray->angle_veiw > 1.5 * M_PI;
 	ray->facing_left = !ray->facing_right;
 }
 
@@ -26,20 +26,20 @@ static void	cast_ray(t_global *_g, t_rays *ray)
 	{
 		struct_copy(&wallhit, wallhit_hor);
 		dis = dis_hor;
-		ray->hitVertical = 0;
+		ray->hit_vertical = 0;
 	}
 	else
 	{
 		struct_copy(&wallhit, wallhit_ver);
 		dis = dis_ver;
-		ray->hitVertical = 1;
+		ray->hit_vertical = 1;
 	}
 	ray->distance = dis;
-	ray->wallhitX = wallhit.x;
-	ray->wallhitY = wallhit.y;
+	ray->wallhitx = wallhit.x;
+	ray->wallhity = wallhit.y;
 }
 
-void	RaysCast(t_global *_g)
+void	rays_cast(t_global *_g)
 {
 	t_rays	**rays;
 	double	rayAngle;
@@ -52,13 +52,13 @@ void	RaysCast(t_global *_g)
 	rays = malloc (sizeof(t_rays *) * (NUM_RAYS + 1));
 	if (!rays)
 		return ;
-	rayAngle	= _g->player->rotationAngle - (FOV_ANGLE / 2); // start first ray subtra-half of the fov
+	rayAngle	= _g->player->rotation_angle - (FOV_ANGLE / 2); // start first ray subtra-half of the fov
 	while (++i < NUM_RAYS)
 	{
 		ray = malloc (sizeof(t_rays));
 		if (!ray)
 			return ;
-		ray->angleVeiw = norm_angle(rayAngle);
+		ray->angle_veiw = norm_angle(rayAngle);
 		cast_ray(_g, ray);
 		rays[++column] = ray;
 		rayAngle += FOV_ANGLE / NUM_RAYS;

@@ -19,7 +19,7 @@ static double	abs_(double n)
 	return n;
 }
 
-void _DaaLine(t_mlx *mlx_s, double x0, double y0, double x1, double y1, long color)
+void _daa_line(t_mlx *mlx_s, double x0, double y0, double x1, double y1, long color)
 {
 	double	deltaX = x1 - x0;
 	double	deltaY = y1 - y0;

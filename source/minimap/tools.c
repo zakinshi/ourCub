@@ -37,7 +37,7 @@ void	draw_circle(t_mlx *mlx_s, int x, int y, int r)
 	}
 }
 
-void	_Disk(t_mlx *mlx_s, int cx, int cy, int r)
+void	_disk(t_mlx *mlx_s, int cx, int cy, int r)
 {
 	int	y;
 	int	x;

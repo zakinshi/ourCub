@@ -7,7 +7,7 @@ static void	catch_xy_inte(t_player *player, t_rays *ray, t_coord *inte)
 	inte->x = floor(player->x / GRID_SIZE) * GRID_SIZE;
 	inte->x += ray->facing_right ? GRID_SIZE : 0;
 	// find the y-coord of the closet (V) grid-Intersection
-	inte->y = player->y + ((inte->x - player->x) * tan(ray->angleVeiw));
+	inte->y = player->y + ((inte->x - player->x) * tan(ray->angle_veiw));
 }	
 
 static void	catch_xy_step(t_rays *ray, t_coord *step)
@@ -16,7 +16,7 @@ static void	catch_xy_step(t_rays *ray, t_coord *step)
 	step->x = GRID_SIZE;
 	if (ray->facing_left)
 		step->x *= -1;
-	step->y = GRID_SIZE * tan(ray->angleVeiw);
+	step->y = GRID_SIZE * tan(ray->angle_veiw);
 	step->y *= ray->facing_up && step->y > 0 ? -1 : 1;
 	step->y *= ray->facing_down && step->y < 0 ? -1 : 1;
 }

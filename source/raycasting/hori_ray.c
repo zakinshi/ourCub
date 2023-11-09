@@ -7,7 +7,7 @@ static void	catch_xy_inte(t_player *player, t_rays *ray, t_coord *inte)
 	inte->y = floor(player->y / GRID_SIZE) * GRID_SIZE;
 	inte->y += ray->facing_down ? GRID_SIZE : 0;
 	// find the x-coord of the closet (H) grid-Intersection
-	inte->x = player->x + ((inte->y - player->y) / tan(ray->angleVeiw));
+	inte->x = player->x + ((inte->y - player->y) / tan(ray->angle_veiw));
 }	
 
 static void	catch_xy_step(t_rays *ray, t_coord *step)
@@ -16,7 +16,7 @@ static void	catch_xy_step(t_rays *ray, t_coord *step)
 	step->y = GRID_SIZE;
 	if (ray->facing_up)
 		step->y *= -1;
-	step->x = GRID_SIZE / tan(ray->angleVeiw);
+	step->x = GRID_SIZE / tan(ray->angle_veiw);
 	step->x *= ray->facing_left && step->x > 0 ? -1 : 1;
 	step->x *= ray->facing_right && step->x < 0 ? -1 : 1;
 }
@@ -37,7 +37,7 @@ static int	find_thehiro_wall(t_rays *ray, t_global *_g, t_coord *inte, t_coord *
 			bool_hitWall = 1;
 			wallhit->x = next_touch.x;
 			wallhit->y = next_touch.y;
-			// _DaaLine(_g->mlx_s, _g->player->x, _g->player->y, wallhit->x, wallhit->y);
+			// _daa_line(_g->mlx_s, _g->player->x, _g->player->y, wallhit->x, wallhit->y);
 			break ;
 		}
 		next_touch.x += step->x;
