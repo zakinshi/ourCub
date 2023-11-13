@@ -21,7 +21,7 @@
 # define HEIGHT				600		// Height of the window
 # define GRID_SIZE			64		// Size of each grid cell
 # define MINIMAP_OFF		0
-# define MINIMAP_FCTR		0.2
+# define MINIMAP_FCTR		1
 # define FOV_ANGLE			60 * (M_PI / 180)
 # define WallStripWidth		1.00
 
@@ -74,8 +74,10 @@ typedef struct s_map
 	char	**map;
 	int		floor_color;
 	int		sky_color;
-	int		hieght_map;
-	int		width_map;
+	int		hieght_map; // len_l
+	int		width_map; // long_l
+	int		y; // i
+	int		x; // j
 }	t_map;
 
 typedef struct global_s {
