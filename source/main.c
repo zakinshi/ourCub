@@ -35,6 +35,7 @@ int main(void)
 	maps->sky_color = 0x0000FF;		// in the parsing function
 	maps->floor_color = 0x00FF00;	// in the parsing function
 	_g->maps = maps;				// in the parsing function
+
 	init_player(_g);
 	init_mlx_s(_g);
 	mlx_loop_hook(_g->mlx_s->mlx_ptr, driver, _g);
