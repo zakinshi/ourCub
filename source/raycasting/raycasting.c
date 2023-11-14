@@ -19,6 +19,7 @@ static void	cast_ray(t_global *_g, t_rays *ray)
 	double	dis_ver;
 	double	dis;
 
+
 	ray_facing(ray);
 	dis_hor = horizontal_distance(_g, ray, &wallhit_hor);
 	dis_ver = vertical_distance(_g, ray, &wallhit_ver);
@@ -52,7 +53,7 @@ void	rays_cast(t_global *_g)
 	rays = malloc (sizeof(t_rays *) * (NUM_RAYS + 1));
 	if (!rays)
 		return ;
-	rayAngle	= _g->player->rotation_angle - (FOV_ANGLE / 2); // start first ray subtra-half of the fov
+	rayAngle = _g->player->rotation_angle - (FOV_ANGLE / 2); // start first ray subtra-half of the fov
 	while (++i < NUM_RAYS)
 	{
 		ray = malloc (sizeof(t_rays));

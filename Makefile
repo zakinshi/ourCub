@@ -20,6 +20,17 @@ RAY_OBJ		= $(addprefix $(PATH_RAY_B), $(FILE_RAY_B))
 #	----------------------------------
 
 #**
+# **	--> parr
+#**
+PATH_PARS	= ./parrr/
+FILE_PARS_C	= color.c color_utile.c compass.c get_next_line.c get_next_line_utile.c libft.c map_pars.c pars_utils.c pars_utils1.c
+
+PATH_PARS_B	= $(PATH_OBJ)parrr/
+FILE_PARS_B	= $(FILE_PARS_C:.c=.o)
+PARS_OBJ	= $(addprefix $(PATH_PARS_B), $(FILE_PARS_B))
+#	----------------------------------
+
+#**
 # **	--> MINMAP
 #**
 PATH_MNMP	= ./minimap/
@@ -44,7 +55,7 @@ PROJ_OBJ	= $(addprefix $(PATH_PROJ_B), $(FILE_PROJ_B))
 #**
 # **	--> SOURCE
 #**
-FILE_SRC_C	= main.c	split.c	ft_mlx.c	draw.c
+FILE_SRC_C	= main.c	ft_mlx.c	draw.c
 
 PATH_SRC_B	= $(PATH_OBJ)
 FILE_SRC_B	= $(FILE_SRC_C:.c=.o)
@@ -53,25 +64,26 @@ SRC_OBJ		= $(addprefix $(PATH_SRC_B), $(FILE_SRC_B))
 
 # ** Global Vars
 HEADERS		= ./source/minimap.h
-ALLOBJ		= $(OBJ) $(RAY_OBJ) $(MNMP_OBJ) $(PROJ_OBJ) $(SRC_OBJ)
+ALLOBJ		= $(OBJ) $(RAY_OBJ) $(MNMP_OBJ) $(PROJ_OBJ) $(SRC_OBJ) $(PARS_OBJ)
 # **
 
 all : $(NAME)
 
 $(NAME) : $(ALLOBJ) $(HEADERS)
-	$(CC) $(FLAG) $(GRAPHICS) $(ALLOBJ) -o $(NAME)
+	$(CC) $(ALLOBJ) $(GRAPHICS) -o $(NAME)
 
 $(PATH_OBJ)%.o: $(PATH_SRC)%.c $(HEADERS)
 		@mkdir -p $(PATH_OBJ)
 		@mkdir -p $(PATH_RAY_B)
 		@mkdir -p $(PATH_MNMP_B)
 		@mkdir -p $(PATH_PROJ_B)
+		@mkdir -p $(PATH_PARS_B)
 		$(CC) $(FLAG) -c $< -o $@
 
 clean :
-	@rm -r $(PATH_OBJ)
+	@rm -rf $(PATH_OBJ)
 
 fclean : clean
-		@rm -f $(NAME)
+		@rm -rf $(NAME)
 
-re	: fclean all
+re		: fclean all

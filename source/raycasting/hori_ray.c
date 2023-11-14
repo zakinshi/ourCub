@@ -32,7 +32,7 @@ static int	find_thehiro_wall(t_rays *ray, t_global *_g, t_coord *inte, t_coord *
 	// increment xstep/ystep until we find a wall
 	while (next_touch.x >= 0 && next_touch.x <= WIDTH && next_touch.y >= 0 && next_touch.y <= HEIGHT)
 	{
-		if (isin_wall(next_touch.x, next_touch.y - ray->facing_up, _g->maps->map))
+		if (isin_wall(next_touch.x, next_touch.y - ray->facing_up, _g->maps))
 		{
 			bool_hitWall = 1;
 			wallhit->x = next_touch.x;
@@ -43,7 +43,7 @@ static int	find_thehiro_wall(t_rays *ray, t_global *_g, t_coord *inte, t_coord *
 		next_touch.x += step->x;
 		next_touch.y += step->y;
 	}
-	return bool_hitWall;
+	return (bool_hitWall);
 }
 
 static int	horizontal_inst(t_global *_g, t_rays *ray, t_coord *wallhit)
@@ -55,8 +55,7 @@ static int	horizontal_inst(t_global *_g, t_rays *ray, t_coord *wallhit)
 	catch_xy_inte(_g->player, ray, &inte); // calc x - y intersection
 	catch_xy_step(ray, &step); // catch (x, y) steps
 	bool_hitwall = find_thehiro_wall(ray, _g, &inte, &step, wallhit);
-
-	return bool_hitwall;
+	return (bool_hitwall);
 }
 
 double	horizontal_distance(t_global *_g, t_rays *ray, t_coord *wallhit)

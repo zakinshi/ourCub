@@ -32,7 +32,7 @@ static int	find_thever_wall(t_rays *ray, t_global *_g, t_coord *inte, t_coord *s
 	// increment xstep/ystep until we find a wall
 	while (next_touch.x >= 0 && next_touch.x <= WIDTH && next_touch.y >= 0 && next_touch.y <= HEIGHT)
 	{
-		if (isin_wall(next_touch.x - ray->facing_left, next_touch.y, _g->maps->map))
+		if (isin_wall(next_touch.x - ray->facing_left, next_touch.y, _g->maps))
 		{
 			bool_hit_wall = 1;
 			wallhit->x = next_touch.x;
@@ -55,7 +55,7 @@ static int	vertical_inst(t_global *_g, t_rays *ray, t_coord *wallhit)
 	catch_xy_step(ray, &step); // catch (x, y) steps
 	bool_hitwall = find_thever_wall(ray, _g, &inte, &step, wallhit);
 
-	return bool_hitwall;
+	return (bool_hitwall);
 }
 
 double	vertical_distance(t_global *_g, t_rays *ray, t_coord *wallhit)

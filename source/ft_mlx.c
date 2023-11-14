@@ -44,6 +44,8 @@ int	move_hook(int key, void *formation)
 		player->side_walk = 1;
 	else if (key == 0)
 		player->side_walk = -1;
+	else if (key == 53)
+		exit(0);
 	return 0;
 }
 
