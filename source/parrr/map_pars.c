@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:20:31 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/14 19:26:44 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:08:45 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,15 @@ void	loop_map(char **map, int len, int fd)
 	int		j;
 
 	i = 0;
-	while (1)
+	while (len > i)
 	{
-		if (len < i)
-			;
 		line = get_next_line(fd);
 		if (!line)
 			break ;
 		j = 0;
 		while (line[j] <= 32 && 13 <= line[j])
 			j++;
-		if (!ft_chr("FCNOSOWEEA\n", line[j]))
+		if (ft_chr("01", line[j]))
 		{
 			new_l(line);
 			map[i] = ft_dup(line);
@@ -72,7 +70,7 @@ int line_l(int fd)
 	return (i);
 }
 
-char	**store_map(int fd)
+char	**store_map(int fd, char *path)
 {
 	char	**map;
 
@@ -83,7 +81,7 @@ char	**store_map(int fd)
 	if (!map)
 		return (NULL);
 	close(fd);
-	fd = open("source/parrr/test", O_RDONLY);
+	fd = open(path, O_RDONLY);
 	loop_map(map, len, fd);
 	return (map);
 }
@@ -93,10 +91,10 @@ void	long_line(t_cub3d *cub)
 	int len;
 	int i = 0;
 
-	cub->long_l = ft_len(cub->map[i]);
+	cub->long_l = ft_strlen(cub->map[i]);
 	while (cub->map[i])
 	{
-		len = ft_len(cub->map[i]);
+		len = ft_strlen(cub->map[i]);
 		if (len > cub->long_l)
 			cub->long_l = len;
 		i++;
@@ -108,9 +106,9 @@ void	display(t_cub3d *cub)
 	int i;
 	for (i = 0; cub->map[i] ; i++)
 		printf("%s\n", cub->map[i]);
-	printf("\n\n\n\nskay = %d\nfloor = %d\n\n\n\n\n", cub->skay, cub->floor);
+	// printf("\n\n\n\nskay = %d\nfloor = %d\n\n\n\n\n", cub->skay, cub->floor);
 	// printf("playr_i = %d\nplayr_j = %d\n\n\n\n\n", cub->playr_i, cub->playr_j);
-	printf("NO = %s\nSO = %s\nWE = %s\nEA = %s\n", cub->no, cub->so, cub->we, cub->ea);
+	// printf("NO = %s\nSO = %s\nWE = %s\nEA = %s\n", cub->no, cub->so, cub->we, cub->ea);
 }
 
 void	check_player_place(t_cub3d *cub)
@@ -137,7 +135,7 @@ void	check_player_place(t_cub3d *cub)
 
 int	ft_map(t_cub3d *cub, int fd)
 {
-	cub->map = store_map(fd);
+	cub->map = store_map(fd, cub->path);
 	if (!cub->map || !cub->map[0] || !cub->map[1])
 		return (printf("No map found\n"), 0);
 	if (!check_condition(cub->map))

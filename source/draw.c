@@ -14,7 +14,6 @@ void	color_sky_floor(t_global *_g)
 
 void	draw_all(t_global *_g)
 {
-	color_sky_floor(_g);
 	_fake3d_wall(_g);
-	draw_minimap(_g);
+	// draw_minimap(_g);
 }

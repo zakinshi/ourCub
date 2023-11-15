@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:21:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/14 19:26:09 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:41:06 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ int len_line(int fd)
 	int		j;
 
 	i = 0;
-	j = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
+		j = 0;
 		while (line[j] <= 32 && 13 <= line[j])
 			j++;
-		if (!ft_chr("FCNOSOWEEA\n", line[j]))
+		if (ft_chr("01", line[j]))
 			i++;
 		free(line);
 	}
@@ -53,7 +53,10 @@ void	new_l(char *s)
 	while (s[++i])
 	{
 		if (s[i] == '\n')
+		{
 			s[i] = '\0';
+			return ;	
+		}
 	}
 }
 

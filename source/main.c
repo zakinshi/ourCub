@@ -25,24 +25,41 @@ int	ft_close(void)
 	exit(0);
 }
 
-int main(void)
+void	define_grid_size(t_global *_g)
+{
+	int	for_height;
+	int	for_width;
+
+	for_width = (WIDTH / _g->maps->width_map);
+	for_height = (HEIGHT / _g->maps->hieght_map);
+	GRID_SIZE = for_height < for_width ? for_height : for_width;
+	// GRID_SIZE = 32;
+}
+
+int	main_driver(char *path)
 {
 	t_global	*_g;
 
 	_g = malloc(sizeof(t_global));
 	if (!_g)
-		return (printf("_g malloc failled.. \n"), 0);
+		return (printf("_g malloc failled.. \n"), 1);
 	t_map *maps = malloc(sizeof(t_map));	// in the parsng function
-	_g->maps = maps;						// where the t_maps will created in the parsing function
+	_g->maps = maps;					// where the t_maps will created in the parsing function
+	_g->path = path;
 	if (!parsing_(_g))
-		return (0);
-	_g->maps->SIZE_GRID = (WIDTH / _g->maps->width_map);
-	GRID_SIZE = _g->maps->SIZE_GRID;
+		return (1);;
+	define_grid_size(_g);
 	init_player(_g);
 	init_mlx_s(_g);
 	mlx_loop_hook(_g->mlx_s->mlx_ptr, driver, _g);
 	mlx_hook(_g->mlx_s->win, 2, 5, move_hook, _g->player);
 	mlx_hook(_g->mlx_s->win, 17, 0, ft_close, NULL);
 	mlx_loop(_g->mlx_s->mlx_ptr);
-	return 0;
+	return (0);
+}
+int main(int ac, char **av)
+{
+	if (ac != 2)
+		exit_msg("Warnning :\n\t./Cub3D ./[Path_map]\n");
+	return (main_driver(av[1]));
 }

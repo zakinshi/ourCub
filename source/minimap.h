@@ -21,7 +21,7 @@
 # define HEIGHT				600		// Height of the window
 // # define GRID_SIZE			52		// Size of each grid cell
 # define MINIMAP_OFF		0
-# define MINIMAP_FCTR		0.2
+# define MINIMAP_FCTR		1
 # define FOV_ANGLE			60 * (M_PI / 180)
 # define WallStripWidth		1.00
 
@@ -89,6 +89,7 @@ typedef struct global_s {
 	t_mlx		*mlx_s;
 	t_rays		**rays;
 	t_map		*maps;
+	char		*path;
 }	t_global;
 
 // ****** FOLDER -- source
@@ -97,6 +98,7 @@ void		my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void		image_driver(t_mlx *mlx_s);
 void		init_mlx_s(t_global *_g);
 int			move_hook(int key, void *formation);
+void		exit_msg(char *msg);
 // 			--> main.c
 int			lenlines(char **rows);
 // 			--> split.c
@@ -164,6 +166,7 @@ typedef struct s_cub3d
 	char	*so;
 	char	*we;
 	char	*ea;
+	char	*path;
 }	t_cub3d;
 
 char	*get_next_line(int fd);
@@ -186,7 +189,7 @@ char	*ft_join(char *s1, char *s2);
 char	*ft_chr(char *s, char c);
 int		ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
-char	**store_map(int fd);
+char	**store_map(int fd, char *path);
 int		check_isdiget(char *str);
 int		color_shift(int t, int r, int g, int b);
 int		get_color(char *color, t_cub3d *cub);
@@ -198,5 +201,14 @@ int		ft_map(t_cub3d *cub, int fd);
 int		parsing_(t_global *_g);
 int		ft_color(t_cub3d *cub, int fd);
 void	long_line(t_cub3d *cub);
+
+
+
+
+size_t	ft_strlen(char *s);
+char	*make_copy(char *copy, char *s);
+char	*ft_strjoin(char *s1, char *s2);
+char	*find_newline(char *search_in);
+void	my_free(void *to_free);
 
 #endif

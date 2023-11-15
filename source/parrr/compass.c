@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:08:50 by mehdismac         #+#    #+#             */
-/*   Updated: 2023/11/14 19:49:19 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:08:36 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,15 +159,16 @@ int parsing_(t_global *_g)
 	int fd;
 
 	cub = malloc(sizeof(t_cub3d));
-	fd = open("source/parrr/test", O_RDONLY);
+	fd = open(_g->path, O_RDONLY);
+	cub->path = _g->path;
 	if (!ft_map(cub, fd))
 		return (0);
 	close(fd);
-	fd = open("source/parrr/test", O_RDONLY);
+	fd = open(_g->path, O_RDONLY);
 	if (!ft_compass(cub, fd))
 		return (0);
 	close(fd);
-	fd = open("source/parrr/test", O_RDONLY);
+	fd = open(_g->path, O_RDONLY);
 	if (!ft_color(cub, fd))
 		return (0);
 	long_line(cub);

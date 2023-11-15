@@ -1,5 +1,38 @@
 #include "../minimap.h"
 
+double	calc_speed(t_global *_g)
+{
+	double	dlt_height;
+	double	dlt_width;
+	double	speed_n;
+	double	old_speed = 4;
+
+	dlt_height = _g->maps->hieght_map / 9; 
+	dlt_width = _g->maps->width_map / 26;
+	double scale = dlt_height < dlt_width ? dlt_height : dlt_width;
+	speed_n = old_speed * scale;
+	return (speed_n);
+}
+
+void	direction_view(t_global *_g, t_player *player)
+{
+	char	**map;
+	int		i;
+	int		j;
+
+	i = _g->maps->py;
+	j = _g->maps->px;
+	map = _g->maps->map;
+	if (map[i][j] == 'N')
+		player->rotation_angle = (-1) * (M_PI / 2);
+	else if (map[i][j] == 'W')
+		player->rotation_angle = M_PI;
+	else if (map[i][j] == 'S')
+		player->rotation_angle = M_PI / 2;
+	else if (map[i][j] == 'E')
+		player->rotation_angle = 2 * M_PI;	
+}
+
 void	init_player(t_global *_g)
 {
 	t_player *player;
@@ -13,8 +46,9 @@ void	init_player(t_global *_g)
 	player->turn_direction = 0;
 	player->walk_direction = 0;
 	player->side_walk = 0;
-	player->rotation_angle = M_PI;
-	player->move_speed = 5.0;
+	direction_view(_g, player);
+	// player->move_speed = calc_speed(_g);
+	player->move_speed = 4.0;
 	player->rotation_speed = 4 * (M_PI / 180);
 	_g->player = player;
 }
@@ -35,15 +69,19 @@ int	isin_wall(double x, double y, t_map *maps)
 	int	i;
 	int	j;
 
-	if ((x <= 0 && x >= WIDTH) || (y <= 0 && y >= HEIGHT))
-		return 1;
-	i = floor((y - MINIMAP_OFF) / (double)GRID_SIZE);
-	j = floor((x - MINIMAP_OFF) / (double)GRID_SIZE);
-	if (i > maps->hieght_map || maps->width_map < j)	// this condition is just t9oliba
-		return (1);										// this codition for ignore the segfault whe you passe the map hieght width
-	if (maps->map[i] && maps->map[i][j] && maps->map[i][j] == '1')
-		return (1);
-	return (0);
+	if ((x >= 0 && x <= WIDTH) && (y >= 0 && y <= HEIGHT))
+	{
+		i = floor((y - MINIMAP_OFF) / (double)GRID_SIZE);
+		j = floor((x - MINIMAP_OFF) / (double)GRID_SIZE);
+		if (i <= maps->hieght_map)
+			maps->width_map = ft_strlen(maps->map[i]);
+		if (i > maps->hieght_map || maps->width_map < j)
+			return (1);
+		if (maps->map[i] && maps->map[i][j] && maps->map[i][j] == '1')
+			return (1);
+		return (0);
+	}
+	return (1);
 }
 
 int	multicases(t_player *player, t_map *maps)

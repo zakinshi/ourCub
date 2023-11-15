@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:24:26 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/14 19:11:11 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:48:48 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,15 @@ int	matrise(t_cub3d *cub)
 
 	while (cub->map[i] && cub->map[i + 1])
 	{
-		j = 1;
+		j = 0;
 		while (cub->map[i][j] && cub->map[i][j + 1])
 		{
-			cub->next_i = cub->map[i + 1][j];
-			cub->next_j = cub->map[i][j + 1];
-			cub->old_i = cub->map[i - 1][j];
+			if (cub->map[i][j] == '0')
+			{
+				cub->next_i = cub->map[i + 1][j];
+				cub->next_j = cub->map[i][j + 1];
+				cub->old_i = cub->map[i - 1][j];
+			}
 			if (!case_matrs(cub, cub->map[i][j]))
 				return (0);
 			j++;

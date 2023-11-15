@@ -1,104 +1,112 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 11:20:39 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/13 15:24:22 by enaam            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// /* ************************************************************************** */
+// /*                                                                            */
+// /*                                                        :::      ::::::::   */
+// /*   get_next_line.c                                    :+:      :+:    :+:   */
+// /*                                                    +:+ +:+         +:+     */
+// /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+// /*                                                +#+#+#+#+#+   +#+           */
+// /*   Created: 2023/11/01 11:20:39 by enaam             #+#    #+#             */
+// /*   Updated: 2023/11/13 15:24:22 by enaam            ###   ########.fr       */
+// /*                                                                            */
+// /* ************************************************************************** */
 
 #include "../minimap.h"
 
-static char	*ft_read(int fd, char *save)
+void	my_free(void *to_free)
+{
+	if (!to_free)
+		return ;
+	free(to_free);
+	to_free = NULL;
+}
+
+static char	*ft_find_line(int fd, char *buffer)
 {
 	char	*buff;
-	ssize_t	r_read;
+	ssize_t	read_return;
 
-	if (!save)
-		save = ft_dup("");
+	if (!buffer)
+		buffer = ft_dup("");
 	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buff)
-		return (free(buff), free(save), NULL);
-	r_read = 1;
-	while (!ft_chr(save, '\n') && r_read != 0)
+		return (my_free(buffer), NULL);
+	read_return = 1;
+	while (!find_newline(buffer) && read_return != 0)
 	{
-		r_read = read(fd, buff, BUFFER_SIZE);
-		if (r_read < 0)
-			return (free(buff), free(save), NULL);
-		buff[r_read] = '\0';
-		save = ft_join(save, buff);
+		read_return = read(fd, buff, BUFFER_SIZE);
+		if (read_return < 0)
+			return (my_free(buffer), my_free(buff), NULL);
+		buff[read_return] = '\0';
+		if (read_return == 0)
+			return (my_free(buff), buffer);
+		buffer = ft_strjoin(buffer, buff);
 	}
-	return (free(buff), save);
+	my_free(buff);
+	return (buffer);
 }
 
-static char	*ft_line(char *save)
+static char	*split_line(char *to_split)
 {
-	char	*line;
-	size_t	i;
-	size_t	count;
+	char	*is_line;
+	int		indx;
 
-	count = 0;
-	if (save[count] == '\0')
+	indx = 0;
+	if (!to_split[indx])
 		return (NULL);
-	while (save[count] && save[count] != '\n')
-		count++;
-	if (save[count] == '\n')
-		count++;
-	line = malloc((count + 1) * sizeof(char));
-	if (!line)
+	while (to_split[indx] && to_split[indx] != '\n')
+		indx++;
+	if (to_split[indx] == '\n')
+		indx++;
+	is_line = malloc((indx + 1) * sizeof(char));
+	if (!is_line)
 		return (NULL);
-	i = 0;
-	while (save[i] != '\n' && save[i])
+	indx = 0;
+	while (to_split[indx] && to_split[indx] != '\n')
 	{
-		line[i] = save[i];
-		i++;
+		is_line[indx] = to_split[indx];
+		indx++;
 	}
-	if (save[i] == '\n')
-		line[i++] = '\n';
-	line[i] = '\0';
-	return (line);
+	if (to_split[indx] == '\n')
+		is_line[indx++] = '\n';
+	is_line[indx] = '\0';
+	return (is_line);
 }
 
-static char	*ft_rest(char *s)
+static char	*rest_of_content(char *save)
 {
-	size_t	i;
-	size_t	len;
+	char	*tmp;
 	char	*rest;
-	char	*str;
+	size_t	indx;
 
-	i = 0;
-	while (s[i])
+	indx = 0;
+	while (save[indx])
 	{
-		if (s[i] == '\n')
+		if (save[indx] == '\n')
 		{
-			str = &s[i + 1];
-			len = ft_len(str);
-			rest = malloc((len + 1) * sizeof(char));
+			tmp = &save[indx + 1];
+			rest = malloc(ft_strlen(save) - indx + 1 * 1);
 			if (!rest)
-				return (NULL);
-			rest = ft_cpy(rest, str);
-			rest[len] = '\0';
-			return (free(s), rest);
+				return (my_free(save), NULL);
+			rest = make_copy(rest, tmp);
+			return (my_free(save), rest);
 		}
-		i++;
+		indx++;
 	}
-	return (free(s), NULL);
+	return (my_free(save), NULL);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*line;
-	char		*gtnl;
+	char		*line;
+	static char	*hold;
 
+	line = NULL;
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	line = ft_read(fd, line);
-	if (!line)
+	hold = ft_find_line(fd, hold);
+	if (!hold)
 		return (NULL);
-	gtnl = ft_line(line);
-	line = ft_rest(line);
-	return (gtnl);
+	line = split_line(hold);
+	hold = rest_of_content(hold);
+	return (line);
 }
