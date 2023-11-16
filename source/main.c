@@ -8,20 +8,6 @@ int	lenlines(char **rows)
 	return i;
 } 
 
-int	mouse_hook(int key, void *gf)
-{
-	t_player	*player;
-
-	player = (t_player *)gf;
-	printf("%d\n", key);
-	puts("before the seg");
-	if (key == 1)
-		player->active_mouse = 1;
-	puts("before the seg");
-	printf("%d :am\n", player->active_mouse);
-	return (0);
-}
-
 int	driver(t_global	*_g)
 {
 	image_driver(_g->mlx_s);
@@ -31,7 +17,7 @@ int	driver(t_global	*_g)
 	init_move(_g->player);
 	mlx_put_image_to_window(_g->mlx_s->mlx_ptr, _g->mlx_s->win, _g->mlx_s->img, 0, 0);
 	mlx_destroy_image(_g->mlx_s->mlx_ptr,  _g->mlx_s->img);
-	return 0;
+	return (0);
 }
 
 int	ft_close(void)
@@ -59,26 +45,7 @@ int	get_direction(int x, t_coord last_coord)
 	return (0);
 }
 
-int	mouse_move(int x, int y, t_global *_g)
-{
-	double			angle_new;
-	double			delta_y;
-	double			delta_x;
-	double			deriction;
-	static t_coord	copy_cord;
 
-	if ((x <= WIDTH && x >= 0) && (y <= HEIGHT && y >= 0))
-	{
-		delta_x = _g->player->x - x;
-		delta_y = _g->player->y - y;
-		deriction = get_direction(x, copy_cord);
-		angle_new = ((atan(fabs(delta_x) / fabs(delta_y))) * (M_PI / 180)) * deriction;
-		_g->player->rotation_angle += angle_new;
-	}
-	copy_cord.x = x;
-	copy_cord.y = y;
-	return 0;
-}
 
 int	main_driver(char *path)
 {

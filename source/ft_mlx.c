@@ -24,29 +24,12 @@ void	image_driver(t_mlx *mlx_s)
 {
 	mlx_clear_window(mlx_s->mlx_ptr, mlx_s->win);
 	mlx_s->img = mlx_new_image(mlx_s->mlx_ptr, WIDTH, HEIGHT);
+	if (!mlx_s->img)
+		exit_msg("Allocation Failed for mlx_s->img");
 	mlx_s->addr = mlx_get_data_addr(mlx_s->img, &(mlx_s->b_p_l), &(mlx_s->l_l), &(mlx_s->dian));
-}
+	if (!mlx_s->addr)
+		exit_msg("Allocation Failed for mlx_s->addr");
 
-int	move_hook(int key, void *formation)
-{
-	t_player	*player;
-
-	player = (t_player *)formation;
-	if (key == 13)
-		player->walk_direction = 1;
-	else if (key == 1)
-		player->walk_direction = -1;
-	else if (key == 124)
-		player->turn_direction = 1;
-	else if (key == 123)
-		player->turn_direction = -1;
-	else if (key == 2)
-		player->side_walk = 1;
-	else if (key == 0)
-		player->side_walk = -1;
-	else if (key == 53)
-		exit(0);
-	return 0;
 }
 
 void	init_mlx_s(t_global *_g)

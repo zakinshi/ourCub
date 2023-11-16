@@ -11,9 +11,14 @@ void	draw_rays(t_global *_g)
 	player = _g->player;
 	while (_g->rays[column])
 	{
-		_daa_line(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
-			MINIMAP_FCTR * _g->rays[column]->wallhitx,\
-			MINIMAP_FCTR * _g->rays[column]->wallhity, BLUECIEL);
+		if (_g->rays[column]->hit_vertical)
+			_daa_line(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
+				MINIMAP_FCTR * _g->rays[column]->wallhitx,\
+				MINIMAP_FCTR * _g->rays[column]->wallhity, BLUECIEL);
+		else
+			_daa_line(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
+				MINIMAP_FCTR * _g->rays[column]->wallhitx,\
+				MINIMAP_FCTR * _g->rays[column]->wallhity, GREEN);
 		column++;
 	}
 }
