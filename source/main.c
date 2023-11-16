@@ -8,7 +8,21 @@ int	lenlines(char **rows)
 	return i;
 } 
 
-static int	driver(t_global	*_g)
+int	mouse_hook(int key, void *gf)
+{
+	t_player	*player;
+
+	player = (t_player *)gf;
+	printf("%d\n", key);
+	puts("before the seg");
+	if (key == 1)
+		player->active_mouse = 1;
+	puts("before the seg");
+	printf("%d :am\n", player->active_mouse);
+	return (0);
+}
+
+int	driver(t_global	*_g)
 {
 	image_driver(_g->mlx_s);
 	update_player(_g->player, _g->maps);
@@ -36,6 +50,36 @@ void	define_grid_size(t_global *_g)
 	// GRID_SIZE = 32;
 }
 
+int	get_direction(int x, t_coord last_coord)
+{
+	if (x > last_coord.x)
+		return (1);
+	if (x < last_coord.x)
+		return (-1);
+	return (0);
+}
+
+int	mouse_move(int x, int y, t_global *_g)
+{
+	double			angle_new;
+	double			delta_y;
+	double			delta_x;
+	double			deriction;
+	static t_coord	copy_cord;
+
+	if ((x <= WIDTH && x >= 0) && (y <= HEIGHT && y >= 0))
+	{
+		delta_x = _g->player->x - x;
+		delta_y = _g->player->y - y;
+		deriction = get_direction(x, copy_cord);
+		angle_new = ((atan(fabs(delta_x) / fabs(delta_y))) * (M_PI / 180)) * deriction;
+		_g->player->rotation_angle += angle_new;
+	}
+	copy_cord.x = x;
+	copy_cord.y = y;
+	return 0;
+}
+
 int	main_driver(char *path)
 {
 	t_global	*_g;
@@ -44,17 +88,20 @@ int	main_driver(char *path)
 	if (!_g)
 		return (printf("_g malloc failled.. \n"), 1);
 	t_map *maps = malloc(sizeof(t_map));	// in the parsng function
-	_g->maps = maps;					// where the t_maps will created in the parsing function
+	_g->maps = maps;						// where the t_maps will created in the parsing function
 	_g->path = path;
 	if (!parsing_(_g))
-		return (1);;
+		return (1);
 	define_grid_size(_g);
 	init_player(_g);
 	init_mlx_s(_g);
 	mlx_loop_hook(_g->mlx_s->mlx_ptr, driver, _g);
 	mlx_hook(_g->mlx_s->win, 2, 5, move_hook, _g->player);
+	// mlx_mouse_hook(_g->mlx_s->win, mouse_hook, _g->player);
+	mlx_hook(_g->mlx_s->win, 6, 0, mouse_move, _g);
 	mlx_hook(_g->mlx_s->win, 17, 0, ft_close, NULL);
 	mlx_loop(_g->mlx_s->mlx_ptr);
+
 	return (0);
 }
 int main(int ac, char **av)

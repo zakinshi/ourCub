@@ -17,8 +17,8 @@
 # define GREEN				0x005000
 # define BLUECIEL			0x87CEFA
 
-# define WIDTH				800		// Width of the window
-# define HEIGHT				600		// Height of the window
+# define WIDTH				1920		// Width of the window
+# define HEIGHT				1024		// Height of the window
 // # define GRID_SIZE			52		// Size of each grid cell
 # define MINIMAP_OFF		0
 # define MINIMAP_FCTR		1
@@ -58,6 +58,7 @@ typedef	struct s_player
 	double	rotation_angle;		// PI / 2;
 	double	move_speed;			// 3.0
 	double	rotation_speed;		// 3 * (PI / 180)
+	int		active_mouse;
 }	t_player;
 
 typedef struct s_mlx {
@@ -142,6 +143,8 @@ double		norm_angle(double my_angle);
 double		horizontal_distance(t_global *_g, t_rays *ray, t_coord *wallhit);
 //			--> ver_ray.c
 double		vertical_distance(t_global *_g, t_rays *ray, t_coord *wallhit);
+
+int			mouse_move(int x, int y, t_global *_g);
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 5

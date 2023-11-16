@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:21:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/15 14:41:06 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/16 09:10:06 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int len_line(int fd)
 		if (!line)
 			break ;
 		j = 0;
-		while (line[j] <= 32 && 13 <= line[j])
+		while ((line[j] <= 32 && 13 <= line[j]) || line[j] == 9)
 			j++;
 		if (ft_chr("01", line[j]))
 			i++;

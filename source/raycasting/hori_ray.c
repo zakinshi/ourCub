@@ -52,8 +52,8 @@ static int	horizontal_inst(t_global *_g, t_rays *ray, t_coord *wallhit)
 	t_coord step;
 	int		bool_hitwall;
 
-	catch_xy_inte(_g->player, ray, &inte); // calc x - y intersection
-	catch_xy_step(ray, &step); // catch (x, y) steps
+	catch_xy_inte(_g->player, ray, &inte);	// calc x - y intersection
+	catch_xy_step(ray, &step);				// catch (x, y) steps
 	bool_hitwall = find_thehiro_wall(ray, _g, &inte, &step, wallhit);
 	return (bool_hitwall);
 }

@@ -40,15 +40,16 @@ void	init_player(t_global *_g)
 	player = malloc(sizeof(t_player));
 	if (!player)
 		return ;
-	player->x = (_g->maps->px * GRID_SIZE) + MINIMAP_OFF;
-	player->y = (_g->maps->py * GRID_SIZE) + MINIMAP_OFF;
+	player->x = ((_g->maps->px * GRID_SIZE) + MINIMAP_OFF) + 1;
+	player->y = ((_g->maps->py * GRID_SIZE) + MINIMAP_OFF) + 1;
 	player->radius	= 3;
 	player->turn_direction = 0;
 	player->walk_direction = 0;
 	player->side_walk = 0;
 	direction_view(_g, player);
 	// player->move_speed = calc_speed(_g);
-	player->move_speed = 4.0;
+	player->move_speed = 6.0;
+	player->active_mouse = 0;
 	player->rotation_speed = 4 * (M_PI / 180);
 	_g->player = player;
 }
@@ -61,6 +62,7 @@ int	init_move(void *formation)
 	player->walk_direction = 0; 
 	player->turn_direction = 0;
 	player->side_walk = 0;
+	player->active_mouse = 0;
 	return 0;
 }
 
@@ -73,7 +75,7 @@ int	isin_wall(double x, double y, t_map *maps)
 	{
 		i = floor((y - MINIMAP_OFF) / (double)GRID_SIZE);
 		j = floor((x - MINIMAP_OFF) / (double)GRID_SIZE);
-		if (i <= maps->hieght_map)
+		if (i < maps->hieght_map)
 			maps->width_map = ft_strlen(maps->map[i]);
 		if (i > maps->hieght_map || maps->width_map < j)
 			return (1);
@@ -122,8 +124,7 @@ void	update_player(t_player *player, t_map *maps)
 	forward_walk_ws(player, move_step);
 	sides_walk_ad(player, stepwalk);
 	player->rotation_angle += player->turn_direction * player->rotation_speed;
-	int	hi = multicases(player, maps);
-	if (hi)
+	if (multicases(player, maps))
 	{
 		player->y = copy_y;
 		player->x = copy_x;

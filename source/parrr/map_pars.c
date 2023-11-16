@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:20:31 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/15 15:08:45 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/16 09:12:19 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void	loop_map(char **map, int len, int fd)
 		if (!line)
 			break ;
 		j = 0;
-		while (line[j] <= 32 && 13 <= line[j])
+		while ((line[j] <= 32 && 13 <= line[j]) || line[j] == 9)
 			j++;
+		if (i && line[j] == '\n')
+			exit_msg("empty line in map\n");
 		if (ft_chr("01", line[j]))
 		{
 			new_l(line);
