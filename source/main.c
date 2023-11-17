@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
+/*   Updated: 2023/11/17 12:01:19 by zakbouha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minimap.h"
 
 int	driver(t_global	*_g)
@@ -6,15 +18,16 @@ int	driver(t_global	*_g)
 	update_player(_g->player, _g->maps);
 	rays_cast(_g);
 	draw_all(_g);
-	mlx_put_image_to_window(_g->mlx_s->mlx_ptr, _g->mlx_s->win, _g->mlx_s->img, 0, 0);
-	mlx_destroy_image(_g->mlx_s->mlx_ptr,  _g->mlx_s->img);
+	mlx_put_image_to_window(_g->mlx_s->mlx_ptr, _g->mlx_s->win, \
+		_g->mlx_s->img, 0, 0);
+	mlx_destroy_image(_g->mlx_s->mlx_ptr, _g->mlx_s->img);
 	return (0);
 }
 
 static int	init_all(t_global *_g)
 {
-	t_map *maps;
-	
+	t_map	*maps;
+
 	maps = malloc(sizeof(t_map));
 	if (!_g)
 		return (printf("Maps Malloc Failled.. \n"), 0);
@@ -43,7 +56,7 @@ static int	main_driver(char *path)
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac != 2)
 		exit_msg("Warnning :\n\t./Cub3D ./[Path_map]\n");
