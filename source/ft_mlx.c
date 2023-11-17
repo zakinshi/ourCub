@@ -1,14 +1,5 @@
 #include "minimap.h"
 
-void	exit_msg(char *msg)
-{
-	int	len;
-
-	len = strlen(msg);	// ft_strlen();
-	write(2, msg, len);
-	exit(1);
-}
-
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 {
 	char	*dst;

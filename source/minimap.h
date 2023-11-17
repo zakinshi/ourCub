@@ -58,7 +58,6 @@ typedef	struct s_player
 	double	rotation_angle;		// PI / 2;
 	double	move_speed;			// 3.0
 	double	rotation_speed;		// 3 * (PI / 180)
-	int		active_mouse;
 }	t_player;
 
 typedef struct s_mlx {
@@ -93,8 +92,6 @@ typedef struct global_s {
 	char		*path;
 }	t_global;
 
-int	get_direction(int x, t_coord last_coord);
-
 // ****** FOLDER -- source
 // 			--> ft_mlx.c
 void		my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
@@ -102,14 +99,13 @@ void		image_driver(t_mlx *mlx_s);
 void		init_mlx_s(t_global *_g);
 void		exit_msg(char *msg);
 // 			--> main.c
+// 			--> tools.c
+void		define_grid_size(t_global *_g);
 int			lenlines(char **rows);
-// 			--> split.c
-char		**ft_split(char const *str, char c);
-int			ft_count_words(char const *str, char c);
 // 			--> hook.c
-int			mouse_hook(int key, void *gf);
 int			mouse_move(int x, int y, t_global *_g);
-int			move_hook(int key, void *formation);
+int			move_hook(int key, t_global *_g);
+void		all_my_hooks(t_global *_g);
 //			--> draw.c
 void		draw_all(t_global *_g);
 void		color_sky_floor(t_global *_g);

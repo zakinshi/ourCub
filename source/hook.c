@@ -1,17 +1,17 @@
 #include "minimap.h"
 
-int	mouse_hook(int key, void *gf)
+static int	get_direction(int x, t_coord last_coord)
 {
-	t_player	*player;
-
-	player = (t_player *)gf;
-	printf("%d\n", key);
-	puts("before the seg");
-	if (key == 1)
-		player->active_mouse = 1;
-	puts("before the seg");
-	printf("%d :am\n", player->active_mouse);
+	if (x > last_coord.x)
+		return (1);
+	if (x < last_coord.x)
+		return (-1);
 	return (0);
+}
+
+static int	ft_close(void)
+{
+	exit(0);
 }
 
 int	mouse_move(int x, int y, t_global *_g)
@@ -32,27 +32,56 @@ int	mouse_move(int x, int y, t_global *_g)
 	}
 	copy_cord.x = x;
 	copy_cord.y = y;
+
 	return 0;
 }
 
-int	move_hook(int key, void *formation)
+int	move_hook(int key, t_global *_g)
 {
 	t_player	*player;
 
-	player = (t_player *)formation;
+	player = _g->player;
 	if (key == 13)
 		player->walk_direction = 1;
-	else if (key == 1)
+	if (key == 1)
 		player->walk_direction = -1;
-	else if (key == 124)
+	if (key == 124)
 		player->turn_direction = 1;
-	else if (key == 123)
+	if (key == 123)
 		player->turn_direction = -1;
-	else if (key == 2)
+	if (key == 2)
 		player->side_walk = 1;
-	else if (key == 0)
+	if (key == 0)
 		player->side_walk = -1;
-	else if (key == 53)
+	if (key == 53)
 		exit(0);
 	return 0;
+}
+
+int	init_move_hook(int key, t_global *_g)
+{
+	t_player	*player;
+
+	player = _g->player;
+	if (key == 13)
+		player->walk_direction = 0;
+	if (key == 1)
+		player->walk_direction = 0;
+	if (key == 124)
+		player->turn_direction = 0;
+	if (key == 123)
+		player->turn_direction = 0;
+	if (key == 2)
+		player->side_walk = 0;
+	if (key == 0)
+		player->side_walk = 0;
+	return 0;
+}
+
+void	all_my_hooks(t_global *_g)
+{
+	mlx_hook(_g->mlx_s->win, 2, 0, move_hook, _g);
+	mlx_hook(_g->mlx_s->win, 3, 0, init_move_hook, _g);
+	mlx_hook(_g->mlx_s->win, 6, 0, mouse_move, _g);
+	mlx_hook(_g->mlx_s->win, 17, 0, ft_close, NULL);
 }
