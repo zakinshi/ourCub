@@ -1,4 +1,4 @@
-#include "minimap.h"
+#include "../minimap.h"
 
 void	draw_minimap(t_global *_g)
 {

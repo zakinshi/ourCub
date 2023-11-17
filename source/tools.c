@@ -1,4 +1,4 @@
-#include "minimap.h"
+#include "../minimap.h"
 
 int	lenlines(char **rows)
 {

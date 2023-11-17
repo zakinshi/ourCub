@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:21:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/16 09:10:06 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/18 00:43:12 by mehdismac        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	check_pars(char *s)
 {
-	int		i;
+	int	i;
 	
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] >= 13 && s[i] <= 32)
+		if (s[i] == 9 || (s[i] >= 13 && s[i] <= 32))
 			s[i] = '2';
 		i++;
 	}
@@ -38,7 +38,8 @@ int len_line(int fd)
 		if (!line)
 			break ;
 		j = 0;
-		while ((line[j] <= 32 && 13 <= line[j]) || line[j] == 9)
+		while ((line[j] <= 32 && 13 <= line[j]) \
+			|| line[j] == 9)
 			j++;
 		if (ft_chr("01", line[j]))
 			i++;
@@ -75,8 +76,9 @@ int check_fstlst(char *s)
 
 int	read_l(char *s)
 {
-	int i = 0;
+	int i;
 
+	i = 0;
 	while (s[i])
 	{
 		if (s[i] == '0')

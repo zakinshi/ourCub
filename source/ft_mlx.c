@@ -1,4 +1,4 @@
-#include "minimap.h"
+#include "../minimap.h"
 
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 {

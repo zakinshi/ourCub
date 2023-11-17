@@ -3,40 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   color_utile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:01:39 by mehdismac         #+#    #+#             */
-/*   Updated: 2023/11/14 15:55:45 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/18 00:43:12 by mehdismac        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minimap.h"
 
-int	diget(char *str)
+int	lenlines(char **rows)
 {
-	int	i;
+	int i;
 
-	i = 0;
-	while (str[i])
-	{
-		if ((str[i] >= '0' && str[i] <= '9'))
-			return (1);
-		i++;
-	}
-	return (-1);
-}
+	i = -1;
+	while (rows[++i])
+		;
+	return i;
+} 
 
 int	get_color(char *color, t_cub3d *cub)
 {
 	char	**sp;
 	int		len;
 
+	if (color[strlen(color) - 1] == ',')
+		return (printf("','"), -1);
 	sp = ft_split(color + 1, ',');
 	len = lenlines(sp);
 	if (len != 3)
-		return (printf("More than argu request\n"), -1);
+		return (printf("More than argu request"), -1);
 	if (diget(sp[0]) == -1 || diget(sp[1]) == -1 || diget(sp[2]) == -1)
-		return (printf("color isn't found\n"), -1);
+		return (printf("color isn't found"), -1);
 	cub->red = ft_atoi(sp[0]);
 	cub->green = ft_atoi(sp[1]);
 	cub->blue = ft_atoi(sp[2]);

@@ -1,4 +1,4 @@
-#include "minimap.h"
+#include "../minimap.h"
 
 static int	get_direction(int x, t_coord last_coord)
 {

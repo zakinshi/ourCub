@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:24:26 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/16 09:10:23 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/18 00:44:10 by mehdismac        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ int case_matrs(t_cub3d *cub, char zero)
 
 int	matrise(t_cub3d *cub)
 {
-	int i = 1;
+	int i;
 	int j;
 
+	i = 1;
 	while (cub->map[i] && cub->map[i + 1])
 	{
 		j = 0;

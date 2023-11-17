@@ -1,0 +1,91 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pars_utile2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/18 00:14:12 by mehdismac         #+#    #+#             */
+/*   Updated: 2023/11/18 00:43:12 by mehdismac        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../minimap.h"
+
+int	check_condition(char **map)
+{
+	if (!check_firstlast_line(map))
+		return (0);
+	spc_to_tow(map);
+	if (!edge_map(map))
+		return (0);
+	return (1);
+}
+
+void	exit_msg(char *msg)
+{
+	int	len;
+
+	len = strlen(msg);	// ft_strlen();
+	write(2, msg, len);
+	exit(1);
+}
+
+void	map_loop(char *line, char **map, int *i)
+{
+	int	j;
+
+	j = 0;
+	while (line[j] == 9 || \
+		(line[j] <= 32 && line[j] >= 13))
+		j++;
+	if (*i && line[j] == '\n')
+		exit_msg("empty line in map\n");
+	if (ft_chr("01", line[j]))
+	{
+		new_l(line);
+		map[*i] = ft_dup(line);
+		*i += 1;
+	}
+	free(line);
+}
+
+void	loop_map(char **map, int len, int fd)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	while (len > i)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		map_loop(line, map, &i);
+	}
+	map[i] = NULL;
+}
+
+int line_l(int fd)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	line = get_next_line(fd);
+	if (!line)
+		return (0);
+	if (line[0] != '\n')
+		i = 1;
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		if (line[0] != '\n')
+			i++;
+	}
+	return (i);
+}
+

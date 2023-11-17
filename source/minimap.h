@@ -2,7 +2,7 @@
 #ifndef MINIMAP_H
 # define MINIMAP_H
 
-# include "mlx.h"
+// # include "mlx.h"
 # include <math.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -136,6 +136,7 @@ typedef struct global_s {
 	t_map		*maps;
 	char		*path;
 	t_text		*texture;
+	t_cub3d		*cub;
 }	t_global;
 
 // ****** FOLDER -- source
@@ -211,13 +212,12 @@ void	check_pars(char *s);
 int		case_matrs(t_cub3d *cub, char paus);
 int		count_word(char const *s, char c);
 int		matrise(t_cub3d *cub);
-size_t	ft_len(char *s);
 char	*ft_cpy(char *dst, char *src);
 char	*ft_join(char *s1, char *s2);
 char	*ft_chr(char *s, char c);
 int		ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
-char	**store_map(int fd, char *path);
+char	**store_map(int fd);
 int		check_isdiget(char *str);
 int		color_shift(int t, int r, int g, int b);
 int		get_color(char *color, t_cub3d *cub);
@@ -226,10 +226,17 @@ int		pars_color(char *color, t_cub3d *cub);
 int		ft_cmp(char *ft, char *sd, size_t n);
 int		ft_compass(t_cub3d *cub, int fd);
 int		ft_map(t_cub3d *cub, int fd);
-int		parsing_(t_global *_g);
+int		parsing_();
 int		ft_color(t_cub3d *cub, int fd);
 void	long_line(t_cub3d *cub);
-
+int		to_return(char *color, t_cub3d *cub);
+int		diget(char *str);
+int		loop_spc(char *compass);
+void	loop_cmp(char **compass, char *line, int *j);
+void	loop_cf(char **color, char *line, int *j);
+int		loop_compass(char **color, t_cub3d *cub);
+int		check_condition(char **map);
+void	loop_map(char **map, int len, int fd);
 
 void	calcule_text(t_global *_g, int i);
 void	texture_offset(t_global *_g, int i);
