@@ -24,6 +24,6 @@ void	define_grid_size(t_global *_g)
 
 	for_width = (WIDTH / _g->maps->width_map);
 	for_height = (HEIGHT / _g->maps->hieght_map);
-	GRID_SIZE = for_height < for_width ? for_height : for_width;
-	// GRID_SIZE = 32;
+	// GRID_SIZE = for_height < for_width ? for_height : for_width;
+	GRID_SIZE = 64;
 }

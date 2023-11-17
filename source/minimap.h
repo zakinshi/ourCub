@@ -81,7 +81,52 @@ typedef struct s_map
 	int		py; // i
 	int		px; // j
 	int		SIZE_GRID;
+	char	*north;
+	char	*east;
+	char	*west;
+	char	*south;
 }	t_map;
+
+typedef	struct s_text
+{
+	double	per_dist;
+	double	distpropln;
+	double	projwallht;
+	double		wallstripht;
+	int		walltoppixl;
+	int		wallbotmpixl;
+	int		textureoffsetx;
+	int		textureoffsety;
+	unsigned int *walltext;
+	int	x_width;
+	int	x_hight;
+	void	*xpm[4];
+	char	*addr_x[4];
+	int		b_p_x;
+	int		l_x;
+}	t_text;
+
+typedef struct s_cub3d
+{
+	char	**map;
+	int		len_l;
+	int		long_l;
+	int		skay;
+	int		playr_i;
+	int		playr_j;
+	int		floor;
+	int		blue;
+	int		red;
+	int		green;
+	char	next_i;
+	char	old_i;
+	char	next_j;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*path;
+}	t_cub3d;
 
 typedef struct global_s {
 
@@ -90,6 +135,7 @@ typedef struct global_s {
 	t_rays		**rays;
 	t_map		*maps;
 	char		*path;
+	t_text		*texture;
 }	t_global;
 
 // ****** FOLDER -- source
@@ -150,27 +196,6 @@ double		vertical_distance(t_global *_g, t_rays *ray, t_coord *wallhit);
 # define BUFFER_SIZE 5
 #endif
 
-typedef struct s_cub3d
-{
-	char	**map;
-	int		len_l;
-	int		long_l;
-	int		skay;
-	int		playr_i;
-	int		playr_j;
-	int		floor;
-	int		blue;
-	int		red;
-	int		green;
-	char	next_i;
-	char	old_i;
-	char	next_j;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*path;
-}	t_cub3d;
 
 char	*get_next_line(int fd);
 char	*ft_dup(char *s);
@@ -206,7 +231,9 @@ int		ft_color(t_cub3d *cub, int fd);
 void	long_line(t_cub3d *cub);
 
 
-
+void	calcule_text(t_global *_g, int i);
+void	texture_offset(t_global *_g, int i);
+void	xpm_driver(t_global *_g);
 
 size_t	ft_strlen(char *s);
 char	*make_copy(char *copy, char *s);

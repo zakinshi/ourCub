@@ -45,7 +45,7 @@ MNMP_OBJ	= $(addprefix $(PATH_MNMP_B), $(FILE_MNMP_B))
 # **	--> PROJECTION
 #**
 PATH_PROJ	= ./projection/
-FILE_PROJ_C	= dda.c		3dwall.c
+FILE_PROJ_C	= dda.c	calcul_text.c 3dwall.c
 
 PATH_PROJ_B	= $(PATH_OBJ)projection/
 FILE_PROJ_B	= $(FILE_PROJ_C:.c=.o)
