@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compass.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:08:50 by mehdismac         #+#    #+#             */
-/*   Updated: 2023/11/15 15:08:36 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/17 12:10:09 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,10 @@ void	data_copy(t_global *_g, t_cub3d *cub)
 	_g->maps->width_map = cub->long_l;
 	_g->maps->px = cub->playr_j;
 	_g->maps->py = cub->playr_i;
-	
+	_g->maps->north = cub->no;
+	_g->maps->south = cub->so;
+	_g->maps->east = cub->ea;
+	_g->maps->west = cub->we;
 }
 
 int parsing_(t_global *_g)

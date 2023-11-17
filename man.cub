@@ -1,10 +1,10 @@
 C 137,207,240
 F 30,30,30
 
-NO ./XPM/no.xpm
-SO ./XPM/so.xpm
-EA ./XPM/ea.xpm
-WE ./XPM/we.xpm
+NO ./wall.xpm
+SO ./store.xpm
+EA ./wallbl2.xpm
+WE ./wall1.xpm
 
 111111111111111
 100000100000001
