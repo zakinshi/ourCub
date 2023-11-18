@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compass.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 14:08:50 by mehdismac         #+#    #+#             */
-/*   Updated: 2023/11/18 00:43:52 by mehdismac        ###   ########.fr       */
+/*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
+/*   Updated: 2023/11/18 12:50:10 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	loop_cmp(char **compass, char *line, int *j)
 
 	i = 0;
 	new_l(line);
-	while (line[i] == 9 || \
-		(line[i] <= 32 && line[i] >= 13))
+	while (line[i] == 9 || (line[i] <= 32 && line[i] >= 13))
 		i++;
 	if (ft_chr("NOSOWEEA", line[i]))
 	{
@@ -32,7 +31,7 @@ void	loop_cmp(char **compass, char *line, int *j)
 void	store_loop(char	**compass, int fd)
 {
 	char	*line;
-	int 	j;
+	int		j;
 
 	j = 0;
 	while (1)
@@ -73,24 +72,41 @@ int	ft_compass(t_cub3d *cub, int fd)
 	return (1);
 }
 
-int parsing_()
+void	data_copy(t_global *_g, t_cub3d *cub)
+{
+	_g->maps->floor_color = cub->floor;
+	_g->maps->hieght_map = cub->len_l;
+	_g->maps->map = cub->map;
+	_g->maps->sky_color = cub->skay;
+	_g->maps->width_map = cub->long_l;
+	_g->maps->px = cub->playr_j;
+	_g->maps->py = cub->playr_i;
+	_g->maps->north = cub->no;
+	_g->maps->south = cub->so;
+	_g->maps->west = cub->we;
+	_g->maps->east = cub->ea;
+}
+
+int	parsing_(t_global *_g)
 {
 	t_cub3d	*cub;
-	int fd;
+	int		fd;
 
 	cub = malloc(sizeof(t_cub3d));
-	fd = open("test", O_RDONLY);
+	fd = open(_g->path, O_RDONLY);
+	cub->path = _g->path;
 	if (!ft_map(cub, fd))
 		return (0);
 	close(fd);
-	fd = open("test", O_RDONLY);
+	fd = open(_g->path, O_RDONLY);
 	if (!ft_compass(cub, fd))
 		return (0);
 	close(fd);
-	fd = open("test", O_RDONLY);
+	fd = open(_g->path, O_RDONLY);
 	if (!ft_color(cub, fd))
 		return (0);
 	long_line(cub);
 	cub->len_l = lenlines(cub->map);
+	data_copy(_g, cub);
 	return (1);
 }

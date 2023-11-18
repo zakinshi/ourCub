@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:24:26 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/18 00:44:10 by mehdismac        ###   ########.fr       */
+/*   Updated: 2023/11/18 12:18:01 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,26 @@ int	check_firstlast_line(char **arr)
 
 	i = 0;
 	if (!read_l(arr[i]))
-		return (printf("%s\n", "error in first line") ,0);
+		return (printf("error in first line\n"), 0);
 	while (arr[i])
 		i++;
 	if (!read_l(arr[i - 1]))
-		return (printf("%s\n", "error in last line") ,0);
+		return (printf("error in last line\n"), 0);
 	return (1);
 }
 
 void	spc_to_tow(char **line)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (line[++i])
 		check_pars(line[i]);
 }
 
-int edge_map(char **line)
+int	edge_map(char **line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])
@@ -49,14 +49,13 @@ int edge_map(char **line)
 	return (1);
 }
 
-int case_matrs(t_cub3d *cub, char zero)
+int	case_matrs(t_cub3d *cub, char zero)
 {
-	// spc = 2
 	if (zero == '0' && cub->next_i != '1' && \
 		cub->next_i != '0' && !ft_chr("NSWE", cub->next_i))
-		return (printf("error in next i\n") ,0);
+		return (printf("error in next i\n"), 0);
 	if ((zero == '0' || ft_chr("NSWE", zero)) && cub->next_j == '2')
-		return (printf("error in zero\n") ,0);
+		return (printf("error in zero\n"), 0);
 	if (zero == '0' && cub->old_i != '1' && \
 		cub->old_i != '0' && !ft_chr("NSWE", cub->old_i))
 		return (printf("error in old i\n"), 0);
@@ -65,8 +64,8 @@ int case_matrs(t_cub3d *cub, char zero)
 
 int	matrise(t_cub3d *cub)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (cub->map[i] && cub->map[i + 1])

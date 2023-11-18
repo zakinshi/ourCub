@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_utile1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 23:17:10 by mehdismac         #+#    #+#             */
-/*   Updated: 2023/11/18 00:43:12 by mehdismac        ###   ########.fr       */
+/*   Created: 2023/11/18 12:49:45 by enaam             #+#    #+#             */
+/*   Updated: 2023/11/18 12:49:48 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,3 @@ int	ft_cmp(char *ft, char *sd, size_t n)
 	}
 	return (0);
 }
-

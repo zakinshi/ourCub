@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:34:50 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/18 00:43:12 by mehdismac        ###   ########.fr       */
+/*   Updated: 2023/11/18 12:03:11 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minimap.h"
 
-int	 loop_color(char **color, t_cub3d *cub)
+int	loop_color(char **color, t_cub3d *cub)
 {
 	int	i;
 
@@ -55,7 +55,7 @@ void	loop_cf(char **color, char *line, int *j)
 
 void	store_loop_cf(char **color, int fd)
 {
-	int 	j;
+	int		j;
 	char	*line;
 
 	j = 0;

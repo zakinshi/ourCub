@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/18 00:43:12 by mehdismac        ###   ########.fr       */
+/*   Updated: 2023/11/18 10:38:19 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minimap.h"
+#include "minimap.h"
 
 int	driver(t_global	*_g)
 {

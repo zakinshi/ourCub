@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_pars.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:20:31 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/18 00:44:39 by mehdismac        ###   ########.fr       */
+/*   Updated: 2023/11/18 12:36:34 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minimap.h"
 
-char	**store_map(int fd)
+char	**store_map(int fd, t_cub3d *cub)
 {
 	char	**map;
 	int		len;
@@ -24,15 +24,15 @@ char	**store_map(int fd)
 	if (!map)
 		return (NULL);
 	close(fd);
-	fd = open("test", O_RDONLY);
+	fd = open(cub->path, O_RDONLY);
 	loop_map(map, len, fd);
 	return (map);
 }
 
 void	long_line(t_cub3d *cub)
 {
-	int len;
-	int i;
+	int	len;
+	int	i;
 
 	i = 0;
 	cub->long_l = ft_strlen(cub->map[i]);
@@ -45,24 +45,16 @@ void	long_line(t_cub3d *cub)
 	}
 }
 
-void	display(t_cub3d *cub)
-{
-	int i;
-	for (i = 0; cub->map[i] ; i++)
-		printf("%s\n", cub->map[i]);
-	printf("\n\n\n\nskay = %d\nfloor = %d\n\n\n\n\n", cub->skay, cub->floor);
-	// printf("playr_i = %d\nplayr_j = %d\n\n\n\n\n", cub->playr_i, cub->playr_j);
-	printf("NO = %s\nSO = %s\nWE = %s\nEA = %s\n", cub->no, cub->so, cub->we, cub->ea);
-}
-
 void	check_player_place(t_cub3d *cub)
 {
 	int	i;
 	int	j;
+	int	flag;
 
 	cub->playr_i = -1;
 	cub->playr_j = -1;
 	i = -1;
+	flag = 0;
 	while (cub->map[++i])
 	{
 		j = -1;
@@ -72,14 +64,17 @@ void	check_player_place(t_cub3d *cub)
 			{
 				cub->playr_i = i;
 				cub->playr_j = j;
+				flag++;
 			}
 		}
 	}
+	if (flag != 1)
+		exit_msg("erorr in playr\n");
 }
 
 int	ft_map(t_cub3d *cub, int fd)
 {
-	cub->map = store_map(fd);
+	cub->map = store_map(fd, cub);
 	if (!cub->map || !cub->map[0] || !cub->map[1])
 		return (printf("No map found\n"), 0);
 	if (!check_condition(cub->map))

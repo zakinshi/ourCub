@@ -2,7 +2,7 @@
 #ifndef MINIMAP_H
 # define MINIMAP_H
 
-// # include "mlx.h"
+# include "mlx.h"
 # include <math.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -217,7 +217,7 @@ char	*ft_join(char *s1, char *s2);
 char	*ft_chr(char *s, char c);
 int		ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
-char	**store_map(int fd);
+char	**store_map(int fd, t_cub3d *cub);
 int		check_isdiget(char *str);
 int		color_shift(int t, int r, int g, int b);
 int		get_color(char *color, t_cub3d *cub);
@@ -226,7 +226,7 @@ int		pars_color(char *color, t_cub3d *cub);
 int		ft_cmp(char *ft, char *sd, size_t n);
 int		ft_compass(t_cub3d *cub, int fd);
 int		ft_map(t_cub3d *cub, int fd);
-int		parsing_();
+int		parsing_(t_global *_g);
 int		ft_color(t_cub3d *cub, int fd);
 void	long_line(t_cub3d *cub);
 int		to_return(char *color, t_cub3d *cub);

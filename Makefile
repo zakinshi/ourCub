@@ -23,7 +23,7 @@ RAY_OBJ		= $(addprefix $(PATH_RAY_B), $(FILE_RAY_B))
 # **	--> parr
 #**
 PATH_PARS	= ./parrr/
-FILE_PARS_C	= color.c color_utile.c compass.c get_next_line.c get_next_line_utile.c libft.c map_pars.c pars_utils.c pars_utils1.c
+FILE_PARS_C	= color.c color_utile.c color_utile1.c compass.c compass_utile.c get_next_line.c get_next_line_utile.c libft.c map_pars.c pars_utile2.c pars_utils.c pars_utils1.c
 
 PATH_PARS_B	= $(PATH_OBJ)parrr/
 FILE_PARS_B	= $(FILE_PARS_C:.c=.o)

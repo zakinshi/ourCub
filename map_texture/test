@@ -1,0 +1,13 @@
+C 137,207,240
+F 21,130,30
+
+NO ./map_texture/wall.xpm
+SO ./map_texture/wallbl2.xpm
+EA ./map_texture/wall1.xpm
+WE ./map_texture/wall1.xpm
+
+1111111111111
+1000001001001
+1100100W00001
+1010001000001
+1111111111111

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul_text.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/17 19:56:32 by mehdismac        ###   ########.fr       */
+/*   Updated: 2023/11/18 12:00:24 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	xpm_driver(t_global *_g)
 	_g->texture->addr_x[2] = mlx_get_data_addr(_g->texture->xpm[2], &(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
 	_g->texture->addr_x[3] = mlx_get_data_addr(_g->texture->xpm[3], &(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
 
-	// printf("%s\n", _g->texture->addr_x[0]);
 }
 
 unsigned int	get_pixel(t_global *_g, int x, int y, int i)
@@ -43,12 +42,12 @@ unsigned int	text_comp(t_global *_g, int i)
 {
 	unsigned int color = 0;
 
-	if (!_g->rays[i]->hit_vertical && _g->player->rotation_angle < 0)
+	if (!_g->rays[i]->hit_vertical)
 		color = get_pixel(_g, _g->texture->textureoffsetx, _g->texture->textureoffsety, 0);
-	else
+	else if (_g->rays[i]->hit_vertical)
 		color = get_pixel(_g, _g->texture->textureoffsetx, _g->texture->textureoffsety, 1);
-	// else if (_g->rays[i]->facing_right)
-	// 		color = get_pixel(_g, _g->texture->textureoffsetx, _g->texture->textureoffsety, 2);
+	else
+		color = get_pixel(_g, _g->texture->textureoffsetx, _g->texture->textureoffsety, 2);
 	// else if (_g->rays[i]->facing_left)
 	// 		color = get_pixel(_g, _g->texture->textureoffsetx, _g->texture->textureoffsety, 3);
 	return (color);
@@ -61,9 +60,9 @@ void	texture_offset(t_global *_g, int i)
 	int	disftop;
 
 	if(_g->rays[i]->hit_vertical)
-		_g->texture->textureoffsetx = (int)_g->rays[i]->wallhity * (_g->texture->x_hight / GRID_SIZE) % GRID_SIZE;
+		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhity * (_g->texture->x_hight / GRID_SIZE) , GRID_SIZE);
 	else
-		_g->texture->textureoffsetx = (int)_g->rays[i]->wallhitx * (_g->texture->x_width / GRID_SIZE) % GRID_SIZE;
+		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhitx * (_g->texture->x_width / GRID_SIZE) , GRID_SIZE);
 	while (j < _g->texture->wallbotmpixl)
 	{
 		disftop = j + (_g->texture->wallstripht / 2) - (HEIGHT / 2);

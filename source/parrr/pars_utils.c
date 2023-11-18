@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:21:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/18 00:43:12 by mehdismac        ###   ########.fr       */
+/*   Updated: 2023/11/18 12:13:30 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	check_pars(char *s)
 {
 	int	i;
-	
+
 	i = 0;
 	while (s[i])
 	{
@@ -25,7 +25,7 @@ void	check_pars(char *s)
 	}
 }
 
-int len_line(int fd)
+int	len_line(int fd)
 {
 	char	*line;
 	int		i;
@@ -50,21 +50,24 @@ int len_line(int fd)
 
 void	new_l(char *s)
 {
-	int i = -1;
+	int	i;
+
+	i = -1;
 	while (s[++i])
 	{
 		if (s[i] == '\n')
 		{
 			s[i] = '\0';
-			return ;	
+			return ;
 		}
 	}
 }
 
-int check_fstlst(char *s)
+int	check_fstlst(char *s)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	if (s[i] != '1' && s[i] != '2')
 		return (printf("%s\n", "error in first edge"), 0);
 	while (s[i])
@@ -76,7 +79,7 @@ int check_fstlst(char *s)
 
 int	read_l(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])

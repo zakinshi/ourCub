@@ -2,7 +2,7 @@ C 137,207,240
 F 30,30,30
 
 NO ./wall.xpm
-SO ./store.xpm
+SO ./wallbl2.xpm
 EA ./wallbl2.xpm
 WE ./wall1.xpm
 

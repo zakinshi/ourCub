@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:47:51 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/18 00:43:12 by mehdismac        ###   ########.fr       */
+/*   Updated: 2023/11/18 12:14:43 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
-	{	
+	{
 		res = (str[i] - '0') + (res * 10);
 		i++;
 	}
@@ -92,7 +92,7 @@ void	ft_free(char *s)
 	free(s);
 }
 
-char	**ft_split(char const *s, char c)                                                                                                                           
+char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		w;

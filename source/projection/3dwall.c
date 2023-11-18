@@ -5,16 +5,6 @@ int	_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-// static int	grade_color(double it, int hitvertical)
-// {
-// 	int color;
-
-// 	if (hitvertical)
-// 		color = 255 - (it * 0.2);
-// 	else
-// 		color = 180 - (it * 0.1);
-// 	return (_trgb(0, color, color, color));
-// }
 
 void	int_xpm(t_global *_g)
 {
@@ -54,42 +44,19 @@ void	_fake3d_wall(t_global *_g)
 			my_mlx_pixel_put(_g->mlx_s, i, y, _g->maps->sky_color);
 		for (int y = _g->texture->wallbotmpixl; y < HEIGHT; y++)
 			my_mlx_pixel_put(_g->mlx_s, i, y, _g->maps->floor_color);
-		
-		// int y = _g->texture->wallbotmpixl;
-		// while (y < HEIGHT)
-		// {
-		// 	colorbuff[(WIDTH * y) + i] = 0xFF777777;
-		// 	y++;
-		// }
 		i++;
 	}
 }
 
-// void	_fake3d_wall(t_global *_g)
+// static int	grade_color(double it, int hitvertical)
 // {
-// 	int	i = 0;
+// 	int color;
 
-// 	int_xpm(_g);
-// 	xpm_driver(_g);
-// 	while (_g->rays[i])
-// 	{
-// 		calcule_text(_g, i);
-// 		// texter_(_g);
-// 		texture_offset(_g, i);
-// 		// for (int y = 0; y < _g->texture->walltoppixl; y++)
-// 		// 	my_mlx_pixel_put(_g->mlx_s, i, y, _g->maps->sky_color);
-// 		// for (int y = _g->texture->wallbotmpixl; y < HEIGHT; y++)
-// 		// 	my_mlx_pixel_put(_g->mlx_s, i, y, _g->maps->floor_color);
-		
-// 		// int y = _g->texture->wallbotmpixl;
-// 		// while (y < HEIGHT)
-// 		// {
-// 		// 	colorbuff[(WIDTH * y) + i] = 0xFF777777;
-// 		// 	y++;
-// 		// }
-// 		i++;
-// 	}
-	
+// 	if (hitvertical)
+// 		color = 255 - (it * 0.2);
+// 	else
+// 		color = 180 - (it * 0.1);
+// 	return (_trgb(0, color, color, color));
 // }
 
 // void	_fake3d_wall(t_global *_g)

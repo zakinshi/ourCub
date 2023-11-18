@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compass_utile.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 23:23:21 by mehdismac         #+#    #+#             */
-/*   Updated: 2023/11/18 00:43:12 by mehdismac        ###   ########.fr       */
+/*   Created: 2023/11/18 12:49:59 by enaam             #+#    #+#             */
+/*   Updated: 2023/11/18 12:50:01 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,26 @@ int	loop_spc(char *compass)
 	return (i);
 }
 
-char	*stor_comp(char *compass, char *sp, int i)
+char	*stor_comp(char *compass, char *sp, int *i)
 {
 	int	j;
 
 	j = 0;
 	sp = ft_dup(compass + 2);
-	i = loop_spc(sp);
-	if (!*(sp + i))
+	*i = loop_spc(sp);
+	if (!*(sp + *i))
 	{
 		printf("erorr in compass\n");
 		exit (0);
 	}
-	j = open(sp + i, O_RDONLY);
+	j = open(sp + *i, O_RDONLY);
 	if (j == -1)
 	{
 		printf("erorr in compass\n");
 		exit (0);
 	}
 	else
-		close(j);	
+		close(j);
 	return (sp);
 }
 
@@ -55,12 +55,12 @@ void	condition_compass_1(char *compass, t_cub3d *cub)
 	sp = NULL;
 	if (!ft_cmp("NO ", compass, 3))
 	{
-		sp = stor_comp(compass, sp, i);
+		sp = stor_comp(compass, sp, &i);
 		cub->no = sp + i;
 	}
 	else if (!ft_cmp("SO ", compass, 3))
 	{
-		sp = stor_comp(compass, sp, i);
+		sp = stor_comp(compass, sp, &i);
 		cub->so = sp + i;
 	}
 }
@@ -72,22 +72,22 @@ void	condition_compass(char *compass, t_cub3d *cub)
 
 	i = 0;
 	sp = NULL;
-	condition_compass_1(compass, cub);	
+	condition_compass_1(compass, cub);
 	if (!ft_cmp("WE ", compass, 3))
 	{
-		sp = stor_comp(compass, sp, i);
+		sp = stor_comp(compass, sp, &i);
 		cub->we = sp + i;
 	}
 	else if (!ft_cmp("EA ", compass, 3))
 	{
-		sp = stor_comp(compass, sp, i);
+		sp = stor_comp(compass, sp, &i);
 		cub->ea = sp + i;
 	}
 }
 
-int	 loop_compass(char **color, t_cub3d *cub)
+int	loop_compass(char **color, t_cub3d *cub)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (color[i])
@@ -97,4 +97,3 @@ int	 loop_compass(char **color, t_cub3d *cub)
 	}
 	return (1);
 }
-

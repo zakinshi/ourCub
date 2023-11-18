@@ -48,7 +48,7 @@ void	init_player(t_global *_g)
 	player->side_walk = 0;
 	direction_view(_g, player);
 	// player->move_speed = calc_speed(_g);
-	player->move_speed = 3;
+	player->move_speed = 5;
 	player->rotation_speed = 2 * (M_PI / 180);
 	_g->player = player;
 }

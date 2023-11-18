@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utile2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 00:14:12 by mehdismac         #+#    #+#             */
-/*   Updated: 2023/11/18 00:43:12 by mehdismac        ###   ########.fr       */
+/*   Created: 2023/11/18 12:50:27 by enaam             #+#    #+#             */
+/*   Updated: 2023/11/18 12:50:30 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@ int	check_condition(char **map)
 	if (!edge_map(map))
 		return (0);
 	return (1);
-}
-
-void	exit_msg(char *msg)
-{
-	int	len;
-
-	len = strlen(msg);	// ft_strlen();
-	write(2, msg, len);
-	exit(1);
 }
 
 void	map_loop(char *line, char **map, int *i)
@@ -66,7 +57,7 @@ void	loop_map(char **map, int len, int fd)
 	map[i] = NULL;
 }
 
-int line_l(int fd)
+int	line_l(int fd)
 {
 	char	*line;
 	int		i;
@@ -88,4 +79,3 @@ int line_l(int fd)
 	}
 	return (i);
 }
-

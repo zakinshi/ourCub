@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   color_utile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehdismac <mehdismac@student.42.fr>        +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 14:01:39 by mehdismac         #+#    #+#             */
-/*   Updated: 2023/11/18 00:43:12 by mehdismac        ###   ########.fr       */
+/*   Created: 2023/11/18 12:49:35 by enaam             #+#    #+#             */
+/*   Updated: 2023/11/18 12:49:39 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minimap.h"
-
-int	lenlines(char **rows)
-{
-	int i;
-
-	i = -1;
-	while (rows[++i])
-		;
-	return i;
-} 
 
 int	get_color(char *color, t_cub3d *cub)
 {
@@ -69,4 +59,3 @@ int	pars_color(char *color, t_cub3d *cub)
 		return (-1);
 	return (1);
 }
-
