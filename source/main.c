@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/18 10:38:19 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/18 18:03:22 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static int	init_all(t_global *_g)
 	_g->maps = maps;
 	if (!parsing_(_g))
 		return (0);
+	init_mlx_s(_g);
 	define_grid_size(_g);
 	init_player(_g);
-	init_mlx_s(_g);
 	return (1);
 }
 
