@@ -9,6 +9,7 @@ static int	get_direction(int x, t_coord last_coord)
 	return (0);
 }
 
+
 static int	ft_close(void)
 {
 	exit(0);
@@ -75,7 +76,7 @@ int	init_move_hook(int key, t_global *_g)
 		player->side_walk = 0;
 	if (key == 0)
 		player->side_walk = 0;
-	return (0);
+	return 0;
 }
 
 void	all_my_hooks(t_global *_g)

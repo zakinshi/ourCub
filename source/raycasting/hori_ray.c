@@ -30,9 +30,12 @@ static int	find_thehiro_wall(t_rays *ray, t_global *_g, t_coord *inte, t_coord *
 	next_touch.x = inte->x;
 	next_touch.y = inte->y;
 	// increment xstep/ystep until we find a wall
-	while (next_touch.x >= 0 && next_touch.x <= WIDTH && next_touch.y >= 0 && next_touch.y <= HEIGHT)
+	while (next_touch.x >= 0 && next_touch.x <= (double)(_g->maps->width_map * GRID_SIZE) &&\
+		 next_touch.y >= 0 && next_touch.y <= _g->maps->hieght_map * GRID_SIZE) // *** i
 	{
-		if (isin_wall(next_touch.x, next_touch.y - ray->facing_up, _g->maps))
+		// printf("next_touch(%.2f ,%.2f)\n", next_touch.x, next_touch.y);
+		if (next_touch.x <= (double)(_g->maps->width_map * GRID_SIZE) &&
+			isin_wall(next_touch.x, next_touch.y - ray->facing_up, _g->maps))
 		{
 			bool_hitWall = 1;
 			wallhit->x = next_touch.x;

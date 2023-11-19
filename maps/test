@@ -1,0 +1,15 @@
+C 137,207,240
+F 21,130,30
+
+NO ./xpmfiles/store.xpm
+SO ./../../../Downloads/detec.xpm
+EA ./xpmfiles/cropped.xpm
+WE ./xpmfiles/cropped.xpm
+
+1111111111111
+1000000000001
+10000S0000001
+1000010000001
+1000000000001
+1000000000001
+1111111111111

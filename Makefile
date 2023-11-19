@@ -1,7 +1,7 @@
 NAME		= Cub3D
 
 ADDRESS		= -fsanitize=address
-CC			= cc $(ADDRESS)
+CC			= cc
 FLAG		= -Wall -Wextra -Werror -Imlx -ofast
 GRAPHICS	= -lmlx -framework OpenGL -framework AppKit
 
@@ -23,7 +23,9 @@ RAY_OBJ		= $(addprefix $(PATH_RAY_B), $(FILE_RAY_B))
 # **	--> parr
 #**
 PATH_PARS	= ./parrr/
-FILE_PARS_C	= color.c color_utile.c color_utile1.c compass.c compass_utile.c get_next_line.c get_next_line_utile.c libft.c map_pars.c pars_utile2.c pars_utils.c pars_utils1.c
+FILE_PARS_C	= color.c color_utile.c color_utile1.c compass.c compass_utile.c get_next_line.c get_next_line_utile.c libft.c \
+			makemap.c map_pars.c pars_utile2.c pars_utils.c pars_utils1.c
+
 
 PATH_PARS_B	= $(PATH_OBJ)parrr/
 FILE_PARS_B	= $(FILE_PARS_C:.c=.o)
@@ -45,7 +47,7 @@ MNMP_OBJ	= $(addprefix $(PATH_MNMP_B), $(FILE_MNMP_B))
 # **	--> PROJECTION
 #**
 PATH_PROJ	= ./projection/
-FILE_PROJ_C	= dda.c	calcul_text.c 3dwall.c
+FILE_PROJ_C	= 3dwall.c calcul_text.c dda.c
 
 PATH_PROJ_B	= $(PATH_OBJ)projection/
 FILE_PROJ_B	= $(FILE_PROJ_C:.c=.o)

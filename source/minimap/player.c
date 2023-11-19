@@ -48,7 +48,7 @@ void	init_player(t_global *_g)
 	player->side_walk = 0;
 	direction_view(_g, player);
 	// player->move_speed = calc_speed(_g);
-	player->move_speed = 5;
+	player->move_speed = 3;
 	player->rotation_speed = 2 * (M_PI / 180);
 	_g->player = player;
 }
@@ -66,22 +66,16 @@ int	init_move(void *formation)
 
 int	isin_wall(double x, double y, t_map *maps)
 {
-	int	i;
-	int	j;
+	int	line;
+	int	row;
 
-	if ((x >= 0 && x <= WIDTH) && (y >= 0 && y <= HEIGHT))
-	{
-		i = floor((y - MINIMAP_OFF) / (double)GRID_SIZE);
-		j = floor((x - MINIMAP_OFF) / (double)GRID_SIZE);
-		if (i < maps->hieght_map)
-			maps->width_map = ft_strlen(maps->map[i]);
-		if (i > maps->hieght_map || maps->width_map < j)
-			return (1);
-		if (maps->map[i] && maps->map[i][j] && maps->map[i][j] == '1')
-			return (1);
-		return (0);
-	}
-	return (1);
+	line = floor((y - MINIMAP_OFF) / (double)GRID_SIZE);
+	row = floor((x - MINIMAP_OFF) / (double)GRID_SIZE);
+	if (line > maps->hieght_map || maps->width_map < row)
+		return (1);
+	if (maps->map[line] && maps->map[line][row] && maps->map[line][row] == '1')
+		return (1);
+	return (0);
 }
 
 int	multicases(t_player *player, t_map *maps)

@@ -6,21 +6,11 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:43:53 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/18 12:12:48 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/19 11:02:30 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minimap.h"
-
-size_t	ft_strlen(char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s && s[i])
-		i++;
-	return (i);
-}
 
 char	*ft_chr(char *s, char c)
 {

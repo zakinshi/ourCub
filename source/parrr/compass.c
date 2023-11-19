@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   compass.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/18 12:50:10 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/19 11:54:32 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minimap.h"
-
-void	loop_cmp(char **compass, char *line, int *j)
-{
-	int	i;
-
-	i = 0;
-	new_l(line);
-	while (line[i] == 9 || (line[i] <= 32 && line[i] >= 13))
-		i++;
-	if (ft_chr("NOSOWEEA", line[i]))
-	{
-		compass[*j] = ft_dup(line + i);
-		*j += 1;
-	}
-	free(line);
-}
 
 void	store_loop(char	**compass, int fd)
 {
@@ -76,7 +60,7 @@ void	data_copy(t_global *_g, t_cub3d *cub)
 {
 	_g->maps->floor_color = cub->floor;
 	_g->maps->hieght_map = cub->len_l;
-	_g->maps->map = cub->map;
+	_g->maps->map = maping_themap(cub);
 	_g->maps->sky_color = cub->skay;
 	_g->maps->width_map = cub->long_l;
 	_g->maps->px = cub->playr_j;

@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/18 12:49:48 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/19 11:02:40 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,30 @@ int	ft_cmp(char *ft, char *sd, size_t n)
 		i++;
 	}
 	return (0);
+}
+
+void	loop_cmp(char **compass, char *line, int *j)
+{
+	int	i;
+
+	i = 0;
+	new_l(line);
+	while (line[i] == 9 || (line[i] <= 32 && line[i] >= 13))
+		i++;
+	if (ft_chr("NOSOWEEA", line[i]))
+	{
+		compass[*j] = ft_dup(line + i);
+		*j += 1;
+	}
+	free(line);
+}
+
+size_t	ft_strlen(char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s && s[i])
+		i++;
+	return (i);
 }

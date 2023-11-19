@@ -21,7 +21,7 @@
 # define HEIGHT				1024		// Height of the window
 // # define GRID_SIZE			52		// Size of each grid cell
 # define MINIMAP_OFF		0
-# define MINIMAP_FCTR		1
+# define MINIMAP_FCTR		0.1
 # define FOV_ANGLE			60 * (M_PI / 180)
 # define WallStripWidth		1.00
 
@@ -32,6 +32,12 @@ typedef	struct s_coord
 	double x;
 	double y;
 }	t_coord;
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 typedef	struct s_rays {
 
@@ -44,6 +50,7 @@ typedef	struct s_rays {
 	int		facing_down;
 	int		facing_left;
 	int		facing_right;
+	int		index;
 	// int	WallHitContent;
 }	t_rays;
 
@@ -81,6 +88,7 @@ typedef struct s_map
 	int		py; // i
 	int		px; // j
 	int		SIZE_GRID;
+	int		*lenofline;
 	char	*north;
 	char	*east;
 	char	*west;
@@ -106,38 +114,18 @@ typedef	struct s_text
 	int		l_x;
 }	t_text;
 
-typedef struct s_cub3d
-{
-	char	**map;
-	int		len_l;
-	int		long_l;
-	int		skay;
-	int		playr_i;
-	int		playr_j;
-	int		floor;
-	int		blue;
-	int		red;
-	int		green;
-	char	next_i;
-	char	old_i;
-	char	next_j;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*path;
-}	t_cub3d;
-
 typedef struct global_s {
 
 	t_player	*player;
 	t_mlx		*mlx_s;
 	t_rays		**rays;
 	t_map		*maps;
-	char		*path;
 	t_text		*texture;
-	t_cub3d		*cub;
+	t_list		*grbg_colct;
+	char		*path;
 }	t_global;
+
+t_global g_cub;
 
 // ****** FOLDER -- source
 // 			--> ft_mlx.c
@@ -197,6 +185,28 @@ double		vertical_distance(t_global *_g, t_rays *ray, t_coord *wallhit);
 # define BUFFER_SIZE 5
 #endif
 
+typedef struct s_cub3d
+{
+	char	**map;
+	int		len_l;
+	int		long_l;
+	int		skay;
+	int		playr_i;
+	int		playr_j;
+	int		floor;
+	int		blue;
+	int		red;
+	int		green;
+	char	next_i;
+	char	old_i;
+	char	next_j;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*path;
+	int		*lenofline;
+}	t_cub3d;
 
 char	*get_next_line(int fd);
 char	*ft_dup(char *s);
@@ -238,14 +248,23 @@ int		loop_compass(char **color, t_cub3d *cub);
 int		check_condition(char **map);
 void	loop_map(char **map, int len, int fd);
 
-void	calcule_text(t_global *_g, int i);
-void	texture_offset(t_global *_g, int i);
-void	xpm_driver(t_global *_g);
+char	**maping_themap( t_cub3d *cub);
 
 size_t	ft_strlen(char *s);
 char	*make_copy(char *copy, char *s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*find_newline(char *search_in);
 void	my_free(void *to_free);
+
+void	free_2d_char(char **s);
+void	free_rays(t_rays **s);
+
+void	calcule_text(t_global *_g, int i);
+void	texture_offset(t_global *_g, int i);
+void	xpm_driver(t_global *_g);
+
+void	free_garbg(t_list **cont);
+t_list	*ft_grbg_new(void *content);
+void	ft_lstadd_back(t_list **lst, t_list *new);
 
 #endif

@@ -60,6 +60,7 @@ void	rays_cast(t_global *_g)
 		if (!ray)
 			return ;
 		ray->angle_veiw = norm_angle(rayAngle);
+		ray->index = i;
 		cast_ray(_g, ray);
 		rays[++column] = ray;
 		rayAngle += FOV_ANGLE / NUM_RAYS;
