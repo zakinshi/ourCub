@@ -242,6 +242,7 @@ void	loop_cf(char **color, char *line, int *j);
 int		loop_compass(char **color, t_cub3d *cub);
 int		check_condition(char **map);
 void	loop_map(char **map, int len, int fd);
+int		waith_spc(char **color, int i);
 
 char	**maping_themap( t_cub3d *cub);
 
