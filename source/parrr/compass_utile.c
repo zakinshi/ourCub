@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compass_utile.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:59 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/20 21:17:30 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*stor_comp(char *compass, char *sp, int *i)
 	return (sp);
 }
 
-void	condition_compass_1(char *compass, t_cub3d *cub)
+void	condition_compass_1(char *compass, t_cub3d *cub, int *flag)
 {
 	int		i;
 	char	*sp;
@@ -57,32 +57,40 @@ void	condition_compass_1(char *compass, t_cub3d *cub)
 	{
 		sp = stor_comp(compass, sp, &i);
 		cub->no = sp + i;
+		*flag = 1;
 	}
 	else if (!ft_cmp("SO ", compass, 3))
 	{
 		sp = stor_comp(compass, sp, &i);
 		cub->so = sp + i;
+		*flag = 1;
 	}
 }
 
-void	condition_compass(char *compass, t_cub3d *cub)
+int	condition_compass(char *compass, t_cub3d *cub)
 {
 	int		i;
 	char	*sp;
+	int		flag = 0;
 
 	i = 0;
 	sp = NULL;
-	condition_compass_1(compass, cub);
+	condition_compass_1(compass, cub, &flag);
 	if (!ft_cmp("WE ", compass, 3))
 	{
 		sp = stor_comp(compass, sp, &i);
 		cub->we = sp + i;
+		flag = 1;
 	}
 	else if (!ft_cmp("EA ", compass, 3))
 	{
 		sp = stor_comp(compass, sp, &i);
 		cub->ea = sp + i;
+		flag = 1;
 	}
+	if (!flag)
+		return (-1);
+	return (1);
 }
 
 int	loop_compass(char **color, t_cub3d *cub)
@@ -92,7 +100,8 @@ int	loop_compass(char **color, t_cub3d *cub)
 	i = 0;
 	while (color[i])
 	{
-		condition_compass(color[i], cub);
+		if (condition_compass(color[i], cub) == -1)
+			return (-1);
 		i++;
 	}
 	return (1);

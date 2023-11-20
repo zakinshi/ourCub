@@ -3,37 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:34:50 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/20 21:23:40 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	loop_color(char **color, t_cub3d *cub)
+int     loop_color(char **color, t_cub3d *cub)
 {
-	int	i;
+    int i = 0;
+    int flag = 0;
 
-	i = 0;
-	while (color[i])
-	{
-		if (!ft_cmp("F ", color[i], 2))
-		{
-			cub->floor = to_return(color[i], cub);
-			if (cub->floor == -1)
-				return (-1);
-		}
-		else if (!ft_cmp("C ", color[i], 2))
-		{
-			cub->skay = to_return(color[i], cub);
-			if (cub->skay == -1)
-				return (-1);
-		}
-		i++;
-	}
-	return (1);
+    while (color[i])
+    {
+        if (!ft_cmp("F ", color[i], 2))
+        {
+            cub->floor = to_return(color[i], cub);
+            if (cub->floor == -1)
+                return (-1);
+            flag = 1;
+        }
+        else if (!ft_cmp("C ", color[i], 2))
+        {
+            cub->skay = to_return(color[i], cub);
+            if (cub->skay == -1)
+                return (-1);
+            flag = 1;
+        }
+        if (!flag)
+            return (-1);
+        i++;
+        flag = 0;
+    }
+    return (1);
 }
 
 void	loop_cf(char **color, char *line, int *j)
@@ -81,6 +86,7 @@ char	**store_cf(int fd)
 	color = malloc(3 * sizeof(char *));
 	if (!color)
 		return (NULL);
+	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(color));
 	store_loop_cf(color, fd);
 	return (color);
 }

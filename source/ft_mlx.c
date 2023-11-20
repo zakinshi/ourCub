@@ -30,6 +30,7 @@ void	init_mlx_s(t_global *_g)
 	mlx_s =malloc(sizeof(t_mlx));
 	if (!mlx_s)
 		exit_msg("Allocation Failed for mlx_s");
+	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(mlx_s));
 	_g->mlx_s = mlx_s;
 	_g->mlx_s->mlx_ptr = mlx_init();
 	if (!_g->mlx_s->mlx_ptr)

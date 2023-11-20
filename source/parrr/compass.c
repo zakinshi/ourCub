@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compass.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/20 21:18:38 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	**store_compass(int fd)
 	compass = malloc(5 * sizeof(char *));
 	if (!compass)
 		return (NULL);
+	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(compass));
 	store_loop(compass, fd);
 	return (compass);
 }
@@ -52,7 +53,7 @@ int	ft_compass(t_cub3d *cub, int fd)
 	if (!compass || !compass[0])
 		return (printf("No compass found\n"), 0);
 	if (loop_compass(compass, cub) == -1)
-		return (0);
+		return (printf("erorr compass\n"), 0);
 	return (1);
 }
 
@@ -77,6 +78,9 @@ int	parsing_(t_global *_g)
 	int		fd;
 
 	cub = malloc(sizeof(t_cub3d));
+	if (!cub)
+		return (0);
+	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(cub));
 	fd = open(_g->path, O_RDONLY);
 	cub->path = _g->path;
 	if (!ft_map(cub, fd))

@@ -6,11 +6,14 @@ int	_trgb(int t, int r, int g, int b)
 }
 
 
-void	int_xpm(t_global *_g)
+int	int_xpm(t_global *_g)
 {
 	t_text	*xpm;
 
 	xpm = malloc(sizeof(t_text));
+	if (!xpm)
+		return (0);
+	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(xpm));
 	xpm->addr_x[0] = NULL;
 	xpm->b_p_x = 0;
 	xpm->distpropln = 0.00;
@@ -26,15 +29,16 @@ void	int_xpm(t_global *_g)
 	xpm->x_hight = 0;
 	xpm->x_width = 0;
 	xpm->xpm[0] = NULL;
-
 	_g->texture = xpm;
+	return (1);
 }
 
 void	_fake3d_wall(t_global *_g)
 {
 	int	i = 0;
 
-	int_xpm(_g);
+	if (!int_xpm(_g))
+		return ;
 	xpm_driver(_g);
 	while (_g->rays[i])
 	{
