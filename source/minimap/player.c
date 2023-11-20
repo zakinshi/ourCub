@@ -80,16 +80,18 @@ int	isin_wall(double x, double y, t_map *maps)
 
 int	multicases(t_player *player, t_map *maps)
 {
-	if (isin_wall(player->x, player->y, maps))
-		return 1;
-	else if (isin_wall(player->x + 3, player->y, maps) && isin_wall(player->x, player->y - 3, maps))
-		return 1;
-	else if (isin_wall(player->x - 3, player->y, maps) && isin_wall(player->x, player->y + 3, maps))
-		return 1;
-	else if (isin_wall(player->x - 3, player->y, maps) && isin_wall(player->x, player->y - 3, maps))
-		return 1;
-	else if (isin_wall(player->x + 3, player->y, maps) && isin_wall(player->x, player->y + 3, maps))
-		return 1;
+	if (isin_wall(player->x + 5, player->y, maps))
+		return (1);
+	if (isin_wall(player->x, player->y + 5, maps))
+		return (1);
+	else if (isin_wall(player->x + 5, player->y, maps) || isin_wall(player->x, player->y - 5, maps))
+		return (1);
+	else if (isin_wall(player->x - 5, player->y, maps) || isin_wall(player->x, player->y + 5, maps))
+		return (1);
+	else if (isin_wall(player->x - 5, player->y, maps) || isin_wall(player->x, player->y - 5, maps))
+		return (1);
+	else if (isin_wall(player->x + 5, player->y, maps) || isin_wall(player->x, player->y + 5, maps))
+		return (1);
 	return 0;
 }
 
@@ -133,5 +135,5 @@ void	_player(t_global *_g, t_minilx *mn_mlx_s)
 	_disk(mn_mlx_s, MINI_WIDTH / 2, MINI_HEIGHT / 2, player->radius + 2);
 	_daa_line_mini(mn_mlx_s, MINI_WIDTH / 2, MINI_HEIGHT / 2,\
 				(MINI_WIDTH / 2) + cos(player->rotation_angle) * 20,\
-				(MINI_HEIGHT / 2) + sin(player->rotation_angle) * 20, change_the_trans('g')); // line to know the deriction of player
+				(MINI_HEIGHT / 2) + sin(player->rotation_angle) * 20, change_the_trans('g'));
 }

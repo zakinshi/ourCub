@@ -1,7 +1,7 @@
 NAME		= Cub3D
 
 ADDRESS		= -fsanitize=address
-CC			= cc  $(ADDRESS)
+CC			= cc
 FLAG		= -Wall -Wextra -Werror -Imlx -ofast
 GRAPHICS	= -lmlx -framework OpenGL -framework AppKit
 
