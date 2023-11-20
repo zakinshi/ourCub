@@ -6,11 +6,11 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/19 11:40:56 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:01:40 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minimap.h"
+#include "cub3d.h"
 
 
 int	driver(t_global	*_g)
@@ -19,8 +19,6 @@ int	driver(t_global	*_g)
 	update_player(_g->player, _g->maps);
 	rays_cast(_g);
 	draw_all(_g);
-	mlx_put_image_to_window(_g->mlx_s->mlx_ptr, _g->mlx_s->win, \
-		_g->mlx_s->img, 0, 0);
 	mlx_destroy_image(_g->mlx_s->mlx_ptr, _g->mlx_s->img);
 	return (0);
 }

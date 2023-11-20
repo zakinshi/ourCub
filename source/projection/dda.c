@@ -1,4 +1,4 @@
-#include "../minimap.h"
+#include "../cub3d.h"
 
 double	disatnce_between2points(double x1, double y1, double x2, double y2)
 {
@@ -12,7 +12,7 @@ double	disatnce_between2points(double x1, double y1, double x2, double y2)
 	return (sqrt(deltax2 + deltay2));
 }
 
-static double	abs_(double n)
+double	abs_(double n)
 {
 	if (n < 0)
 		return n * -1;

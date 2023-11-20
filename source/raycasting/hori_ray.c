@@ -1,4 +1,4 @@
-#include "../minimap.h"
+#include "../cub3d.h"
 
 static void	catch_xy_inte(t_player *player, t_rays *ray, t_coord *inte)
 {

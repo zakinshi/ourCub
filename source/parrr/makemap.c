@@ -1,4 +1,4 @@
-#include "../minimap.h"
+#include "../cub3d.h"
 
  void	*ft_memset(void *b, int c, size_t len)
 {

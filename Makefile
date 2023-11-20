@@ -1,7 +1,7 @@
 NAME		= Cub3D
 
 ADDRESS		= -fsanitize=address
-CC			= cc
+CC			= cc  $(ADDRESS)
 FLAG		= -Wall -Wextra -Werror -Imlx -ofast
 GRAPHICS	= -lmlx -framework OpenGL -framework AppKit
 
@@ -36,7 +36,7 @@ PARS_OBJ	= $(addprefix $(PATH_PARS_B), $(FILE_PARS_B))
 # **	--> MINMAP
 #**
 PATH_MNMP	= ./minimap/
-FILE_MNMP_C	= tools.c	gridWall.c	player.c
+FILE_MNMP_C	= tools.c	gridWall.c	player.c	minimap.c	mini_mlx.c
 
 PATH_MNMP_B	= $(PATH_OBJ)minimap/
 FILE_MNMP_B	= $(FILE_MNMP_C:.c=.o)
@@ -65,7 +65,7 @@ SRC_OBJ		= $(addprefix $(PATH_SRC_B), $(FILE_SRC_B))
 #	----------------------------------
 
 # ** Global Vars
-HEADERS		= ./source/minimap.h
+HEADERS		= ./source/cub3d.h ./source/minimap/minimap.h
 ALLOBJ		= $(OBJ) $(RAY_OBJ) $(MNMP_OBJ) $(PROJ_OBJ) $(SRC_OBJ) $(PARS_OBJ)
 # **
 

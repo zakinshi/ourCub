@@ -1,4 +1,4 @@
-#include "minimap.h"
+#include "cub3d.h"
 
 int	lenlines(char **rows)
 {

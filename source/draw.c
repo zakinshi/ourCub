@@ -1,19 +1,9 @@
-#include "minimap.h"
-
-void	draw_minimap(t_global *_g)
-{
-	draw_walls(_g->mlx_s, _g->maps->map);
-	_player(_g);
-}
-
-void	color_sky_floor(t_global *_g)
-{
-	draw_rect(_g->mlx_s, 0, 0, WIDTH, HEIGHT / 2, _g->maps->sky_color);
-	draw_rect(_g->mlx_s, 0, HEIGHT / 2, WIDTH, HEIGHT / 2, _g->maps->floor_color);
-}
+#include "cub3d.h"
 
 void	draw_all(t_global *_g)
 {
 	_fake3d_wall(_g);
+	mlx_put_image_to_window(_g->mlx_s->mlx_ptr, _g->mlx_s->win, \
+		_g->mlx_s->img, 0, 0);
 	draw_minimap(_g);
 }

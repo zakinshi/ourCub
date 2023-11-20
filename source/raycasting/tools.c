@@ -1,4 +1,4 @@
-#include "../minimap.h"
+#include "../cub3d.h"
 
 void	draw_rays(t_global *_g)
 {

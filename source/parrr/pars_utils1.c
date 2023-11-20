@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:24:26 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/18 12:18:01 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minimap.h"
+#include "../cub3d.h"
 
 int	check_firstlast_line(char **arr)
 {

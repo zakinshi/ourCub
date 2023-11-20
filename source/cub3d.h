@@ -1,6 +1,6 @@
 
-#ifndef MINIMAP_H
-# define MINIMAP_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include "mlx.h"
 # include <math.h>
@@ -143,28 +143,23 @@ int			move_hook(int key, t_global *_g);
 void		all_my_hooks(t_global *_g);
 //			--> draw.c
 void		draw_all(t_global *_g);
-void		color_sky_floor(t_global *_g);
-void		draw_minimap(t_global *_g);
 
 // ****** FOLDER -- minimap
-//			--> gridWall.c
-void		draw_walls (t_mlx *mlx_s, char **map);
-void		draw_rect(t_mlx *mlx_s, double x, double y, int size_width, int size_height, int color);
+//			--> minimap.c
+void		draw_minimap(t_global *_g);
+
 //			--> player.c
 int			init_move(void *formation);
 void		update_player(t_player *player, t_map *maps);
 int			isin_wall(double x, double y, t_map *maps);
-void		_player(t_global *_g);
 void		init_player(t_global *_g);
-//			--> tools.c
-void		draw_circle(t_mlx *mlx_s, int x, int y, int r);
-void		_disk(t_mlx *mlx_s, int cx, int cy, int r);
 
 // ****** FOLDER -- projection
 //			--> 3dwall.c
 void		_fake3d_wall(t_global *_g);
 int			_trgb(int t, int r, int g, int b);
 //			--> dda.c
+double		abs_(double n);
 void		_daa_line(t_mlx *mlx_s, double x0, double y0, double x1, double y1, long color);
 double		disatnce_between2points(double x1, double y1, double x2, double y2);
 

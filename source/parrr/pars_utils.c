@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:21:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/18 12:13:30 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minimap.h"
+#include "../cub3d.h"
 
 void	check_pars(char *s)
 {

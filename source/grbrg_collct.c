@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   grbrg_collct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 11:30:01 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/19 11:37:09 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/20 19:01:10 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minimap.h"
+#include "cub3d.h"
 
 void	free_garbg(t_list **cont)
 {

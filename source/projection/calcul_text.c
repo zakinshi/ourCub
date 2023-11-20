@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   calcul_text.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/18 17:49:37 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minimap.h"
+#include "../cub3d.h"
 
 void	xpm_driver(t_global *_g)
 {

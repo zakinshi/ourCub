@@ -6,11 +6,11 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/19 11:54:32 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minimap.h"
+#include "../cub3d.h"
 
 void	store_loop(char	**compass, int fd)
 {

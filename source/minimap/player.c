@@ -1,17 +1,17 @@
-#include "../minimap.h"
+#include "minimap.h"
 
 double	calc_speed(t_global *_g)
 {
 	double	dlt_height;
 	double	dlt_width;
 	double	speed_n;
-	double	old_speed = 4;
+	double	old_speed = 20;
 
 	dlt_height = _g->maps->hieght_map / 9; 
 	dlt_width = _g->maps->width_map / 26;
 	double scale = dlt_height < dlt_width ? dlt_height : dlt_width;
 	speed_n = old_speed * scale;
-	return (speed_n);
+	return (10);
 }
 
 void	direction_view(t_global *_g, t_player *player)
@@ -48,7 +48,7 @@ void	init_player(t_global *_g)
 	player->side_walk = 0;
 	direction_view(_g, player);
 	// player->move_speed = calc_speed(_g);
-	player->move_speed = 3;
+	player->move_speed = 6;
 	player->rotation_speed = 2 * (M_PI / 180);
 	_g->player = player;
 }
@@ -69,8 +69,8 @@ int	isin_wall(double x, double y, t_map *maps)
 	int	line;
 	int	row;
 
-	line = floor((y - MINIMAP_OFF) / (double)GRID_SIZE);
-	row = floor((x - MINIMAP_OFF) / (double)GRID_SIZE);
+	line = (y - MINIMAP_OFF) /GRID_SIZE;
+	row = (x - MINIMAP_OFF) / GRID_SIZE;
 	if (line > maps->hieght_map || maps->width_map < row)
 		return (1);
 	if (maps->map[line] && maps->map[line][row] && maps->map[line][row] == '1')
@@ -123,16 +123,15 @@ void	update_player(t_player *player, t_map *maps)
 	}
 }
 
-void	_player(t_global *_g)
+void	_player(t_global *_g, t_minilx *mn_mlx_s)
 {
 	t_mlx		*mlx_s;
 	t_player	*player;
 
 	mlx_s = _g->mlx_s;
 	player = _g->player;
-	_disk(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y, MINIMAP_FCTR * player->radius);
-	draw_rays(_g);
-	_daa_line(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
-				MINIMAP_FCTR * (player->x + cos(player->rotation_angle) * 20),\
-				MINIMAP_FCTR * (player->y + sin(player->rotation_angle) * 20), GREEN); // line to know the deriction of player
+	_disk(mn_mlx_s, MINI_WIDTH / 2, MINI_HEIGHT / 2, player->radius + 2);
+	_daa_line_mini(mn_mlx_s, MINI_WIDTH / 2, MINI_HEIGHT / 2,\
+				(MINI_WIDTH / 2) + cos(player->rotation_angle) * 20,\
+				(MINI_HEIGHT / 2) + sin(player->rotation_angle) * 20, change_the_trans('g')); // line to know the deriction of player
 }

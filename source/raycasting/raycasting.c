@@ -1,4 +1,4 @@
-#include "../minimap.h"
+#include "../cub3d.h"
 
 double	NUM_RAYS		= (double)WIDTH / WallStripWidth;
 

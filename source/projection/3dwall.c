@@ -1,4 +1,4 @@
-#include "../minimap.h"
+#include "../cub3d.h"
 
 int	_trgb(int t, int r, int g, int b)
 {

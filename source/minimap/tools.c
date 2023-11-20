@@ -1,21 +1,21 @@
-#include "../minimap.h"
+#include "minimap.h"
 
-static void	put_circle_pixles(t_mlx *mlx_s, int x, int y, int i, int j)
+static void	put_circle_pixles(t_minilx *mlx_s, int x, int y, int i, int j)
 {
 	int color;
 
-	color = 0x111000;
-	my_mlx_pixel_put(mlx_s, x + i, y + j, color);
-	my_mlx_pixel_put(mlx_s, x - i, y + j, color);
-	my_mlx_pixel_put(mlx_s, x + i, y - j, color);
-	my_mlx_pixel_put(mlx_s, x - i, y - j, color);
-	my_mlx_pixel_put(mlx_s, x + j, y + i, color);
-	my_mlx_pixel_put(mlx_s, x - j, y + i, color);
-	my_mlx_pixel_put(mlx_s, x + j, y - i, color);
-	my_mlx_pixel_put(mlx_s, x - j, y - i, color);
+	color = change_the_trans('g');
+	minimap_mlx_pixel_put(mlx_s, x + i, y + j, color);
+	minimap_mlx_pixel_put(mlx_s, x - i, y + j, color);
+	minimap_mlx_pixel_put(mlx_s, x + i, y - j, color);
+	minimap_mlx_pixel_put(mlx_s, x - i, y - j, color);
+	minimap_mlx_pixel_put(mlx_s, x + j, y + i, color);
+	minimap_mlx_pixel_put(mlx_s, x - j, y + i, color);
+	minimap_mlx_pixel_put(mlx_s, x + j, y - i, color);
+	minimap_mlx_pixel_put(mlx_s, x - j, y - i, color);
 }
 
-void	draw_circle(t_mlx *mlx_s, int x, int y, int r)
+void	draw_circle(t_minilx *mlx_s, int x, int y, int r)
 {
 	int i;
 	int j;
@@ -37,7 +37,7 @@ void	draw_circle(t_mlx *mlx_s, int x, int y, int r)
 	}
 }
 
-void	_disk(t_mlx *mlx_s, int cx, int cy, int r)
+void	_disk(t_minilx *mlx_s, int cx, int cy, int r)
 {
 	int	y;
 	int	x;
@@ -49,9 +49,30 @@ void	_disk(t_mlx *mlx_s, int cx, int cy, int r)
 		while (x <= r)
 		{
 			if (x * x + y * y <= r * r)
-				my_mlx_pixel_put(mlx_s, cx + x, cy + y, 0x912a00);
+				minimap_mlx_pixel_put(mlx_s, cx + x, cy + y, 0x912a00);
 			x++;
 		}
 		y++;
+	}
+}
+
+void _daa_line_mini(t_minilx *mlx_s, double x0, double y0, double x1, double y1, long color)
+{
+	double	deltaX = x1 - x0;
+	double	deltaY = y1 - y0;
+
+	double	steps;
+	steps = abs_(deltaX) > abs_(deltaY) ? abs_(deltaX) : abs_(deltaY);
+
+	float	Xinc, Yinc;
+	Xinc = deltaX / (float)steps;
+	Yinc = deltaY / (float)steps;
+
+	double	x = x0, y = y0, i = -1;
+	while (++i <= steps) {
+
+		minimap_mlx_pixel_put(mlx_s, x, y, color);
+		x += Xinc;
+		y += Yinc;
 	}
 }
