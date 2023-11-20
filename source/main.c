@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/20 20:01:17 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/20 22:12:30 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static int	init_all(t_global *_g)
 	_g->maps = maps;
 	if (!parsing_(_g))
 		return (0);
-	define_grid_size(_g);
 	init_player(_g);
 	init_mlx_s(_g);
 	return (1);

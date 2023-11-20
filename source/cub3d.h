@@ -19,13 +19,11 @@
 
 # define WIDTH				1920		// Width of the window
 # define HEIGHT				1024		// Height of the window
-// # define GRID_SIZE			52		// Size of each grid cell
+# define GRID_SIZE			64		// Size of each grid cell
 # define MINIMAP_OFF		0
 # define MINIMAP_FCTR		0.1
 # define FOV_ANGLE			60 * (M_PI / 180)
 # define WallStripWidth		1.00
-
-int	GRID_SIZE;
 
 typedef	struct s_coord
 {

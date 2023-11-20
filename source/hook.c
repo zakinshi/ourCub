@@ -17,24 +17,22 @@ static int	ft_close(void)
 
 int	mouse_move(int x, int y, t_global *_g)
 {
+	t_coord			delta;
 	double			angle_new;
-	double			delta_y;
-	double			delta_x;
 	double			deriction;
 	static t_coord	copy_cord;
 
 	if ((x <= WIDTH && x >= 0) && (y <= HEIGHT && y >= 0))
 	{
-		delta_x = _g->player->x - x;
-		delta_y = _g->player->y - y;
+		delta.x = _g->player->x - x;
+		delta.y = _g->player->y - y;
 		deriction = get_direction(x, copy_cord);
-		angle_new = ((atan(fabs(delta_x) / fabs(delta_y))) * (M_PI / 180)) * deriction;
+		angle_new = ((atan(fabs(delta.x) / fabs(delta.y))) * (M_PI / 180)) * deriction;
 		_g->player->rotation_angle += angle_new;
 	}
 	copy_cord.x = x;
 	copy_cord.y = y;
-
-	return 0;
+	return (0);
 }
 
 int	move_hook(int key, t_global *_g)
@@ -55,7 +53,7 @@ int	move_hook(int key, t_global *_g)
 	if (key == 0)
 		player->side_walk = -1;
 	if (key == 53)
-		exit(0);
+		ft_close();
 	return 0;
 }
 
