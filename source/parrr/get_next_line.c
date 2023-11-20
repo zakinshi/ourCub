@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:20:39 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:01:35 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static char	*ft_find_line(int fd, char *buffer)
 	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buff)
 		return (my_free(buffer), NULL);
+	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(buff));
 	read_return = 1;
 	while (!find_newline(buffer) && read_return != 0)
 	{
@@ -60,6 +61,7 @@ static char	*split_line(char *to_split)
 	is_line = malloc((indx + 1) * sizeof(char));
 	if (!is_line)
 		return (NULL);
+	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(is_line));
 	indx = 0;
 	while (to_split[indx] && to_split[indx] != '\n')
 	{
@@ -87,6 +89,7 @@ static char	*rest_of_content(char *save)
 			rest = malloc(ft_strlen(save) - indx + 1 * 1);
 			if (!rest)
 				return (my_free(save), NULL);
+			//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(rest));		
 			rest = make_copy(rest, tmp);
 			return (my_free(save), rest);
 		}

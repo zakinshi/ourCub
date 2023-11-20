@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grbrg_collct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 11:30:01 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 19:01:10 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:39:31 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ void	free_garbg(t_list **cont)
 		free(tmp);
 		tmp = tmp2;
 	}
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	t_list	*last;
+
+	last = lst;
+	if (!lst)
+		return (NULL);
+	while (last)
+	{
+		if (!(last->next))
+			return (last);
+		last = last->next;
+	}
+	return (0);
 }
 
 t_list	*ft_grbg_new(void *content)

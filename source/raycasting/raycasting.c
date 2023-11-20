@@ -53,10 +53,12 @@ void	rays_cast(t_global *_g)
 	rays = malloc (sizeof(t_rays *) * (NUM_RAYS + 1));
 	if (!rays)
 		return ;
+	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(rays));
 	rayAngle = _g->player->rotation_angle - (FOV_ANGLE / 2); // start first ray subtra-half of the fov
 	while (++i < NUM_RAYS)
 	{
 		ray = malloc (sizeof(t_rays));
+		//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(ray));
 		if (!ray)
 			return ;
 		ray->angle_veiw = norm_angle(rayAngle);

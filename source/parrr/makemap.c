@@ -30,6 +30,7 @@
 	char	*lineinsize;
 
 	lineinsize = malloc(sizeof(char) * (size + 1));
+	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(lineinsize));
 	if (lineinsize)
 	{
 		(void)line;
@@ -49,6 +50,7 @@ char	**maping_themap( t_cub3d *cub)
 	mymap = malloc(sizeof(char *) * (cub->len_l + 1));
 	if (!mymap)
 		exit_msg("Allocation of mymap(Failed)...\n");
+	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(mymap));
 	while (++i < cub->len_l)
 	{
 		mymap[i] = make_line_insize(cub->map[i], cub->long_l);
