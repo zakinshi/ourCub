@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:34:50 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 18:25:13 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:33:43 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ int	ft_color(t_cub3d *cub, int fd)
 		return (printf("No color found\n"), 0);
 	if (loop_color(color, cub) == -1)
 		return (printf("error in color\n"), 0);
+	free_2d_char(color);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 17:53:13 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 18:40:38 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,13 @@ void	init_mlx_s(t_global *_g);
 void	exit_msg(char *msg);
 
 // 		--> main.c
+void	all_free(t_global *_g);
+
 // 		--> tools.c
 int		lenlines(char **rows);
 void	free_rays(t_rays **s);
 int		get_direction(int x, t_coord last_coord);
+
 // 		--> hook.c
 int		mouse_move(int x, int y, t_global *_g);
 int		move_hook(int key, t_global *_g);

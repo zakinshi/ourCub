@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 17:15:41 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:35:11 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,17 @@ static void	store_loop(char	**compass, int fd)
 
 int	ft_compass(t_cub3d *cub, int fd)
 {
-	char	*compass[4];
+	char	**compass;
 
+	compass = malloc(sizeof(char *) * 5);
+	if (!compass)
+		exit_msg("Allocation Failed in compass..\n");
 	store_loop(compass, fd);
 	if (!compass[0])
 		return (printf("No compass found\n"), 0);
 	if (loop_compass(compass, cub) == -1)
 		return (printf("erorr compass\n"), 0);
+	free_2d_char(compass);
 	return (1);
 }
 
@@ -85,5 +89,6 @@ int	parsing_(t_global *_g)
 	if (!ft_color(cub, fd))
 		return (0);
 	data_copy(_g, cub);
+	free(cub);
 	return (1);
 }

@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:17:01 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 17:33:02 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 18:44:05 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	ft_close(void)
+static int	ft_close(t_global *_g)
 {
+	all_free(_g);
 	exit(0);
 }
 
@@ -56,16 +57,18 @@ int	move_hook(int key, t_global *_g)
 	if (key == 0)
 		player->side_walk = -1;
 	if (key == 53)
-		ft_close();
+		ft_close(_g);
+	if (key == 78)
+		player->move_speed--;
+	if (key == 69)
+		player->move_speed++;
 	return (0);
 }
 
 int	init_move_hook(int key, t_global *_g)
 {
 	t_player	*player;
-	int			i;
 
-	i = 1;
 	player = _g->player;
 	if (key == 13)
 		player->walk_direction = 0;
@@ -79,10 +82,6 @@ int	init_move_hook(int key, t_global *_g)
 		player->side_walk = 0;
 	if (key == 0)
 		player->side_walk = 0;
-	if (key == 78)
-		player->move_speed = 6 - i;
-	if (key == 69)
-		player->move_speed = 6 + i;
 	return (0);
 }
 
@@ -91,5 +90,5 @@ void	all_my_hooks(t_global *_g)
 	mlx_hook(_g->mlx_s->win, 2, 0, move_hook, _g);
 	mlx_hook(_g->mlx_s->win, 3, 0, init_move_hook, _g);
 	mlx_hook(_g->mlx_s->win, 6, 0, mouse_move, _g);
-	mlx_hook(_g->mlx_s->win, 17, 0, ft_close, NULL);
+	mlx_hook(_g->mlx_s->win, 17, 0, ft_close, _g);
 }
