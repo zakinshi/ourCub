@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   makemap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:51:28 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 12:17:58 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 18:09:24 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ char	**maping_themap( t_cub3d *cub)
 			break ;
 	}
 	mymap[i] = NULL;
+	free_2d_char(cub->map);
 	return (mymap);
 }

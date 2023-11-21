@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:17:44 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 16:20:35 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:04:32 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_2d_char(char **s)
 	i = 0;
 	while (s[i])
 	{
-		free(&s[i]);
+		free(s[i]);
 		i++;
 	}
 	free(s);

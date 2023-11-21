@@ -1,0 +1,6 @@
+_g is global var
+maps allocation that take what is done on the parsing
+
+////// in PARSING //////
+	cub allocation struct hold data of pasring;
+		map allocation in store map	char **

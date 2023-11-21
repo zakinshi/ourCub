@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 17:19:52 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 18:21:08 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ static int	init_all(t_global *_g)
 	_g->maps = maps;
 	if (!parsing_(_g))
 		return (0);
+	printf("no %s\n", _g->maps->north);
+	free(_g->maps->north);
+	free(_g->maps->south);
+	free(_g->maps->west);
+	free(_g->maps->east);
+	free_2d_char(_g->maps->map);
+	free(_g->maps);
+	free(_g);
+	exit (0);
 	init_player(_g);
 	init_mlx_s(_g);
 	return (1);
@@ -53,8 +62,14 @@ static int	main_driver(char *path)
 	return (0);
 }
 
+void	leaks()
+{
+	system("leaks Cub3D");
+}
+
 int	main(int ac, char **av)
 {
+	atexit(leaks);
 	int	i;
 
 	if (ac != 2)
