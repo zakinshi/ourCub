@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:17:01 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 16:20:28 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:33:02 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ int	move_hook(int key, t_global *_g)
 int	init_move_hook(int key, t_global *_g)
 {
 	t_player	*player;
+	int			i;
 
+	i = 1;
 	player = _g->player;
 	if (key == 13)
 		player->walk_direction = 0;
@@ -77,6 +79,10 @@ int	init_move_hook(int key, t_global *_g)
 		player->side_walk = 0;
 	if (key == 0)
 		player->side_walk = 0;
+	if (key == 78)
+		player->move_speed = 6 - i;
+	if (key == 69)
+		player->move_speed = 6 + i;
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_utile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:35 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 16:35:02 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:20:50 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	check_isdiget(char *str)
 	{
 		if (!((str[i] >= '0' && str[i] <= '9') \
 			|| (str[i] >= 13 && str[i] <= 32) || str[i] == ',' || str[i] == 9))
-			return (puts("here check"), -1);
+			return (-1);
 		i++;
 	}
 	return (1);
