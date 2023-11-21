@@ -141,5 +141,5 @@ void	_player(t_global *_g, t_minilx *mn_mlx_s)
 	_disk(mn_mlx_s, MINI_WIDTH / 2, MINI_HEIGHT / 2, player->radius + 2);
 	_daa_line_mini(mn_mlx_s, MINI_WIDTH / 2, MINI_HEIGHT / 2,\
 				(MINI_WIDTH / 2) + cos(player->rotation_angle) * 20,\
-				(MINI_HEIGHT / 2) + sin(player->rotation_angle) * 20, change_the_trans('g'));
+				(MINI_HEIGHT / 2) + sin(player->rotation_angle) * 20, _transp('g'));
 }

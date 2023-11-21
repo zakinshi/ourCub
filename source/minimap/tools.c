@@ -4,7 +4,7 @@ static void	put_circle_pixles(t_minilx *mlx_s, int x, int y, int i, int j)
 {
 	int color;
 
-	color = change_the_trans('g');
+	color = _transp('g');
 	minimap_mlx_pixel_put(mlx_s, x + i, y + j, color);
 	minimap_mlx_pixel_put(mlx_s, x - i, y + j, color);
 	minimap_mlx_pixel_put(mlx_s, x + i, y - j, color);
