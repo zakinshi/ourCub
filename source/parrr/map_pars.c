@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:20:31 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 20:01:17 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 10:47:04 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char	**store_map(int fd, t_cub3d *cub)
 	map = malloc((len + 1) * sizeof(char *));
 	if (!map)
 		return (NULL);
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(map));
 	close(fd);
 	fd = open(cub->path, O_RDONLY);
 	loop_map(map, len, fd);

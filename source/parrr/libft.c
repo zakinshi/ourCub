@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:47:51 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 20:01:17 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 10:46:53 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ char	*cut_word(char const *s, char c, int *idx)
 	word = malloc((i - j + 1) * sizeof(char));
 	if (!word)
 		return (NULL);
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(word));
 	w = 0;
 	while (i > j)
 		word[w++] = s[j++];
@@ -104,7 +103,6 @@ char	**ft_split(char const *s, char c)
 	len = count_word(s, c);
 	i = 0;
 	sp = malloc((len + 1) * sizeof(char *));
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(sp));
 	if (!sp)
 		return (NULL);
 	w = 0;

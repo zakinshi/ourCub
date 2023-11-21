@@ -21,17 +21,25 @@ double	abs_(double n)
 
 void _daa_line(t_mlx *mlx_s, double x0, double y0, double x1, double y1, long color)
 {
-	double	deltaX = x1 - x0;
-	double	deltaY = y1 - y0;
-
+	double	deltaX;
+	double	deltaY;
 	double	steps;
+	float	Xinc;
+	float	Yinc;
+	double	i;
+	double	x;
+	double	y;
+
+	deltaX = x1 - x0;
+	deltaY = y1 - y0;
+	x = x0;
+	y = y0;
+	i = -1;
 	steps = abs_(deltaX) > abs_(deltaY) ? abs_(deltaX) : abs_(deltaY);
 
-	float	Xinc, Yinc;
 	Xinc = deltaX / (float)steps;
 	Yinc = deltaY / (float)steps;
 
-	double	x = x0, y = y0, i = -1;
 	while (++i <= steps) {
 
 		my_mlx_pixel_put(mlx_s, x, y, color);

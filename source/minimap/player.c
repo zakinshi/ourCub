@@ -40,7 +40,6 @@ void	init_player(t_global *_g)
 	player = malloc(sizeof(t_player));
 	if (!player)
 		return ;
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(player));
 	player->x = ((_g->maps->px * GRID_SIZE) + MINIMAP_OFF) + 1;
 	player->y = ((_g->maps->py * GRID_SIZE) + MINIMAP_OFF) + 1;
 	player->radius	= 3;

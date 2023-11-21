@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 21:18:38 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 10:46:30 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ char	**store_compass(int fd)
 	compass = malloc(5 * sizeof(char *));
 	if (!compass)
 		return (NULL);
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(compass));
 	store_loop(compass, fd);
 	return (compass);
 }
@@ -80,7 +79,6 @@ int	parsing_(t_global *_g)
 	cub = malloc(sizeof(t_cub3d));
 	if (!cub)
 		return (0);
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(cub));
 	fd = open(_g->path, O_RDONLY);
 	cub->path = _g->path;
 	if (!ft_map(cub, fd))

@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:34:50 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 22:56:55 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 10:46:24 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,25 @@ int	color_cond(char **color, t_cub3d *cub, int i, int *flag)
 	return (1);
 }
 
-int     loop_color(char **color, t_cub3d *cub) 
+int	loop_color(char **color, t_cub3d *cub)
 {
-    int i = 0;
-    int flag = 0;
+	int	i;
+	int	flag;
 
-    while (color[i])
-    {
+	i = 0;
+	flag = 0;
+	while (color[i])
+	{
 		if (waith_spc(color, i) == -1)
 			return (-1);
-        if (!color_cond(color, cub, i, &flag))
+		if (!color_cond(color, cub, i, &flag))
 			return (-1);
-        if (!flag)
-            return (-1);
-        i++;
-        flag = 0;
-    }
-    return (1);
+		if (!flag)
+			return (-1);
+		i++;
+		flag = 0;
+	}
+	return (1);
 }
 
 void	loop_cf(char **color, char *line, int *j)
@@ -67,27 +69,6 @@ void	loop_cf(char **color, char *line, int *j)
 	free(line);
 }
 
-void	store_loop_cf(char **color, int fd)
-{
-	int		j;
-	char	*line;
-
-	j = 0;
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		loop_cf(color, line, &j);
-	}
-	if (j != 2)
-	{
-		printf("More than argu request in color\n");
-		exit (0);
-	}
-	color[j] = NULL;
-}
-
 char	**store_cf(int fd)
 {
 	char	**color;
@@ -95,7 +76,6 @@ char	**store_cf(int fd)
 	color = malloc(3 * sizeof(char *));
 	if (!color)
 		return (NULL);
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(color));
 	store_loop_cf(color, fd);
 	return (color);
 }

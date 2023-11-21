@@ -49,12 +49,10 @@ void	rays_cast(t_global *_g)
 	rays = malloc (sizeof(t_rays *) * (WIDTH + 1));
 	if (!rays)
 		exit_msg("Alloction of rays Failed..\n");
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(rays));
 	rayAngle = _g->player->rotation_angle - (FOV_ANGLE / 2);
 	while (++column < WIDTH)
 	{
 		ray = malloc (sizeof(t_rays));
-		//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(ray));
 		if (!ray)
 			exit_msg("Alloction of ray Failed..\n");
 		ray->angle_veiw = norm_angle(rayAngle);
