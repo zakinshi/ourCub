@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:43:53 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 20:01:17 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 10:46:37 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	*ft_dup(char *s)
 	copy = (char *)malloc(len * sizeof(char));
 	if (!copy)
 		return (NULL);
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(copy));
 	len = 0;
 	while (*(s + len) != '\0')
 	{
@@ -91,7 +90,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	joined = malloc(ls1 + ls2 + 1);
 	if (!joined)
 		return (my_free(s1), NULL);
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(joined));
 	joined = make_copy(joined, s1);
 	ls2 = 0;
 	while (s2[ls2])

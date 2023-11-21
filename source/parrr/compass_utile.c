@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:59 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 22:45:14 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 10:49:20 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,24 @@ void	condition_compass_1(char *compass, t_cub3d *cub, int *flag)
 
 int	waith_spc_c(char *color)
 {
-	int len = -1;
+	int	len;
+
+	len = -1;
 	while (color[++len] > 32)
 		;
 	if (len != 2)
 		return (-1);
 	return (1);
 }
+
 int	condition_compass(char *compass, t_cub3d *cub)
 {
 	int		i;
 	char	*sp;
-	int		flag = 0;
+	int		flag;
 
 	i = 0;
+	flag = 0;
 	sp = NULL;
 	if (waith_spc_c(compass) == -1)
 		return (-1);
@@ -101,20 +105,5 @@ int	condition_compass(char *compass, t_cub3d *cub)
 	}
 	if (!flag)
 		return (-1);
-	return (1);
-}
-
-
-int	loop_compass(char **compass, t_cub3d *cub)
-{
-	int	i;
-
-	i = 0;
-	while (compass[i])
-	{
-		if (condition_compass(compass[i], cub) == -1)
-			return (-1);
-		i++;
-	}
 	return (1);
 }

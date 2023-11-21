@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_utile1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:50:42 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,6 @@ int	ft_cmp(char *ft, char *sd, size_t n)
 	return (0);
 }
 
-void	loop_cmp(char **compass, char *line, int *j)
-{
-	int	i;
-
-	i = 0;
-	new_l(line);
-	while (line[i] == 9 || (line[i] <= 32 && line[i] >= 13))
-		i++;
-	if (ft_chr("NOSOWEEA", line[i]))
-	{
-		compass[*j] = ft_dup(line + i);
-		*j += 1;
-	}
-	free(line);
-}
-
 size_t	ft_strlen(char *s)
 {
 	size_t	i;
@@ -79,4 +63,25 @@ size_t	ft_strlen(char *s)
 	while (s && s[i])
 		i++;
 	return (i);
+}
+
+void	store_loop_cf(char **color, int fd)
+{
+	int		j;
+	char	*line;
+
+	j = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		loop_cf(color, line, &j);
+	}
+	if (j != 2)
+	{
+		printf("More than argu request in color\n");
+		exit (0);
+	}
+	color[j] = NULL;
 }

@@ -164,6 +164,7 @@ double		disatnce_between2points(double x1, double y1, double x2, double y2);
 // ****** FOLDER -- raycasting
 // 			--> raycasting.c
 void		rays_cast(t_global *_g);
+void		sky_floor_color(t_global *_g, int i, int wall_top_pixel, int wall_bottom_pixel);
 // 			--> tools.c
 void		draw_rays(t_global *_g);
 void		struct_copy(t_coord *copy_in, t_coord copy_to);
@@ -201,10 +202,10 @@ typedef struct s_cub3d
 	int		*lenofline;
 }	t_cub3d;
 
+void	store_loop_cf(char **color, int fd);
 char	*get_next_line(int fd);
 char	*ft_dup(char *s);
 int		check_firstlast_line(char **arr);
-void	display(t_cub3d *cub);
 void	spc_to_tow(char **line);
 int		edge_map(char **line);
 int		read_l(char *s);
@@ -243,6 +244,7 @@ void	loop_map(char **map, int len, int fd);
 int		waith_spc(char **color, int i);
 
 char	**maping_themap( t_cub3d *cub);
+int		condition_compass(char *compass, t_cub3d *cub);
 
 size_t	ft_strlen(char *s);
 char	*make_copy(char *copy, char *s);

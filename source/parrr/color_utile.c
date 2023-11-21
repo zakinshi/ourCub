@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:35 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 22:12:17 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 10:44:18 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ int	pars_color(char *color, t_cub3d *cub)
 
 int	waith_spc(char **color, int i)
 {
-	int len = -1;
+	int	len;
+
+	len = -1;
 	while (color[i][++len] > 32)
 		;
 	if (len != 1)

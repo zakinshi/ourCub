@@ -5,7 +5,6 @@ void	draw_minimap(t_global *_g)
 	t_minilx	*mn_mlx_s;
 
 	mn_mlx_s = malloc(sizeof(t_minilx));
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(mn_mlx_s));
 	mn_mlx_s->mlx_ptr = _g->mlx_s->mlx_ptr;
 	mn_mlx_s->win = _g->mlx_s->win;
 	minimap_image(mn_mlx_s);

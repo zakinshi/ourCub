@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul_text.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:26:14 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	xpm_driver(t_global *_g)
 		&(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
 	_g->texture->addr_x[3] = mlx_get_data_addr(_g->texture->xpm[3], \
 		&(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
-
 }
 
 unsigned int	get_pixel(t_global *_g, int x, int y, int i)
@@ -55,19 +54,23 @@ unsigned int	text_comp(t_global *_g, int i)
 
 	rotation_angle = _g->rays[i]->angle_veiw;
 	color = 0;
-	if (!_g->rays[i]->hit_vertical && (rotation_angle <= 6.28 && rotation_angle >= 3.14))
+	if (!_g->rays[i]->hit_vertical && (rotation_angle <= 6.28 \
+		&& rotation_angle >= 3.14))
 		color = get_pixel(_g, _g->texture->textureoffsetx, \
-			_g->texture->textureoffsety, 0); //north
-	else if (!_g->rays[i]->hit_vertical && (rotation_angle >= 0 && rotation_angle <= 3.14))
+			_g->texture->textureoffsety, 0);
+	else if (!_g->rays[i]->hit_vertical && (rotation_angle >= 0 \
+		&& rotation_angle <= 3.14))
 		color = get_pixel(_g, _g->texture->textureoffsetx, \
-			_g->texture->textureoffsety, 1); //south
-	else if (_g->rays[i]->hit_vertical && ((rotation_angle >= 0 && rotation_angle <= 1.60) \
+			_g->texture->textureoffsety, 1);
+	else if (_g->rays[i]->hit_vertical && ((rotation_angle >= 0 \
+		&& rotation_angle <= 1.60) \
 		|| (rotation_angle >= 4.69 && rotation_angle <= 7)))
 		color = get_pixel(_g, _g->texture->textureoffsetx, \
-			_g->texture->textureoffsety, 2); //east
-	else if (_g->rays[i]->hit_vertical && (rotation_angle >= 1.57 && rotation_angle <= 4.71))
+			_g->texture->textureoffsety, 2);
+	else if (_g->rays[i]->hit_vertical && (rotation_angle >= 1.57 \
+		&& rotation_angle <= 4.71))
 		color = get_pixel(_g, _g->texture->textureoffsetx, \
-			_g->texture->textureoffsety, 3); //weast
+			_g->texture->textureoffsety, 3);
 	return (color);
 }
 
@@ -78,19 +81,18 @@ void	texture_offset(t_global *_g, int i)
 	int				disftop;
 
 	j = _g->texture->walltoppixl;
-	if(_g->rays[i]->hit_vertical)
+	if (_g->rays[i]->hit_vertical)
 		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhity * \
-			(_g->texture->x_hight / GRID_SIZE) , GRID_SIZE);
+		(_g->texture->x_hight / GRID_SIZE), GRID_SIZE);
 	else
 		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhitx * \
-			(_g->texture->x_width / GRID_SIZE) , GRID_SIZE);
+		(_g->texture->x_width / GRID_SIZE), GRID_SIZE);
 	while (j < _g->texture->wallbotmpixl)
 	{
 		disftop = j + (_g->texture->wallstripht / 2) - (HEIGHT / 2);
 		_g->texture->textureoffsety = (disftop * \
-			(float)GRID_SIZE ) / _g->texture->wallstripht;
+			(float)GRID_SIZE) / _g->texture->wallstripht;
 		textcolor = text_comp(_g, i);
-		// textcolor = get_pixel(_g, _g->texture->textureoffsetx, _g->texture->textureoffsety);
 		my_mlx_pixel_put(_g->mlx_s, i, j, textcolor);
 		j++;
 	}
@@ -110,4 +112,5 @@ void	calcule_text(t_global *_g, int i)
 	_g->texture->wallbotmpixl = (HEIGHT / 2) + (_g->texture->wallstripht / 2);
 	if (_g->texture->wallbotmpixl > HEIGHT)
 		_g->texture->wallbotmpixl = HEIGHT;
+	sky_floor_color(_g, i, _g->texture->walltoppixl, _g->texture->wallbotmpixl);
 }

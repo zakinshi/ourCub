@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/20 22:12:30 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:46:11 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int	init_all(t_global *_g)
 	maps = malloc(sizeof(t_map));
 	if (!_g)
 		return (printf("Maps Malloc Failled.. \n"), 0);
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(maps));
 	_g->maps = maps;
 	if (!parsing_(_g))
 		return (0);
@@ -46,7 +45,6 @@ static int	main_driver(char *path)
 	_g = malloc(sizeof(t_global));
 	if (!_g)
 		return (printf("_g malloc failled.. \n"), -1);
-	//ft_lstadd_back(&g_cub.grbg_colct, ft_grbg_new(_g));
 	_g->path = path;
 	if (!init_all(_g))
 		return (-1);
