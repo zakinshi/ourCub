@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 10:46:11 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 12:40:42 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static int	main_driver(char *path)
 	mlx_loop_hook(_g->mlx_s->mlx_ptr, driver, _g);
 	all_my_hooks(_g);
 	mlx_loop(_g->mlx_s->mlx_ptr);
-	free_garbg(&g_cub.grbg_colct);
 	return (0);
 }
 

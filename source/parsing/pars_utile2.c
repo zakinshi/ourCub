@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utile2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:35:59 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_condition(char **map)
 	return (1);
 }
 
-void	map_loop(char *line, char **map, int *i)
+static void	map_loop(char *line, char **map, int *i)
 {
 	int	j;
 
@@ -55,27 +55,4 @@ void	loop_map(char **map, int len, int fd)
 		map_loop(line, map, &i);
 	}
 	map[i] = NULL;
-}
-
-int	line_l(int fd)
-{
-	char	*line;
-	int		i;
-
-	i = 0;
-	line = get_next_line(fd);
-	if (!line)
-		return (0);
-	if (line[0] != '\n')
-		i = 1;
-	while (line)
-	{
-		free(line);
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		if (line[0] != '\n')
-			i++;
-	}
-	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:47:51 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 10:46:53 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 12:16:21 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	count_word(char const *s, char c)
 	return (cont);
 }
 
-char	*cut_word(char const *s, char c, int *idx)
+static char	*cut_word(char const *s, char c, int *idx)
 {
 	int		w;
 	int		i;
@@ -79,7 +79,7 @@ char	*cut_word(char const *s, char c, int *idx)
 	return (word);
 }
 
-void	ft_free(char *s)
+static void	ft_free(char *s)
 {
 	int	i;
 

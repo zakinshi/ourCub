@@ -6,13 +6,13 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:51:28 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 10:52:15 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 12:17:58 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+static void	*ft_memset(void *b, int c, size_t len)
 {
 	unsigned char	*str;
 	size_t			i;
@@ -28,7 +28,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (str);
 }
 
-void	replace_all(char *linemap, char *line)
+static void	replace_all(char *linemap, char *line)
 {
 	int	i;
 
@@ -37,7 +37,7 @@ void	replace_all(char *linemap, char *line)
 		linemap[i] = line[i];
 }
 
-char	*make_line_insize(char *line, int size)
+static char	*make_line_insize(char *line, int size)
 {
 	char	*lineinsize;
 

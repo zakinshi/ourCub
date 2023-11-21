@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:59 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 10:49:20 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 12:07:48 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	loop_spc(char *compass)
 	return (i);
 }
 
-char	*stor_comp(char *compass, char *sp, int *i)
+static char	*stor_comp(char *compass, char *sp, int *i)
 {
 	int	j;
 
@@ -46,7 +46,7 @@ char	*stor_comp(char *compass, char *sp, int *i)
 	return (sp);
 }
 
-void	condition_compass_1(char *compass, t_cub3d *cub, int *flag)
+static void	condition_compass_1(char *compass, t_cub3d *cub, int *flag)
 {
 	int		i;
 	char	*sp;
@@ -67,7 +67,7 @@ void	condition_compass_1(char *compass, t_cub3d *cub, int *flag)
 	}
 }
 
-int	waith_spc_c(char *color)
+static int	waith_spc_c(char *color)
 {
 	int	len;
 
