@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 13:11:01 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:21:21 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,9 +158,8 @@ void	exit_msg(char *msg);
 // 		--> main.c
 // 		--> tools.c
 int		lenlines(char **rows);
-void	draw_rays(t_global *_g);
 void	free_rays(t_rays **s);
-
+int		get_direction(int x, t_coord last_coord);
 // 		--> hook.c
 int		mouse_move(int x, int y, t_global *_g);
 int		move_hook(int key, t_global *_g);

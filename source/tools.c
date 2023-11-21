@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:17:44 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 13:19:41 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:20:35 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,13 @@ void	free_rays(t_rays **s)
 		i++;
 	}
 	free(s);
+}
+
+int	get_direction(int x, t_coord last_coord)
+{
+	if (x > last_coord.x)
+		return (1);
+	if (x < last_coord.x)
+		return (-1);
+	return (0);
 }

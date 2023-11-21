@@ -6,20 +6,11 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:17:01 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 16:18:18 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:20:28 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static int	get_direction(int x, t_coord last_coord)
-{
-	if (x > last_coord.x)
-		return (1);
-	if (x < last_coord.x)
-		return (-1);
-	return (0);
-}
 
 static int	ft_close(void)
 {
