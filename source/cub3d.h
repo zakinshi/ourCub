@@ -147,7 +147,6 @@ void		draw_all(t_global *_g);
 void		draw_minimap(t_global *_g);
 
 //			--> player.c
-int			init_move(void *formation);
 void		update_player(t_player *player, t_map *maps);
 int			isin_wall(double x, double y, t_map *maps);
 void		init_player(t_global *_g);

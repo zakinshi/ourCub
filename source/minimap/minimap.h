@@ -1,14 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 12:20:18 by zakbouha          #+#    #+#             */
+/*   Updated: 2023/11/21 12:50:20 by zakbouha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINIMAP_H
 # define MINIMAP_H
 
 # include "../cub3d.h"
 
-#define MINI_WIDTH		600
-#define MINI_HEIGHT		150
-#define	MINI_GRID		64
+# define MINI_WIDTH		600
+# define MINI_HEIGHT	150
+# define MINI_GRID		64
 
 typedef struct s_minilx {
-
 	void	*mlx_ptr;
 	void	*win;
 	void	*mn_img;
@@ -28,7 +39,8 @@ void		draw_walls(t_global *_g, t_minilx *mn_mlx_s);
 void		draw_circle(t_minilx *mlx_s, int x, int y, int r);
 void		_disk(t_minilx *mlx_s, int cx, int cy, int r);
 
-void		_daa_line_mini(t_minilx *mlx_s, double x0, double y0, double x1, double y1, long color);
+void		_daa_line_mini(t_minilx *mlx_s, t_coord pos0, \
+				t_coord pos1, long color);
 void		_player(t_global *_g, t_minilx *mn_mlx_s);
 
 int			_transp(char color);
