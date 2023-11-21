@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul_text.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 13:08:10 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 17:57:26 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,18 @@ unsigned int	get_pixel(t_global *_g, int x, int y, int i)
 unsigned int	text_comp(t_global *_g, int i)
 {
 	unsigned int	color;
-	double			rotation_angle;
 
-	rotation_angle = _g->rays[i]->angle_veiw;
 	color = 0;
-	if (!_g->rays[i]->hit_vertical && (rotation_angle <= 6.28 \
-		&& rotation_angle >= 3.14))
+	if (!_g->rays[i]->hit_vertical && _g->rays[i]->facing_up)
 		color = get_pixel(_g, _g->texture->textureoffsetx, \
 			_g->texture->textureoffsety, 0);
-	else if (!_g->rays[i]->hit_vertical && (rotation_angle >= 0 \
-		&& rotation_angle <= 3.14))
+	else if (!_g->rays[i]->hit_vertical && _g->rays[i]->facing_down)
 		color = get_pixel(_g, _g->texture->textureoffsetx, \
 			_g->texture->textureoffsety, 1);
-	else if (_g->rays[i]->hit_vertical && ((rotation_angle >= 0 \
-		&& rotation_angle <= 1.60) \
-		|| (rotation_angle >= 4.69 && rotation_angle <= 7)))
+	else if (_g->rays[i]->hit_vertical && _g->rays[i]->facing_right)
 		color = get_pixel(_g, _g->texture->textureoffsetx, \
 			_g->texture->textureoffsety, 2);
-	else if (_g->rays[i]->hit_vertical && (rotation_angle >= 1.57 \
-		&& rotation_angle <= 4.71))
+	else if (_g->rays[i]->hit_vertical  && _g->rays[i]->facing_left)
 		color = get_pixel(_g, _g->texture->textureoffsetx, \
 			_g->texture->textureoffsety, 3);
 	return (color);
