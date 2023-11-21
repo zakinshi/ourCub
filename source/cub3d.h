@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 16:21:21 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:35:24 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <libc.h>
-# include <string.h>
-# include <limits.h>
+# include <fcntl.h>
 
 # define RED				0xff0000
 # define BLACK				0x000000

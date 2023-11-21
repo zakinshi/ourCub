@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_utile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:35 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 10:44:18 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 16:35:02 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_color(char *color, t_cub3d *cub)
 	char	**sp;
 	int		len;
 
-	if (color[strlen(color) - 1] == ',')
+	if (color[ft_strlen(color) - 1] == ',')
 		return (printf("','"), -1);
 	sp = ft_split(color + 1, ',');
 	len = lenlines(sp);
