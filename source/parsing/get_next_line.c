@@ -6,107 +6,99 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:20:39 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 10:51:17 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 17:53:37 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	my_free(void *to_free)
-{
-	if (!to_free)
-		return ;
-	free(to_free);
-	to_free = NULL;
-}
-
-static char	*ft_find_line(int fd, char *buffer)
+static char	*ft_read(int fd, char *save)
 {
 	char	*buff;
-	ssize_t	read_return;
+	ssize_t	r_read;
 
-	if (!buffer)
-		buffer = ft_dup("");
+	if (!save)
+		save = ft_dup("");
 	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buff)
-		return (my_free(buffer), NULL);
-	read_return = 1;
-	while (!find_newline(buffer) && read_return != 0)
+		return (free(buff), free(save), NULL);
+	r_read = 1;
+	while (!ft_chr(save, '\n') && r_read != 0)
 	{
-		read_return = read(fd, buff, BUFFER_SIZE);
-		if (read_return < 0)
-			return (my_free(buffer), my_free(buff), NULL);
-		buff[read_return] = '\0';
-		if (read_return == 0)
-			return (my_free(buff), buffer);
-		buffer = ft_strjoin(buffer, buff);
+		r_read = read(fd, buff, BUFFER_SIZE);
+		if (r_read < 0)
+			return (free(buff), free(save), NULL);
+		buff[r_read] = '\0';
+		save = ft_join(save, buff);
 	}
-	my_free(buff);
-	return (buffer);
+	return (free(buff), save);
 }
 
-static char	*split_line(char *to_split)
+static char	*ft_line(char *save)
 {
-	char	*is_line;
-	int		indx;
+	char	*line;
+	size_t	i;
+	size_t	count;
 
-	indx = 0;
-	if (!to_split[indx])
+	count = 0;
+	if (save[count] == '\0')
 		return (NULL);
-	while (to_split[indx] && to_split[indx] != '\n')
-		indx++;
-	if (to_split[indx] == '\n')
-		indx++;
-	is_line = malloc((indx + 1) * sizeof(char));
-	if (!is_line)
+	while (save[count] && save[count] != '\n')
+		count++;
+	if (save[count] == '\n')
+		count++;
+	line = malloc((count + 1) * sizeof(char));
+	if (!line)
 		return (NULL);
-	indx = 0;
-	while (to_split[indx] && to_split[indx] != '\n')
+	i = 0;
+	while (save[i] != '\n' && save[i])
 	{
-		is_line[indx] = to_split[indx];
-		indx++;
+		line[i] = save[i];
+		i++;
 	}
-	if (to_split[indx] == '\n')
-		is_line[indx++] = '\n';
-	is_line[indx] = '\0';
-	return (is_line);
+	if (save[i] == '\n')
+		line[i++] = '\n';
+	line[i] = '\0';
+	return (line);
 }
 
-static char	*rest_of_content(char *save)
+static char	*ft_rest(char *s)
 {
-	char	*tmp;
+	size_t	i;
+	size_t	len;
 	char	*rest;
-	size_t	indx;
+	char	*str;
 
-	indx = 0;
-	while (save[indx])
+	i = 0;
+	while (s[i])
 	{
-		if (save[indx] == '\n')
+		if (s[i] == '\n')
 		{
-			tmp = &save[indx + 1];
-			rest = malloc(ft_strlen(save) - indx + 1 * 1);
+			str = &s[i + 1];
+			len = ft_strlen(str);
+			rest = malloc((len + 1) * sizeof(char));
 			if (!rest)
-				return (my_free(save), NULL);
-			rest = make_copy(rest, tmp);
-			return (my_free(save), rest);
+				return (NULL);
+			rest = ft_cpy(rest, str);
+			rest[len] = '\0';
+			return (free(s), rest);
 		}
-		indx++;
+		i++;
 	}
-	return (my_free(save), NULL);
+	return (free(s), NULL);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*line;
-	static char	*hold;
+	static char	*line;
+	char		*gtnl;
 
-	line = NULL;
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	hold = ft_find_line(fd, hold);
-	if (!hold)
+	line = ft_read(fd, line);
+	if (!line)
 		return (NULL);
-	line = split_line(hold);
-	hold = rest_of_content(hold);
-	return (line);
+	gtnl = ft_line(line);
+	line = ft_rest(line);
+	return (gtnl);
 }

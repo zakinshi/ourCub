@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 16:35:24 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:53:13 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,10 +214,11 @@ void	my_free(void *to_free);
 
 // 		--> get_next_line_utile.c
 char	*ft_chr(char *s, char c);
-char	*find_newline(char *search_in);
+char	*ft_cpy(char *dst, char *src);
 char	*ft_dup(char *s);
 char	*make_copy(char *copy, char *s);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_join(char *s1, char *s2);
+// char	*ft_strjoin(char *s1, char *s2);
 
 // 		--> color_utile.c
 int		check_isdiget(char *str);
