@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compass.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 12:11:12 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 16:44:08 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,12 @@ static void	store_loop(char	**compass, int fd)
 	compass[j] = NULL;
 }
 
-static char	**store_compass(int fd)
-{
-	char	**compass;
-
-	compass = malloc(5 * sizeof(char *));
-	if (!compass)
-		return (NULL);
-	store_loop(compass, fd);
-	return (compass);
-}
-
 int	ft_compass(t_cub3d *cub, int fd)
 {
-	char	**compass;
+	char	*compass[4];
 
-	compass = store_compass(fd);
-	if (!compass || !compass[0])
+	store_loop(compass, fd);
+	if (!compass[0])
 		return (printf("No compass found\n"), 0);
 	if (loop_compass(compass, cub) == -1)
 		return (printf("erorr compass\n"), 0);

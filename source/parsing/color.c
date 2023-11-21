@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:34:50 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 12:05:56 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 16:45:00 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,12 @@ void	loop_cf(char **color, char *line, int *j)
 	free(line);
 }
 
-static char	**store_cf(int fd)
-{
-	char	**color;
-
-	color = malloc(3 * sizeof(char *));
-	if (!color)
-		return (NULL);
-	store_loop_cf(color, fd);
-	return (color);
-}
-
 int	ft_color(t_cub3d *cub, int fd)
 {
-	char	**color;
+	char	*color[2];
 
-	color = store_cf(fd);
-	if (!color || !color[0])
+	store_loop_cf(color, fd);
+	if (!color[0])
 		return (printf("No color found\n"), 0);
 	if (loop_color(color, cub) == -1)
 		return (printf("error in color\n"), 0);
