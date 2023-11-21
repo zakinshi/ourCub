@@ -166,7 +166,6 @@ double		disatnce_between2points(double x1, double y1, double x2, double y2);
 void		rays_cast(t_global *_g);
 void		sky_floor_color(t_global *_g, int i, int wall_top_pixel, int wall_bottom_pixel);
 // 			--> tools.c
-void		draw_rays(t_global *_g);
 void		struct_copy(t_coord *copy_in, t_coord copy_to);
 double		norm_angle(double my_angle);
 //			--> hori_ray.c

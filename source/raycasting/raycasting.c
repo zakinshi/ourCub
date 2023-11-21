@@ -1,12 +1,23 @@
-#include "../cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 11:51:34 by zakbouha          #+#    #+#             */
+/*   Updated: 2023/11/21 11:53:10 by zakbouha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// double	NUM_RAYS		= (double)WIDTH / WallStripWidth;
+#include "../cub3d.h"
 
 static void	ray_facing(t_rays *ray)
 {
 	ray->facing_down = ray->angle_veiw > 0 && ray->angle_veiw < M_PI;
 	ray->facing_up = !ray->facing_down;
-	ray->facing_right = ray->angle_veiw < 0.5 * M_PI || ray->angle_veiw > 1.5 * M_PI;
+	ray->facing_right = ray->angle_veiw < 0.5 * M_PI \
+		|| ray->angle_veiw > 1.5 * M_PI;
 	ray->facing_left = !ray->facing_right;
 }
 
@@ -21,7 +32,7 @@ static void	cast_ray(t_global *_g, t_rays *ray)
 	ray_facing(ray);
 	dis_hv.x = horizontal_distance(_g, ray, &wallhit_hor);
 	dis_hv.y = vertical_distance(_g, ray, &wallhit_ver);
-	if (dis_hv.x <= dis_hv.y) // only same the smallest dis
+	if (dis_hv.x <= dis_hv.y)
 	{
 		struct_copy(&wallhit, wallhit_hor);
 		dis = dis_hv.x;
@@ -41,25 +52,25 @@ static void	cast_ray(t_global *_g, t_rays *ray)
 void	rays_cast(t_global *_g)
 {
 	t_rays	**rays;
-	double	rayAngle;
+	double	_rayangle;
 	int		column;
-	t_rays *ray;
+	t_rays	*ray;
 
 	column = -1;
 	rays = malloc (sizeof(t_rays *) * (WIDTH + 1));
 	if (!rays)
 		exit_msg("Alloction of rays Failed..\n");
-	rayAngle = _g->player->rotation_angle - (FOV_ANGLE / 2);
+	_rayangle = _g->player->rotation_angle - (FOV_ANGLE / 2);
 	while (++column < WIDTH)
 	{
 		ray = malloc (sizeof(t_rays));
 		if (!ray)
 			exit_msg("Alloction of ray Failed..\n");
-		ray->angle_veiw = norm_angle(rayAngle);
+		ray->angle_veiw = norm_angle(_rayangle);
 		ray->index = column;
 		cast_ray(_g, ray);
 		rays[column] = ray;
-		rayAngle += FOV_ANGLE / WIDTH;
+		_rayangle += FOV_ANGLE / WIDTH;
 	}
 	rays[column] = NULL;
 	_g->rays = rays;
