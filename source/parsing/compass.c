@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 16:44:08 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:15:41 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	ft_compass(t_cub3d *cub, int fd)
 
 static void	data_copy(t_global *_g, t_cub3d *cub)
 {
+	long_line(cub);
+	cub->len_l = lenlines(cub->map);
 	_g->maps->floor_color = cub->floor;
 	_g->maps->hieght_map = cub->len_l;
 	_g->maps->map = maping_themap(cub);
@@ -69,6 +71,8 @@ int	parsing_(t_global *_g)
 	if (!cub)
 		return (0);
 	fd = open(_g->path, O_RDONLY);
+	if (fd == -1)
+		exit_msg("Folder Not Found..\n");
 	cub->path = _g->path;
 	if (!ft_map(cub, fd))
 		return (0);
@@ -80,8 +84,6 @@ int	parsing_(t_global *_g)
 	fd = open(_g->path, O_RDONLY);
 	if (!ft_color(cub, fd))
 		return (0);
-	long_line(cub);
-	cub->len_l = lenlines(cub->map);
 	data_copy(_g, cub);
 	return (1);
 }
