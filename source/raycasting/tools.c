@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:53:29 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 17:30:54 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 22:20:44 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	init_player(t_global *_g)
 
 	player = malloc(sizeof(t_player));
 	if (!player)
-		return ;
+		exit_msg("Allocation Failed player..\n") ;
 	player->x = ((_g->maps->px * GRID_SIZE) + MINIMAP_OFF) + 1;
 	player->y = ((_g->maps->py * GRID_SIZE) + MINIMAP_OFF) + 1;
 	player->radius = 3;
