@@ -34,5 +34,5 @@ double	norm_angle(double my_angle)
 	my_angle = fmod(my_angle ,(2.00 * M_PI));
 	if (my_angle < 0)
 		my_angle += (2 * M_PI);
-	return my_angle;
+	return (my_angle);
 }
