@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hook.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 16:17:01 by zakbouha          #+#    #+#             */
+/*   Updated: 2023/11/21 16:18:18 by zakbouha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	get_direction(int x, t_coord last_coord)
@@ -8,7 +20,6 @@ static int	get_direction(int x, t_coord last_coord)
 		return (-1);
 	return (0);
 }
-
 
 static int	ft_close(void)
 {
@@ -27,7 +38,8 @@ int	mouse_move(int x, int y, t_global *_g)
 		delta.x = _g->player->x - x;
 		delta.y = _g->player->y - y;
 		deriction = get_direction(x, copy_cord);
-		angle_new = ((atan(fabs(delta.x) / fabs(delta.y))) * (M_PI / 180)) * deriction;
+		angle_new = ((atan(fabs(delta.x) / fabs(delta.y))) \
+			* (M_PI / 180)) * deriction;
 		_g->player->rotation_angle += angle_new;
 	}
 	copy_cord.x = x;
@@ -54,7 +66,7 @@ int	move_hook(int key, t_global *_g)
 		player->side_walk = -1;
 	if (key == 53)
 		ft_close();
-	return 0;
+	return (0);
 }
 
 int	init_move_hook(int key, t_global *_g)
@@ -74,7 +86,7 @@ int	init_move_hook(int key, t_global *_g)
 		player->side_walk = 0;
 	if (key == 0)
 		player->side_walk = 0;
-	return 0;
+	return (0);
 }
 
 void	all_my_hooks(t_global *_g)
