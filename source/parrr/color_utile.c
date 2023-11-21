@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_utile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:35 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:12:17 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	check_isdiget(char *str)
 	while (str[i])
 	{
 		if (!((str[i] >= '0' && str[i] <= '9') \
-			|| (str[i] >= 13 && str[i] <= 32) || str[i] == ','))
-			return (-1);
+			|| (str[i] >= 13 && str[i] <= 32) || str[i] == ',' || str[i] == 9))
+			return (puts("here check"), -1);
 		i++;
 	}
 	return (1);
@@ -56,6 +56,16 @@ int	pars_color(char *color, t_cub3d *cub)
 	if (check_isdiget(color) == -1)
 		return (-1);
 	if (get_color(color, cub) == -1)
+		return (-1);
+	return (1);
+}
+
+int	waith_spc(char **color, int i)
+{
+	int len = -1;
+	while (color[i][++len] > 32)
+		;
+	if (len != 1)
 		return (-1);
 	return (1);
 }

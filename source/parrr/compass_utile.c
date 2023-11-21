@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:59 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 21:17:30 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/20 22:45:14 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	loop_spc(char *compass)
 	int	i;
 
 	i = 0;
-	while ((compass[i] >= 13 && compass[i] <= 32) \
+	while ((compass[i] >= 11 && compass[i] <= 32) \
 		|| compass[i] == 9)
 		i++;
 	return (i);
@@ -53,13 +53,13 @@ void	condition_compass_1(char *compass, t_cub3d *cub, int *flag)
 
 	i = 0;
 	sp = NULL;
-	if (!ft_cmp("NO ", compass, 3))
+	if (!ft_cmp("NO", compass, 2))
 	{
 		sp = stor_comp(compass, sp, &i);
 		cub->no = sp + i;
 		*flag = 1;
 	}
-	else if (!ft_cmp("SO ", compass, 3))
+	else if (!ft_cmp("SO", compass, 2))
 	{
 		sp = stor_comp(compass, sp, &i);
 		cub->so = sp + i;
@@ -67,6 +67,15 @@ void	condition_compass_1(char *compass, t_cub3d *cub, int *flag)
 	}
 }
 
+int	waith_spc_c(char *color)
+{
+	int len = -1;
+	while (color[++len] > 32)
+		;
+	if (len != 2)
+		return (-1);
+	return (1);
+}
 int	condition_compass(char *compass, t_cub3d *cub)
 {
 	int		i;
@@ -75,14 +84,16 @@ int	condition_compass(char *compass, t_cub3d *cub)
 
 	i = 0;
 	sp = NULL;
+	if (waith_spc_c(compass) == -1)
+		return (-1);
 	condition_compass_1(compass, cub, &flag);
-	if (!ft_cmp("WE ", compass, 3))
+	if (!ft_cmp("WE", compass, 2))
 	{
 		sp = stor_comp(compass, sp, &i);
 		cub->we = sp + i;
 		flag = 1;
 	}
-	else if (!ft_cmp("EA ", compass, 3))
+	else if (!ft_cmp("EA", compass, 2))
 	{
 		sp = stor_comp(compass, sp, &i);
 		cub->ea = sp + i;
@@ -93,14 +104,15 @@ int	condition_compass(char *compass, t_cub3d *cub)
 	return (1);
 }
 
-int	loop_compass(char **color, t_cub3d *cub)
+
+int	loop_compass(char **compass, t_cub3d *cub)
 {
 	int	i;
 
 	i = 0;
-	while (color[i])
+	while (compass[i])
 	{
-		if (condition_compass(color[i], cub) == -1)
+		if (condition_compass(compass[i], cub) == -1)
 			return (-1);
 		i++;
 	}

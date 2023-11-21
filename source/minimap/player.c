@@ -85,13 +85,17 @@ int	multicases(t_player *player, t_map *maps)
 		return (1);
 	if (isin_wall(player->x, player->y + 5, maps))
 		return (1);
-	else if (isin_wall(player->x + 5, player->y, maps) || isin_wall(player->x, player->y - 5, maps))
+	else if (isin_wall(player->x + 5, player->y, maps) \
+		|| isin_wall(player->x, player->y - 5, maps))
 		return (1);
-	else if (isin_wall(player->x - 5, player->y, maps) || isin_wall(player->x, player->y + 5, maps))
+	else if (isin_wall(player->x - 5, player->y, maps) \
+		|| isin_wall(player->x, player->y + 5, maps))
 		return (1);
-	else if (isin_wall(player->x - 5, player->y, maps) || isin_wall(player->x, player->y - 5, maps))
+	else if (isin_wall(player->x - 5, player->y, maps) \
+		|| isin_wall(player->x, player->y - 5, maps))
 		return (1);
-	else if (isin_wall(player->x + 5, player->y, maps) || isin_wall(player->x, player->y + 5, maps))
+	else if (isin_wall(player->x + 5, player->y, maps) \
+		|| isin_wall(player->x, player->y + 5, maps))
 		return (1);
 	return 0;
 }
@@ -110,10 +114,12 @@ void	sides_walk_ad(t_player *player, double stepwalk)
 
 void	update_player(t_player *player, t_map *maps)
 {
-	double	copy_x = player->x, copy_y = player->y;
+	t_coord	copy;
 	double	move_step;
 	double	stepwalk;
 
+	copy.x = player->x;
+	copy.y = player->y;
 	move_step = player->walk_direction * player->move_speed;
 	stepwalk = player->side_walk * player->move_speed;
 	forward_walk_ws(player, move_step);
@@ -121,8 +127,8 @@ void	update_player(t_player *player, t_map *maps)
 	player->rotation_angle += player->turn_direction * player->rotation_speed;
 	if (multicases(player, maps))
 	{
-		player->y = copy_y;
-		player->x = copy_x;
+		player->y = copy.y;
+		player->x = copy.x;
 	}
 }
 
