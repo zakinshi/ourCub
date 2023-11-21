@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 20:59:59 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 22:04:47 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	all_free(t_global *_g)
 	free(_g->maps->east);
 	free_2d_char(_g->maps->map);
 	free(_g->maps);
+	mlx_destroy_window(_g->mlx_s->mlx_ptr, _g->mlx_s->win);
 	free(_g);
 }
 
