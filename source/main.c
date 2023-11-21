@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 16:55:27 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 17:17:56 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,7 @@ static int	main_driver(char *path)
 
 int	main(int ac, char **av)
 {
-	int i;
-
-	i = 0;
 	if (ac != 2)
 		exit_msg("Warnning :\n\t./Cub3D ./[Path_map]\n");
-	while (av[1][i] && av[1][i] != '.')
-		i++;
-	if (ft_cmp(av[1] + i, ".cub", 4))
-		exit_msg("Warnning :\n\t./Cub3D not found .cub\n");
 	return (main_driver(av[1]));
 }
