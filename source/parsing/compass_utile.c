@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:59 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 18:22:00 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 21:17:06 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,13 @@ static void	condition_compass_1(char *compass, t_cub3d *cub, int *flag)
 
 	i = 0;
 	sp = NULL;
-	if (!ft_cmp("NO", compass, 2))
+	if (!ft_cmp("NO", compass, 2) || !ft_cmp("SO", compass, 2))
 	{
 		sp = stor_comp(compass, sp, &i);
-		cub->no = ft_dup(sp + i);
-		*flag = 1;
-		free(sp);
-	}
-	else if (!ft_cmp("SO", compass, 2))
-	{
-		sp = stor_comp(compass, sp, &i);
-		cub->so = ft_dup(sp + i);
+		if (!ft_cmp("NO", compass, 2))
+			cub->no = ft_dup(sp + i);
+		else
+			cub->so = ft_dup(sp + i);
 		*flag = 1;
 		free(sp);
 	}
@@ -93,17 +89,13 @@ int	condition_compass(char *compass, t_cub3d *cub)
 	if (waith_spc_c(compass) == -1)
 		return (-1);
 	condition_compass_1(compass, cub, &flag);
-	if (!ft_cmp("WE", compass, 2))
+	if (!ft_cmp("WE", compass, 2) || !ft_cmp("EA", compass, 2))
 	{
 		sp = stor_comp(compass, sp, &i);
-		cub->we = ft_dup(sp + i);
-		free(sp);
-		flag = 1;
-	}
-	else if (!ft_cmp("EA", compass, 2))
-	{
-		sp = stor_comp(compass, sp, &i);
-		cub->ea = ft_dup(sp + i);
+		if (!ft_cmp("WE", compass, 2))
+			cub->we = ft_dup(sp + i);
+		else
+			cub->ea = ft_dup(sp + i);		
 		free(sp);
 		flag = 1;
 	}

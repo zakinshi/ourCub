@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3dwall.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:57:18 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 12:32:48 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 20:59:51 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	int_xpm(t_global *_g)
 
 	xpm = malloc(sizeof(t_text));
 	if (!xpm)
-		return (0);
+		exit_msg("Allocation Xpm Failled..\n");
 	xpm->addr_x[0] = NULL;
 	xpm->b_p_x = 0;
 	xpm->distpropln = 0.00;
@@ -42,6 +42,11 @@ static int	int_xpm(t_global *_g)
 	_g->texture = xpm;
 	return (1);
 }
+
+// void	free_xpm(t_text *xpm)
+// {
+// 	free(xpm);
+// }
 
 void	sky_floor_color(t_global *_g, int i, \
 	int wall_top_pixel, int wall_bottom_pixel)

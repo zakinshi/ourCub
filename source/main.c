@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 18:46:25 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:59:59 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	driver(t_global	*_g)
 	rays_cast(_g);
 	draw_all(_g);
 	mlx_destroy_image(_g->mlx_s->mlx_ptr, _g->mlx_s->img);
+	free_rays(_g->rays);
+	free(_g->texture);
 	return (0);
 }
 
@@ -65,12 +67,6 @@ static int	main_driver(char *path)
 	return (0);
 }
 
-void	leaks()
-{
-	system("leaks Cub3D");
-}
-
-// atexit(leaks);
 int	main(int ac, char **av)
 {
 	int	i;

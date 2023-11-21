@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:17:01 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 18:44:05 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 21:37:07 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ int	move_hook(int key, t_global *_g)
 	if (key == 53)
 		ft_close(_g);
 	if (key == 78)
-		player->move_speed--;
+		if (player->move_speed - 2 > 0)
+			player->move_speed--;
 	if (key == 69)
-		player->move_speed++;
+		if (player->move_speed < 15)
+			player->move_speed++;
 	return (0);
 }
 
