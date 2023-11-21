@@ -6,13 +6,13 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:34:50 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 10:46:24 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 12:05:56 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	color_cond(char **color, t_cub3d *cub, int i, int *flag)
+static int	color_cond(char **color, t_cub3d *cub, int i, int *flag)
 {
 	if (!ft_cmp("F", color[i], 1))
 	{
@@ -31,7 +31,7 @@ int	color_cond(char **color, t_cub3d *cub, int i, int *flag)
 	return (1);
 }
 
-int	loop_color(char **color, t_cub3d *cub)
+static int	loop_color(char **color, t_cub3d *cub)
 {
 	int	i;
 	int	flag;
@@ -69,7 +69,7 @@ void	loop_cf(char **color, char *line, int *j)
 	free(line);
 }
 
-char	**store_cf(int fd)
+static char	**store_cf(int fd)
 {
 	char	**color;
 

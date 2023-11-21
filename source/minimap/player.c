@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:53:23 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 12:57:21 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:07:32 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	init_player(t_global *_g)
 	player->move_speed = 6;
 	player->rotation_speed = 2 * (M_PI / 180);
 	_g->player = player;
+	_g->fov_angle = 60 * (M_PI / 180);
 }
 
 int	isin_wall(double x, double y, t_map *maps)

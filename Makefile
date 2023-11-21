@@ -22,12 +22,12 @@ RAY_OBJ		= $(addprefix $(PATH_RAY_B), $(FILE_RAY_B))
 #**
 # **	--> parr
 #**
-PATH_PARS	= ./parrr/
+PATH_PARS	= ./parsing/
 FILE_PARS_C	= color.c color_utile.c color_utile1.c compass.c compass_utile.c get_next_line.c get_next_line_utile.c libft.c \
 			makemap.c map_pars.c pars_utile2.c pars_utils.c pars_utils1.c compass_utile1.c
 
 
-PATH_PARS_B	= $(PATH_OBJ)parrr/
+PATH_PARS_B	= $(PATH_OBJ)parsing/
 FILE_PARS_B	= $(FILE_PARS_C:.c=.o)
 PARS_OBJ	= $(addprefix $(PATH_PARS_B), $(FILE_PARS_B))
 #	----------------------------------
@@ -57,7 +57,7 @@ PROJ_OBJ	= $(addprefix $(PATH_PROJ_B), $(FILE_PROJ_B))
 #**
 # **	--> SOURCE
 #**
-FILE_SRC_C	= main.c grbrg_collct.c ft_mlx.c draw.c	hook.c tools.c
+FILE_SRC_C	= main.c ft_mlx.c draw.c	hook.c tools.c
 
 PATH_SRC_B	= $(PATH_OBJ)
 FILE_SRC_B	= $(FILE_SRC_C:.c=.o)

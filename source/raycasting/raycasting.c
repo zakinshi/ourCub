@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:51:34 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 11:53:10 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:08:31 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	rays_cast(t_global *_g)
 	rays = malloc (sizeof(t_rays *) * (WIDTH + 1));
 	if (!rays)
 		exit_msg("Alloction of rays Failed..\n");
-	_rayangle = _g->player->rotation_angle - (FOV_ANGLE / 2);
+	_rayangle = _g->player->rotation_angle - (_g->fov_angle / 2);
 	while (++column < WIDTH)
 	{
 		ray = malloc (sizeof(t_rays));
@@ -70,7 +70,7 @@ void	rays_cast(t_global *_g)
 		ray->index = column;
 		cast_ray(_g, ray);
 		rays[column] = ray;
-		_rayangle += FOV_ANGLE / WIDTH;
+		_rayangle += _g->fov_angle / WIDTH;
 	}
 	rays[column] = NULL;
 	_g->rays = rays;

@@ -6,13 +6,13 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 10:46:30 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 12:11:12 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	store_loop(char	**compass, int fd)
+static void	store_loop(char	**compass, int fd)
 {
 	char	*line;
 	int		j;
@@ -33,7 +33,7 @@ void	store_loop(char	**compass, int fd)
 	compass[j] = NULL;
 }
 
-char	**store_compass(int fd)
+static char	**store_compass(int fd)
 {
 	char	**compass;
 
@@ -56,7 +56,7 @@ int	ft_compass(t_cub3d *cub, int fd)
 	return (1);
 }
 
-void	data_copy(t_global *_g, t_cub3d *cub)
+static void	data_copy(t_global *_g, t_cub3d *cub)
 {
 	_g->maps->floor_color = cub->floor;
 	_g->maps->hieght_map = cub->len_l;

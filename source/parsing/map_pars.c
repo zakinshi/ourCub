@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:20:31 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 10:47:04 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 12:20:32 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	long_line(t_cub3d *cub)
 	}
 }
 
-void	check_player_place(t_cub3d *cub)
+static void	check_player_place(t_cub3d *cub)
 {
 	int	i;
 	int	j;

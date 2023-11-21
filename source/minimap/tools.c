@@ -6,46 +6,46 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:57:50 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 12:57:51 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:17:28 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minimap.h"
 
-static void	put_circle_pixles(t_minilx *mlx_s, int x, int y, int i, int j)
+static void	put_circle_pixles(t_minilx *mlx_s, int x, int y, t_coord ij)
 {
-	int color;
+	int	color;
 
 	color = _transp('g');
-	minimap_mlx_pixel_put(mlx_s, x + i, y + j, color);
-	minimap_mlx_pixel_put(mlx_s, x - i, y + j, color);
-	minimap_mlx_pixel_put(mlx_s, x + i, y - j, color);
-	minimap_mlx_pixel_put(mlx_s, x - i, y - j, color);
-	minimap_mlx_pixel_put(mlx_s, x + j, y + i, color);
-	minimap_mlx_pixel_put(mlx_s, x - j, y + i, color);
-	minimap_mlx_pixel_put(mlx_s, x + j, y - i, color);
-	minimap_mlx_pixel_put(mlx_s, x - j, y - i, color);
+	minimap_mlx_pixel_put(mlx_s, x + ij.x, y + ij.y, color);
+	minimap_mlx_pixel_put(mlx_s, x - ij.x, y + ij.y, color);
+	minimap_mlx_pixel_put(mlx_s, x + ij.x, y - ij.y, color);
+	minimap_mlx_pixel_put(mlx_s, x - ij.x, y - ij.y, color);
+	minimap_mlx_pixel_put(mlx_s, x + ij.y, y + ij.x, color);
+	minimap_mlx_pixel_put(mlx_s, x - ij.y, y + ij.x, color);
+	minimap_mlx_pixel_put(mlx_s, x + ij.y, y - ij.x, color);
+	minimap_mlx_pixel_put(mlx_s, x - ij.y, y - ij.x, color);
 }
 
 void	draw_circle(t_minilx *mlx_s, int x, int y, int r)
 {
-	int i;
-	int j;
-	int d;
+	t_coord	ij;
+	int		d;
 
-	i = r;
-	j = 0;
+	ij.x = r;
+	ij.y = 0;
 	d = 1 - r;
-	while (i > j) {
-		put_circle_pixles(mlx_s, x, y , i, j);
+	while (ij.x > ij.y)
+	{
+		put_circle_pixles(mlx_s, x, y, ij);
 		if (d < 0)
-			d += 2 * j + 3;
+			d += 2 * ij.y + 3;
 		else
 		{
-			i--;
-			d += 2 * (j - i) + 5;
+			ij.x--;
+			d += 2 * (ij.y - ij.x) + 5;
 		}
-		j++;
+		ij.y++;
 	}
 }
 
@@ -68,7 +68,7 @@ void	_disk(t_minilx *mlx_s, int cx, int cy, int r)
 	}
 }
 
-void _daa_line_mini(t_minilx *mlx_s, t_coord pos0, t_coord pos1, long color)
+void	_daa_line_mini(t_minilx *mlx_s, t_coord pos0, t_coord pos1, long color)
 {
 	t_coord	inc;
 	t_coord	delta;

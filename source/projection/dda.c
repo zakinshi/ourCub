@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dda.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 13:11:55 by zakbouha          #+#    #+#             */
+/*   Updated: 2023/11/21 13:12:10 by zakbouha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 double	disatnce_between2points(double x1, double y1, double x2, double y2)
@@ -15,6 +27,6 @@ double	disatnce_between2points(double x1, double y1, double x2, double y2)
 double	abs_(double n)
 {
 	if (n < 0)
-		return n * -1;
-	return n;
+		return (n * -1);
+	return (n);
 }
