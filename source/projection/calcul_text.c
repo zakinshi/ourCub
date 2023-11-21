@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 11:26:14 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 13:08:10 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	calcule_text(t_global *_g, int i)
 {
 	_g->texture->per_dist = _g->rays[i]->distance * \
 		cos(_g->rays[i]->angle_veiw - _g->player->rotation_angle);
-	_g->texture->distpropln = (WIDTH / 2) / tan(FOV_ANGLE / 2);
+	_g->texture->distpropln = (WIDTH / 2) / tan(_g->fov_angle / 2);
 	_g->texture->projwallht = (GRID_SIZE / _g->texture->per_dist) * \
 		_g->texture->distpropln;
 	_g->texture->wallstripht = _g->texture->projwallht;

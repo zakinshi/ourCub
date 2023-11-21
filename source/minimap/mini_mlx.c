@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:55:23 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/20 18:55:25 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:19:12 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	minimap_mlx_pixel_put(t_minilx *data, int x, int y, int color)
 
 void	minimap_image(t_minilx *mn_mlx_s)
 {
-	mn_mlx_s->mn_img = mlx_new_image(mn_mlx_s->mlx_ptr, MINI_WIDTH, MINI_HEIGHT);
+	mn_mlx_s->mn_img = \
+		mlx_new_image(mn_mlx_s->mlx_ptr, MINI_WIDTH, MINI_HEIGHT);
 	if (!mn_mlx_s->mn_img)
 		exit_msg("Allocation Failed for mn_mlx_s->mn_img");
-	mn_mlx_s->mn_addr = mlx_get_data_addr(mn_mlx_s->mn_img, &(mn_mlx_s->b_p_l), &(mn_mlx_s->l_l), &(mn_mlx_s->dian));
+	mn_mlx_s->mn_addr = mlx_get_data_addr(mn_mlx_s->mn_img, &(mn_mlx_s->b_p_l), \
+		&(mn_mlx_s->l_l), &(mn_mlx_s->dian));
 	if (!mn_mlx_s->mn_addr)
 		exit_msg("Allocation Failed for mn_mlx_s->mn_addr");
 }

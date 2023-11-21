@@ -1,27 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 11:53:29 by zakbouha          #+#    #+#             */
+/*   Updated: 2023/11/21 11:56:24 by zakbouha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
-
-void	draw_rays(t_global *_g)
-{
-	t_mlx		*mlx_s;
-	t_player	*player;
-	int			column;
-
-	column = 0;
-	mlx_s = _g->mlx_s;
-	player = _g->player;
-	while (_g->rays[column])
-	{
-		if (_g->rays[column]->hit_vertical)
-			_daa_line(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
-				MINIMAP_FCTR * _g->rays[column]->wallhitx,\
-				MINIMAP_FCTR * _g->rays[column]->wallhity, BLUECIEL);
-		else
-			_daa_line(mlx_s, MINIMAP_FCTR * player->x, MINIMAP_FCTR * player->y,\
-				MINIMAP_FCTR * _g->rays[column]->wallhitx,\
-				MINIMAP_FCTR * _g->rays[column]->wallhity, GREEN);
-		column++;
-	}
-}
 
 void	struct_copy(t_coord *copy_in, t_coord copy_to)
 {
@@ -31,8 +20,8 @@ void	struct_copy(t_coord *copy_in, t_coord copy_to)
 
 double	norm_angle(double my_angle)
 {
-	my_angle = fmod(my_angle ,(2.00 * M_PI));
+	my_angle = fmod(my_angle, (2.00 * M_PI));
 	if (my_angle < 0)
 		my_angle += (2 * M_PI);
-	return my_angle;
+	return (my_angle);
 }

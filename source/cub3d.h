@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 12:51:00 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/21 13:05:53 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 # define GRID_SIZE			64
 # define MINIMAP_OFF		0
 # define MINIMAP_FCTR		0.1
-# define FOV_ANGLE			60 * (M_PI / 180)
 
 typedef struct s_coord
 {
@@ -146,6 +145,7 @@ typedef struct global_s
 	t_map		*maps;
 	t_text		*texture;
 	char		*path;
+	double		fov_angle;
 }	t_global;
 
 // ****** FOLDER -- source
@@ -193,7 +193,6 @@ void	sky_floor_color(t_global *_g, int i, \
 
 //		--> dda.c
 double	abs_(double n);
-void	_daa_line(t_mlx *mlx_s, double x0, double y0, double x1, double y1, long color);
 double	disatnce_between2points(double x1, double y1, double x2, double y2);
 
 // ****** FOLDER -- raycasting

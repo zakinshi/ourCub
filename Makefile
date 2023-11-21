@@ -57,7 +57,7 @@ PROJ_OBJ	= $(addprefix $(PATH_PROJ_B), $(FILE_PROJ_B))
 #**
 # **	--> SOURCE
 #**
-FILE_SRC_C	= main.c grbrg_collct.c ft_mlx.c draw.c	hook.c tools.c
+FILE_SRC_C	= main.c ft_mlx.c draw.c	hook.c tools.c
 
 PATH_SRC_B	= $(PATH_OBJ)
 FILE_SRC_B	= $(FILE_SRC_C:.c=.o)
