@@ -6,16 +6,11 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:55:14 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 12:15:25 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:19:03 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minimap.h"
-
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
 
 int	_transp(char color)
 {
@@ -23,14 +18,14 @@ int	_transp(char color)
 
 	trans = 0;
 	if (color == 'b')
-		return (create_trgb(150, 0, 0, 255));
+		return (_trgb(150, 0, 0, 255));
 	if (color == 'r')
-		return (create_trgb(200, 255, 0, 0));
+		return (_trgb(200, 255, 0, 0));
 	if (color == 'g')
-		return (create_trgb(200, 0, 255, 0));
+		return (_trgb(200, 0, 255, 0));
 	if (color == 'B')
-		return (create_trgb(200, 0, 0, 0));
-	return (create_trgb(254, 0, 0, 0));
+		return (_trgb(200, 0, 0, 0));
+	return (_trgb(254, 0, 0, 0));
 }
 
 int	isin_mnwall(t_global *_g, int x_start, int y_start)

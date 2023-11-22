@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:53:29 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 22:20:44 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:23:59 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	init_player(t_global *_g)
 
 	player = malloc(sizeof(t_player));
 	if (!player)
-		exit_msg("Allocation Failed player..\n") ;
-	player->x = ((_g->maps->px * GRID_SIZE) + MINIMAP_OFF) + 1;
-	player->y = ((_g->maps->py * GRID_SIZE) + MINIMAP_OFF) + 1;
+		exit_msg("Allocation Failed player..\n");
+	player->x = ((_g->maps->px * GRID_SIZE)) + (GRID_SIZE / 2);
+	player->y = ((_g->maps->py * GRID_SIZE)) + (GRID_SIZE / 2);
 	player->radius = 3;
 	player->turn_direction = 0;
 	player->walk_direction = 0;

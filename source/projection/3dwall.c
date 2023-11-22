@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:57:18 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 20:59:51 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:21:12 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ static int	int_xpm(t_global *_g)
 	return (1);
 }
 
-// void	free_xpm(t_text *xpm)
-// {
-// 	free(xpm);
-// }
-
 void	sky_floor_color(t_global *_g, int i, \
 	int wall_top_pixel, int wall_bottom_pixel)
 {
@@ -75,4 +70,22 @@ void	_fake3d_wall(t_global *_g)
 		texture_offset(_g, i);
 		i++;
 	}
+}
+
+void	_addr_x(t_global *_g)
+{
+	int	i;
+
+	_g->texture->addr_x[0] = mlx_get_data_addr(_g->texture->xpm[0], \
+		&(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
+	_g->texture->addr_x[1] = mlx_get_data_addr(_g->texture->xpm[1], \
+		&(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
+	_g->texture->addr_x[2] = mlx_get_data_addr(_g->texture->xpm[2], \
+		&(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
+	_g->texture->addr_x[3] = mlx_get_data_addr(_g->texture->xpm[3], \
+		&(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
+	i = -1;
+	while (++i < 4)
+		if (_g->texture->addr_x[i] == NULL)
+			exit_msg("Error in xpm file\n");
 }

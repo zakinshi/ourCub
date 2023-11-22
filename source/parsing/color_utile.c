@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:35 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 19:11:40 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:15:57 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,6 @@ int	get_color(char *color, t_cub3d *cub)
 	cub->blue = ft_atoi(sp[2]);
 	free_2d_char(sp);
 	return (1);
-}
-
-int	color_shift(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 int	check_isdiget(char *str)

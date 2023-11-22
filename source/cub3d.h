@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 19:03:36 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:21:39 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define GREEN				0x005000
 # define BLUECIEL			0x87CEFA
 
-# define WIDTH				1920
-# define HEIGHT				1024
+# define WIDTH				1080
+# define HEIGHT				720
 # define GRID_SIZE			64
 # define MINIMAP_OFF		0
 # define MINIMAP_FCTR		0.1
@@ -191,6 +191,7 @@ void	_fake3d_wall(t_global *_g);
 int		_trgb(int t, int r, int g, int b);
 void	sky_floor_color(t_global *_g, int i, \
 		int wall_top_pixel, int wall_bottom_pixel);
+void	_addr_x(t_global *_g);
 
 //		--> dda.c
 double	abs_(double n);
@@ -228,7 +229,6 @@ char	*ft_join(char *s1, char *s2);
 int		check_isdiget(char *str);
 int		get_color(char *color, t_cub3d *cub);
 int		pars_color(char *color, t_cub3d *cub);
-int		color_shift(int t, int r, int g, int b);
 int		waith_spc(char **color, int i);
 
 // 		--> color_utile1.c

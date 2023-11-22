@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:59 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 21:17:06 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:16:27 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	condition_compass(char *compass, t_cub3d *cub)
 		if (!ft_cmp("WE", compass, 2))
 			cub->we = ft_dup(sp + i);
 		else
-			cub->ea = ft_dup(sp + i);		
+			cub->ea = ft_dup(sp + i);
 		free(sp);
 		flag = 1;
 	}

@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 19:16:04 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:20:48 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,7 @@ void	xpm_driver(t_global *_g)
 	while (++i < 4)
 		if (_g->texture->xpm[i] == NULL)
 			exit_msg("Error in xpm file\n");
-	_g->texture->addr_x[0] = mlx_get_data_addr(_g->texture->xpm[0], \
-		&(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
-	_g->texture->addr_x[1] = mlx_get_data_addr(_g->texture->xpm[1], \
-		&(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
-	_g->texture->addr_x[2] = mlx_get_data_addr(_g->texture->xpm[2], \
-		&(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
-	_g->texture->addr_x[3] = mlx_get_data_addr(_g->texture->xpm[3], \
-		&(_g->texture->b_p_x), &(_g->texture->l_x), &(_g->mlx_s->dian));
-	i = -1;
-	while (++i < 4)
-		if (_g->texture->addr_x[i] == NULL)
-			exit_msg("Error in xpm file\n");
+	_addr_x(_g);
 }
 
 unsigned int	get_pixel(t_global *_g, int x, int y, int i)
@@ -71,7 +60,7 @@ unsigned int	text_comp(t_global *_g, int i)
 	else if (_g->rays[i]->hit_vertical && _g->rays[i]->facing_right)
 		color = get_pixel(_g, _g->texture->textureoffsetx, \
 			_g->texture->textureoffsety, 2);
-	else if (_g->rays[i]->hit_vertical  && _g->rays[i]->facing_left)
+	else if (_g->rays[i]->hit_vertical && _g->rays[i]->facing_left)
 		color = get_pixel(_g, _g->texture->textureoffsetx, \
 			_g->texture->textureoffsety, 3);
 	return (color);

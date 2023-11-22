@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/22 18:10:20 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:14:33 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,8 @@ static int	main_driver(char *path)
 	return (0);
 }
 
-void	leaks(void)
-{
-	system("leaks cub3D");
-}
-
 int	main(int ac, char **av)
 {
-	// atexit(leaks);
 	int	i;
 
 	if (ac != 2)
