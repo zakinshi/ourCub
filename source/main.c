@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/22 12:07:27 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/22 14:00:30 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	all_free(t_global *_g)
 	free_2d_char(_g->maps->map);
 	free(_g->maps);
 	mlx_destroy_window(_g->mlx_s->mlx_ptr, _g->mlx_s->win);
+	free(_g->mlx_s);
+	free(_g->player);
 	free(_g);
 }
 
