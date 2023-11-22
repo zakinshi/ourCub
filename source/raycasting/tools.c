@@ -6,11 +6,11 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:53:29 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/22 21:23:59 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 void	direction_view(t_global *_g, t_player *player)
 {
@@ -56,8 +56,8 @@ int	isin_wall(double x, double y, t_map *maps)
 	int	line;
 	int	row;
 
-	line = (y - MINIMAP_OFF) / GRID_SIZE;
-	row = (x - MINIMAP_OFF) / GRID_SIZE;
+	line = (y) / GRID_SIZE;
+	row = (x) / GRID_SIZE;
 	if (line > maps->hieght_map || maps->width_map < row)
 		return (1);
 	if (maps->map[line] && maps->map[line][row] && maps->map[line][row] == '1')

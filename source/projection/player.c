@@ -6,11 +6,11 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:53:23 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 16:25:57 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minimap.h"
+#include "../cub3d_bonus.h"
 
 int	multicases(t_player *player, t_map *maps)
 {

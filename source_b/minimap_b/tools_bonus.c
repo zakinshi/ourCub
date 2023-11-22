@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   tools_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:57:50 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 13:17:28 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 22:12:28 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minimap.h"
+#include "minimap_bonus.h"
 
 static void	put_circle_pixles(t_minilx *mlx_s, int x, int y, t_coord ij)
 {

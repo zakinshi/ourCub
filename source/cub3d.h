@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 21:21:39 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 21:47:27 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,14 @@
 
 # define RED				0xff0000
 # define BLACK				0x000000
-# define BUFFER_SIZE		5
 # define WHITE				0xFFFFFFF
 # define GREEN				0x005000
 # define BLUECIEL			0x87CEFA
+# define BUFFER_SIZE		5
 
 # define WIDTH				1080
 # define HEIGHT				720
 # define GRID_SIZE			64
-# define MINIMAP_OFF		0
-# define MINIMAP_FCTR		0.1
 
 typedef struct s_coord
 {

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.h                                          :+:      :+:    :+:   */
+/*   minimap_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:20:18 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 12:50:20 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 22:15:34 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIMAP_H
-# define MINIMAP_H
+#ifndef MINIMAP_BONUS_H
+# define MINIMAP_BONUS_H
 
-# include "../cub3d.h"
+# include "../cub3d_bonus.h"
 
 # define MINI_WIDTH		600
 # define MINI_HEIGHT	150
@@ -29,7 +29,6 @@ typedef struct s_minilx {
 	int		dian;
 }	t_minilx;
 
-void		minimap_mlx_pixel_put(t_minilx *data, int x, int y, int color);
 void		minimap_image(t_minilx *mlx_s);
 
 //			--> gridWall.c
@@ -44,5 +43,7 @@ void		_daa_line_mini(t_minilx *mlx_s, t_coord pos0, \
 void		_player(t_global *_g, t_minilx *mn_mlx_s);
 
 int			_transp(char color);
+
+void	minimap_mlx_pixel_put(t_minilx *data, int x, int y, int color);
 
 #endif

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_mlx.c                                         :+:      :+:    :+:   */
+/*   mini_mlx_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:55:23 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 12:19:12 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 22:13:57 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minimap.h"
+#include "minimap_bonus.h"
 
 void	minimap_mlx_pixel_put(t_minilx *data, int x, int y, int color)
 {
