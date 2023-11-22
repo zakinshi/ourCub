@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/22 15:25:13 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/22 18:10:20 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static int	init_all(t_global *_g)
 	if (!_g)
 		return (printf("Maps Malloc Failled.. \n"), 0);
 	_g->maps = maps;
-	if (!parsing_(_g))
-		return (0);
+	if (parsing_(_g) == -1)
+		return (free(maps), 0);
 	init_player(_g);
 	init_mlx_s(_g);
 	return (1);
@@ -62,20 +62,24 @@ static int	main_driver(char *path)
 		return (printf("_g malloc failled.. \n"), -1);
 	_g->path = path;
 	if (!init_all(_g))
-		return (-1);
+		return (free(_g), -1);
 	mlx_loop_hook(_g->mlx_s->mlx_ptr, driver, _g);
 	all_my_hooks(_g);
 	mlx_loop(_g->mlx_s->mlx_ptr);
 	all_free(_g);
 	return (0);
 }
-void foo()
+
+void	leaks(void)
 {
 	system("leaks cub3D");
 }
+
 int	main(int ac, char **av)
 {
+	// atexit(leaks);
 	int	i;
+
 	if (ac != 2)
 		exit_msg("Warnning :\n\t./Cub3D ./[Path_map]\n");
 	i = ft_strlen(av[1]);

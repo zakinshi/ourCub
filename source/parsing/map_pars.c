@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:20:31 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 18:06:23 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:05:10 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,14 @@ int	ft_map(t_cub3d *cub, int fd)
 {
 	cub->map = store_map(fd, cub);
 	if (!cub->map || !cub->map[0] || !cub->map[1])
-		return (printf("No map found\n"), 0);
+		return (return_msg("No Map Found..\n"));
 	if (!check_condition(cub->map))
-		return (0);
-	if (!matrise(cub))
-		return (0);
+		return (free_2d_char(cub->map), -1);
+	if (matrise(cub) == -1)
+		return (free_2d_char(cub->map), -1);
+	spc_to_tow(cub->map);
 	check_player_place(cub);
 	long_line(cub);
+	close (fd);
 	return (1);
 }
