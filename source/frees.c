@@ -1,50 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   frees.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 13:17:44 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/22 16:33:03 by zakbouha         ###   ########.fr       */
+/*   Created: 2023/11/22 16:32:19 by zakbouha          #+#    #+#             */
+/*   Updated: 2023/11/22 16:33:09 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	lenlines(char **rows)
+void	free_2d_char(char **s)
 {
 	int	i;
 
-	i = -1;
-	while (rows[++i])
-		;
-	return (i);
+	i = 0;
+	while (s[i])
+	{
+		free(s[i]);
+		i++;
+	}
+	free(s);
 }
 
-void	exit_msg(char *msg)
+void	free_rays(t_rays **s)
 {
-	int	len;
+	int	i;
 
-	len = ft_strlen(msg);
-	write(2, msg, len);
-	exit(1);
-}
-
-int	return_msg(char *msg)
-{
-	int	len;
-
-	len = ft_strlen(msg);
-	write(2, msg, len);
-	return (-1);
-}
-
-int	get_direction(int x, t_coord last_coord)
-{
-	if (x > last_coord.x)
-		return (1);
-	if (x < last_coord.x)
-		return (-1);
-	return (0);
+	i = 0;
+	while (s[i])
+	{
+		free(s[i]);
+		i++;
+	}
+	free(s);
 }

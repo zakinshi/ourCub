@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compass.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 15:35:54 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/22 17:20:42 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int	ft_compass(t_cub3d *cub, int fd)
 
 	compass = malloc(sizeof(char *) * 5);
 	if (!compass)
-		exit_msg("Allocation Failed in compass..\n");
+		return_msg("Allocation Failed in compass..\n");
 	store_loop(compass, fd);
 	if (!compass[0])
-		return (printf("No compass found\n"), free_2d_char(compass), 0);
+		return (free_2d_char(compass), return_msg("No compass found\n"));
 	if (loop_compass(compass, cub) == -1)
-		return (printf("erorr compass\n"), free_2d_char(compass), 0);
+		return (free_2d_char(compass), return_msg("erorr compass\n"));
 	free_2d_char(compass);
 	return (1);
 }
@@ -66,6 +66,16 @@ static void	data_copy(t_global *_g, t_cub3d *cub)
 	_g->maps->east = cub->ea;
 }
 
+int	free_txt(t_cub3d *cub)
+{
+	free(cub->no);
+	free(cub->ea);
+	free(cub->we);
+	free(cub->so);
+	free(cub);
+	return (-1);
+}
+
 int	parsing_(t_global *_g)
 {
 	t_cub3d	*cub;
@@ -73,21 +83,21 @@ int	parsing_(t_global *_g)
 
 	cub = malloc(sizeof(t_cub3d));
 	if (!cub)
-		return (0);
+		return (return_msg("Allocation failed CUB..\n"));
 	fd = open(_g->path, O_RDONLY);
 	if (fd == -1)
-		exit_msg("Folder Not Found..\n");
+		return (free(cub), -1);
 	cub->path = _g->path;
-	if (!ft_compass(cub, fd))
-		return (free(cub), 0);
+	if (ft_compass(cub, fd) == -1)
+		return (free(cub), -1);
 	close(fd);
 	fd = open(_g->path, O_RDONLY);
 	if (!ft_color(cub, fd))
-		return (free(cub), 0);
+		return (free_txt(cub));
 	close(fd);
 	fd = open(_g->path, O_RDONLY);
-	if (!ft_map(cub, fd))
-		return (free(cub), 0);
+	if (ft_map(cub, fd) == -1)
+		return (free_txt(cub));
 	data_copy(_g, cub);
 	free(cub);
 	return (1);

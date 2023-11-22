@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utile2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 12:35:59 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/22 19:06:45 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	map_loop(char *line, char **map, int *i)
 	while (line[j] == 9 || \
 		(line[j] <= 32 && line[j] >= 13))
 		j++;
-	if (*i && line[j] == '\n')
+	if (*i && line[j] != '1')
 		exit_msg("empty line in map\n");
 	if (ft_chr("01", line[j]))
 	{

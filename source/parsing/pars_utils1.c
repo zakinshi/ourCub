@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:24:26 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/20 19:00:34 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:03:16 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,17 @@ int	edge_map(char **line)
 
 int	case_matrs(t_cub3d *cub, char zero)
 {
-	if (zero == '0' && cub->next_i != '1' && \
+	int	_zero;
+
+	_zero = zero != '1' && zero != '2';
+	if (_zero && cub->next_i != '1' && \
 		cub->next_i != '0' && !ft_chr("NSWE", cub->next_i))
 		return (printf("error in next i\n"), 0);
 	if ((zero == '0' || ft_chr("NSWE", zero)) && cub->next_j == '2')
 		return (printf("error in zero\n"), 0);
-	if (zero == '0' && cub->old_i != '1' && \
+	if ((zero == '0' || ft_chr("NSWE", zero)) && cub->old_j == '2')
+		return (printf("error in zero\n"), 0);
+	if (_zero && cub->old_i != '1' && \
 		cub->old_i != '0' && !ft_chr("NSWE", cub->old_i))
 		return (printf("error in old i\n"), 0);
 	return (1);
@@ -73,14 +78,15 @@ int	matrise(t_cub3d *cub)
 		j = 0;
 		while (cub->map[i][j] && cub->map[i][j + 1])
 		{
-			if (cub->map[i][j] == '0')
+			if (cub->map[i][j] != '1' && cub->map[i][j] != '2')
 			{
 				cub->next_i = cub->map[i + 1][j];
 				cub->next_j = cub->map[i][j + 1];
 				cub->old_i = cub->map[i - 1][j];
+				cub->old_j = cub->map[i][j - 1];
+				if (!case_matrs(cub, cub->map[i][j]))
+					return (-1);
 			}
-			if (!case_matrs(cub, cub->map[i][j]))
-				return (0);
 			j++;
 		}
 		i++;

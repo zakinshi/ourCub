@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 18:40:38 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:03:36 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ typedef struct s_cub3d
 	int		green;
 	char	next_i;
 	char	old_i;
+	char	old_j;
 	char	next_j;
 	char	*no;
 	char	*so;
@@ -152,6 +153,7 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void	image_driver(t_mlx *mlx_s);
 void	init_mlx_s(t_global *_g);
 void	exit_msg(char *msg);
+int		return_msg(char *msg);
 
 // 		--> main.c
 void	all_free(t_global *_g);
@@ -174,7 +176,6 @@ void	draw_all(t_global *_g);
 void	draw_minimap(t_global *_g);	
 
 //		--> player.c
-int		init_move(void *formation);
 void	update_player(t_player *player, t_map *maps);
 int		isin_wall(double x, double y, t_map *maps);
 void	init_player(t_global *_g);
