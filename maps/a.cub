@@ -1,4 +1,4 @@
-F 30,30,30
+F 			30,30,30
 C 137,207,240
 
 NO ./xpmfiles/wall.xpm
@@ -7,5 +7,5 @@ EA ./xpmfiles/wallbl2.xpm
 WE ./xpmfiles/wall1.xpm
 
 111111111111111
-1000001000001
+10000W01000001
 1111111111111111

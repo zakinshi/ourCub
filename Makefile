@@ -94,7 +94,7 @@ re		: fclean all
 
 
 
-#fix parsing 5,5,6 8
+#fix parsing 5,5,6 8 okkz
 #leaks in compase and colors(failure)
 #leaks close window 
 #player out of map  ok
