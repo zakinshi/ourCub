@@ -1,7 +1,7 @@
-NAME		= Cub3D
+NAME		= cub3D
 
 ADDRESS		= -fsanitize=address
-CC			= cc 
+CC			= cc
 FLAG		= -Wall -Wextra -Werror -Imlx -ofast
 GRAPHICS	= -lmlx -framework OpenGL -framework AppKit
 
@@ -89,3 +89,12 @@ fclean : clean
 		@rm -rf $(NAME)
 
 re		: fclean all
+
+
+
+
+
+#fix parsing 5,5,6 8
+#leaks in compase and colors(failure)
+#leaks close window 
+#player out of map  ok

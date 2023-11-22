@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/21 22:04:47 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/22 12:07:27 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,14 @@ static int	main_driver(char *path)
 	all_free(_g);
 	return (0);
 }
-
+void foo()
+{
+	system("leaks cub3D");
+}
 int	main(int ac, char **av)
 {
 	int	i;
-
+	atexit(foo);
 	if (ac != 2)
 		exit_msg("Warnning :\n\t./Cub3D ./[Path_map]\n");
 	i = ft_strlen(av[1]);

@@ -6,7 +6,7 @@
 /*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 10:50:42 by enaam            ###   ########.fr       */
+/*   Updated: 2023/11/22 11:37:20 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	store_loop_cf(char **color, int fd)
 	}
 	if (j != 2)
 	{
-		printf("More than argu request in color\n");
+		printf("(More || last) than argu request in color\n");
 		exit (0);
 	}
 	color[j] = NULL;

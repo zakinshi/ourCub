@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:34:50 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 18:33:43 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:18:16 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ int	ft_color(t_cub3d *cub, int fd)
 		exit_msg("Allocation Color ...");
 	store_loop_cf(color, fd);
 	if (!color[0])
-		return (printf("No color found\n"), 0);
+		return (printf("No color found\n"), free_2d_char(color), 0);
 	if (loop_color(color, cub) == -1)
-		return (printf("error in color\n"), 0);
+		return (printf("error in color\n"), free_2d_char(color), 0);
 	free_2d_char(color);
 	return (1);
 }

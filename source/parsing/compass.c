@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compass.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enaam <enaam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/21 18:35:11 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:21:37 by enaam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	store_loop(char	**compass, int fd)
 	}
 	if (j != 4)
 	{
-		printf("More than argu request in compass\n");
+		printf("(More || last) than argu request in compass\n");
 		exit (0);
 	}
 	compass[j] = NULL;
@@ -42,9 +42,9 @@ int	ft_compass(t_cub3d *cub, int fd)
 		exit_msg("Allocation Failed in compass..\n");
 	store_loop(compass, fd);
 	if (!compass[0])
-		return (printf("No compass found\n"), 0);
+		return (printf("No compass found\n"), free_2d_char(compass), 0);
 	if (loop_compass(compass, cub) == -1)
-		return (printf("erorr compass\n"), 0);
+		return (printf("erorr compass\n"), free_2d_char(compass), 0);
 	free_2d_char(compass);
 	return (1);
 }
@@ -78,16 +78,16 @@ int	parsing_(t_global *_g)
 	if (fd == -1)
 		exit_msg("Folder Not Found..\n");
 	cub->path = _g->path;
-	if (!ft_map(cub, fd))
-		return (0);
-	close(fd);
-	fd = open(_g->path, O_RDONLY);
 	if (!ft_compass(cub, fd))
-		return (0);
+		return (free(cub), 0);
 	close(fd);
 	fd = open(_g->path, O_RDONLY);
 	if (!ft_color(cub, fd))
-		return (0);
+		return (free(cub), 0);
+	close(fd);
+	fd = open(_g->path, O_RDONLY);
+	if (!ft_map(cub, fd))
+		return (free(cub), 0);
 	data_copy(_g, cub);
 	free(cub);
 	return (1);
