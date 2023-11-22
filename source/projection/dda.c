@@ -6,11 +6,11 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:11:55 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 22:25:12 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d_bonus.h"
+#include "../cub3d.h"
 
 double	disatnce_between2points(double x1, double y1, double x2, double y2)
 {

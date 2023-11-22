@@ -6,11 +6,11 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:53:29 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 22:25:12 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d_bonus.h"
+#include "../cub3d.h"
 
 void	direction_view(t_global *_g, t_player *player)
 {
