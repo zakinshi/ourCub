@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:59 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 23:06:52 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,14 @@ static char	*stor_comp(char *compass, char *sp, int *i)
 
 	j = 0;
 	sp = ft_dup(compass + 2);
+	if (!sp)
+		return (NULL);
 	*i = loop_spc(sp);
 	if (!*(sp + *i))
-	{
-		printf("erorr in compass\n");
-		exit (0);
-	}
+		exit_msg("erorr in compass\n");
 	j = open(sp + *i, O_RDONLY);
 	if (j == -1)
-	{
-		printf("erorr in compass\n");
-		exit (0);
-	}
+		exit_msg("erorr in compass\n");
 	else
 		close(j);
 	return (sp);
@@ -56,6 +52,8 @@ static void	condition_compass_1(char *compass, t_cub3d *cub, int *flag)
 	if (!ft_cmp("NO", compass, 2) || !ft_cmp("SO", compass, 2))
 	{
 		sp = stor_comp(compass, sp, &i);
+		if (!sp)
+			return ;
 		if (!ft_cmp("NO", compass, 2))
 			cub->no = ft_dup(sp + i);
 		else

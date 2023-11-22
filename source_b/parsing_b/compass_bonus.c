@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/22 23:05:14 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	parsing_(t_global *_g)
 		return (free(cub), -1);
 	cub->path = _g->path;
 	if (ft_compass(cub, fd) == -1)
-		return (free(cub), -1);
+		return (free_txt(cub), -1);
 	close(fd);
 	fd = open(_g->path, O_RDONLY);
 	if (!ft_color(cub, fd))
