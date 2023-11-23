@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:59 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:25:12 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:04:11 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ static char	*stor_comp(char *compass, char *sp, int *i)
 	*i = loop_spc(sp);
 	if (!*(sp + *i))
 	{
-		printf("erorr in compass\n");
+		printf("Error: erorr in compass\n");
 		exit (0);
 	}
 	j = open(sp + *i, O_RDONLY);
 	if (j == -1)
 	{
-		printf("erorr in compass\n");
+		printf("Error: erorr in compass\n");
 		exit (0);
 	}
 	else

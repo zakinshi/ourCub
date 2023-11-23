@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:34:50 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:25:12 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:04:11 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ int	ft_color(t_cub3d *cub, int fd)
 
 	color = malloc(sizeof(char *) * 3);
 	if (!color)
-		exit_msg("Allocation Color ...");
+		exit_msg("Error: Allocation Color ...");
 	store_loop_cf(color, fd);
 	if (!color[0])
-		return (printf("No color found\n"), free_2d_char(color), 0);
+		return (printf("Error: No color found\n"), free_2d_char(color), 0);
 	if (loop_color(color, cub) == -1)
-		return (printf("error in color\n"), free_2d_char(color), 0);
+		return (printf("Error: error in color\n"), free_2d_char(color), 0);
 	free_2d_char(color);
 	return (1);
 }

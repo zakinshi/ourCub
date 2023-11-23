@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 17:56:20 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:24:58 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_condition(char **map)
 	return (1);
 }
 
-static void	map_loop(char *line, char **map, int *i)
+static void	map_loop(char *line, char **map, int *i, int len)
 {
 	int	j;
 
@@ -30,8 +30,10 @@ static void	map_loop(char *line, char **map, int *i)
 	while (line[j] == 9 || \
 		(line[j] <= 32 && line[j] >= 13))
 		j++;
-	if (*i && !ft_chr("1\n", line[j]))
-		exit_msg("empty line in map\n");
+	if (*i && !ft_chr("1", line[j]))
+		exit_msg("Error: empty line in map\n");
+	if (*i && len <= *i && !ft_chr("1\n", line[j]))
+		exit_msg("Error: Maps Has a poster\n");
 	if (ft_chr("01", line[j]))
 	{
 		new_l(line);
@@ -47,13 +49,12 @@ void	loop_map(char **map, int len, int fd)
 	int		i;
 
 	i = 0;
-	(void)len;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		map_loop(line, map, &i);
+		map_loop(line, map, &i, len);
 	}
 	map[i] = NULL;
 }

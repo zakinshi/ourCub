@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:35 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 15:46:42 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:04:11 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int	get_color(char *color, t_cub3d *cub)
 	int		len;
 
 	if (!count_vergule(color))
-		return (printf("','"), -1);
+		return (printf("Error: ','"), -1);
 	sp = ft_split(color + 1, ',');
 	len = lenlines(sp);
 	if (len != 3)
-		return (printf("More than argu request"), -1);
+		return (printf("Error: More than argu request"), -1);
 	if (diget(sp[0]) == -1 || diget(sp[1]) == -1 || diget(sp[2]) == -1)
-		return (printf("color isn't found"), -1);
+		return (printf("Error: color isn't found"), -1);
 	cub->red = ft_atoi(sp[0]);
 	cub->green = ft_atoi(sp[1]);
 	cub->blue = ft_atoi(sp[2]);

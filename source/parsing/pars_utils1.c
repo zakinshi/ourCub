@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:24:26 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:25:12 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:04:11 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	check_firstlast_line(char **arr)
 
 	i = 0;
 	if (!read_l(arr[i]))
-		return (printf("error in first line\n"), 0);
+		return (printf("Error: error in first line\n"), 0);
 	while (arr[i])
 		i++;
 	if (!read_l(arr[i - 1]))
-		return (printf("error in last line\n"), 0);
+		return (printf("Error: error in last line\n"), 0);
 	return (1);
 }
 
@@ -56,14 +56,14 @@ int	case_matrs(t_cub3d *cub, char zero)
 	_zero = zero != '1' && zero != '2';
 	if (_zero && cub->next_i != '1' && \
 		cub->next_i != '0' && !ft_chr("NSWE", cub->next_i))
-		return (printf("error in next i\n"), 0);
+		return (printf("Error: error in next i\n"), 0);
 	if ((zero == '0' || ft_chr("NSWE", zero)) && cub->next_j == '2')
-		return (printf("error in zero\n"), 0);
+		return (printf("Error: error in zero\n"), 0);
 	if ((zero == '0' || ft_chr("NSWE", zero)) && cub->old_j == '2')
-		return (printf("error in zero\n"), 0);
+		return (printf("Error: error in zero\n"), 0);
 	if (_zero && cub->old_i != '1' && \
 		cub->old_i != '0' && !ft_chr("NSWE", cub->old_i))
-		return (printf("error in old i\n"), 0);
+		return (printf("Error: error in old i\n"), 0);
 	return (1);
 }
 

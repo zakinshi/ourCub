@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 23:05:14 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:04:11 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	store_loop(char	**compass, int fd)
 	}
 	if (j != 4)
 	{
-		printf("(More || last) than argu request in compass\n");
+		printf("Error: (More || last) than argu request in compass\n");
 		exit (0);
 	}
 	compass[j] = NULL;

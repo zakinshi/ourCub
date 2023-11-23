@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 16:44:27 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	xpm_driver(t_global *_g)
 	exit_size_error(_g->texture->x_width, _g->texture->x_hight);
 	while (++i < 4)
 		if (_g->texture->xpm[i] == NULL)
-			exit_msg("Error in xpm file\n");
+			exit_msg("Error: Error in xpm file\n");
 	_addr_x(_g);
 }
 

@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:21:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:04:11 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ int	check_fstlst(char *s)
 
 	i = 0;
 	if (s[i] != '1' && s[i] != '2')
-		return (printf("%s\n", "error in first edge"), 0);
+		return (printf("Error: %s\n", "error in first edge"), 0);
 	while (s[i])
 		i++;
 	if (s[i - 1] != '1' && s[i - 1] != '2')
-		return (printf("%s\n", "error in last edge"), 0);
+		return (printf("Error: %s\n", "error in last edge"), 0);
 	return (1);
 }
 

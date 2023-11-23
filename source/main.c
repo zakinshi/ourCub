@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/23 17:51:40 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:05:59 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	init_all(t_global *_g)
 
 	maps = malloc(sizeof(t_map));
 	if (!_g)
-		return (printf("Maps Malloc Failled.. \n"), 0);
+		return (printf("Error: Maps Malloc Failled.. \n"), 0);
 	_g->maps = maps;
 	if (parsing_(_g) == -1)
 		return (free(maps), 0);
@@ -59,7 +59,7 @@ static int	main_driver(char *path)
 
 	_g = malloc(sizeof(t_global));
 	if (!_g)
-		return (printf("_g malloc failled.. \n"), -1);
+		return (printf("Error: _g malloc failled.. \n"), -1);
 	_g->path = path;
 	if (!init_all(_g))
 		return (free(_g), -1);
@@ -78,13 +78,13 @@ int	main(int ac, char **av)
 {
 	int	i;
 	
-	// atexit(l);
+	atexit(l);
 	if (ac != 2)
-		exit_msg("Warnning :\n\t./Cub3D ./[Path_map]\n");
+		exit_msg("Error: \n\t./Cub3D ./[Path_map]\n");
 	i = ft_strlen(av[1]);
 	while (i >= 0 && av[1][--i] != '.')
 		;
 	if (ft_cmp(av[1] + i, ".cub", 4))
-		exit_msg("Warnning :\n\t./Cub3D not found .cub\n");
+		exit_msg("Error: \n\t./Cub3D not found .cub\n");
 	return (main_driver(av[1]));
 }

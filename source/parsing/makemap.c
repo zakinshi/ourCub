@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:51:28 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:25:12 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**maping_themap( t_cub3d *cub)
 	i = -1;
 	mymap = malloc(sizeof(char *) * (cub->len_l + 1));
 	if (!mymap)
-		exit_msg("Allocation of mymap(Failed)...\n");
+		exit_msg("Error: Allocation of mymap(Failed)...\n");
 	while (++i < cub->len_l)
 	{
 		mymap[i] = make_line_insize(cub->map[i], cub->long_l);

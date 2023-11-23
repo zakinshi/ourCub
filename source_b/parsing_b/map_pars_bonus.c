@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:20:31 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	check_player_place(t_cub3d *cub)
 		}
 	}
 	if (flag != 1)
-		exit_msg("erorr in playr\n");
+		exit_msg("Error: erorr in playr\n");
 }
 
 int	ft_map(t_cub3d *cub, int fd)

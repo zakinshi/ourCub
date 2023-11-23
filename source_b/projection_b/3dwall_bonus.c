@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:57:18 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	int_xpm(t_global *_g)
 
 	xpm = malloc(sizeof(t_text));
 	if (!xpm)
-		exit_msg("Allocation Xpm Failled..\n");
+		exit_msg("Error: Allocation Xpm Failled..\n");
 	xpm->addr_x[0] = NULL;
 	xpm->b_p_x = 0;
 	xpm->distpropln = 0.00;
@@ -87,5 +87,5 @@ void	_addr_x(t_global *_g)
 	i = -1;
 	while (++i < 4)
 		if (_g->texture->addr_x[i] == NULL)
-			exit_msg("Error in xpm file\n");
+			exit_msg("Error: Error in xpm file\n");
 }

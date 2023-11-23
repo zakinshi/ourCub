@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:04:11 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	store_loop_cf(char **color, int fd)
 	}
 	if (j != 2)
 	{
-		printf("(More || last) than argu request in color\n");
+		printf("Error: (More || last) than argu request in color\n");
 		exit (0);
 	}
 	color[j] = NULL;

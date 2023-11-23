@@ -2,7 +2,7 @@ NAME_BONUS		= cub3D_bonus
 NAME			= cub3D
 
 ADDRESS		= -fsanitize=address
-CC			= cc $(ADDRESS)
+CC			= cc 
 FLAG		= -Wall -Wextra -Werror -Imlx -ofast -g
 GRAPHICS	= -lmlx -framework OpenGL -framework AppKit
 

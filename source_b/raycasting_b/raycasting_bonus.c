@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:51:34 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ void	rays_cast(t_global *_g)
 	column = -1;
 	rays = malloc (sizeof(t_rays *) * (WIDTH + 1));
 	if (!rays)
-		exit_msg("Alloction of rays Failed..\n");
+		exit_msg("Error: Alloction of rays Failed..\n");
 	_rayangle = _g->player->rotation_angle - (_g->fov_angle / 2);
 	while (++column < WIDTH)
 	{
 		ray = malloc (sizeof(t_rays));
 		if (!ray)
-			exit_msg("Alloction of ray Failed..\n");
+			exit_msg("Error: Alloction of ray Failed..\n");
 		ray->angle_veiw = norm_angle(_rayangle);
 		ray->index = column;
 		cast_ray(_g, ray);

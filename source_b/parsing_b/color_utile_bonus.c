@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:35 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 15:50:08 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:04:11 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	get_color(char *color, t_cub3d *cub)
 	int		len;
 
 	if (!count_vergule(color))
-		return (printf("','"), -1);
+		return (printf("Error: ','"), -1);
 	sp = ft_split(color + 1, ',');
 	len = lenlines(sp);
 	if (len != 3)
