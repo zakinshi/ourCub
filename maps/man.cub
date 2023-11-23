@@ -2,8 +2,8 @@ C 137,207,240
 F 30,30,30
 
 NO ./xpmfiles/wall.xpm
-SO ./xpmfiles/wall.xpm
-EA ./xpmfiles/wallbl2.xpm
+SO ./xpmfiles/mariio.xpm
+EA ./xpmfiles/wall1.xpm
 WE ./xpmfiles/wallbl2.xpm
 
 111111111111111
@@ -110,5 +110,5 @@ WE ./xpmfiles/wallbl2.xpm
                                                         100000001
                                                         100000001
                                                         111111111
+11111
                                                                 
-
