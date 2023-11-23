@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:20:31 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 19:11:17 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 21:23:19 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,10 @@ static void	check_player_place(t_cub3d *cub)
 int	ft_map(t_cub3d *cub, int fd)
 {
 	cub->map = store_map(fd, cub);
-	if (!cub->map || !cub->map[0] || !cub->map[1])
-		return (return_msg("No Map Found..\n"));
+	if (!cub->map || !cub->map[0])
+		return ( return_msg("No Map Found..\n"));
+	else if(!cub->map[1])
+		return (free_2d_char(cub->map), return_msg("No Map Found..\n"));
 	if (!check_condition(cub->map))
 		return (free_2d_char(cub->map), -1);
 	if (matrise(cub) == -1)
