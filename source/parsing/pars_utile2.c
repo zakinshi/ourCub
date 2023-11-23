@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 18:23:37 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 20:18:59 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,13 @@ void	loop_map(char **map, int len, int fd)
 		map_loop(line, map, &i, len);
 	}
 	map[i] = NULL;
+}
+
+void	handel_condition(char *map, int i)
+{
+	int	len;
+
+	len = ft_strlen(map);
+	if (len <= i)
+		exit_msg("Error: nothing in top of player or 0\n");
 }

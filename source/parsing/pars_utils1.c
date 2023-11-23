@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:24:26 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 20:15:46 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 20:18:40 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,6 @@ int	case_matrs(t_cub3d *cub, char zero)
 		cub->old_i != '0' && !ft_chr("NSWE", cub->old_i))
 		return (printf("Error: error in old i\n"), 0);
 	return (1);
-}
-
-void	handel_condition(char *map, int i)
-{
-	int len;
-	
-	len  = ft_strlen(map);
-	if (len <= i)
-		exit_msg("Error: nothing in top of player or 0\n");
 }
 
 int	matrise(t_cub3d *cub)

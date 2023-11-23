@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 15:52:17 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 20:21:58 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,5 +287,8 @@ void	loop_map(char **map, int len, int fd);
 
 // 
 void	exit_size_error(int width, int height);
+
+//
+void	handel_condition_bns(char *map, int i);
 
 #endif
