@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 21:47:27 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:54:56 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,5 +282,8 @@ int		matrise(t_cub3d *cub);
 // 		--> pars_utile2.c
 int		check_condition(char **map);
 void	loop_map(char **map, int len, int fd);
+
+//
+void	exit_size_error(int width, int height);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:25:12 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:54:30 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@ void	xpm_driver(t_global *_g)
 	i = -1;
 	_g->texture->xpm[0] = mlx_xpm_file_to_image(_g->mlx_s->mlx_ptr, \
 		_g->maps->north, &_g->texture->x_width, &_g->texture->x_hight);
+	exit_size_error(_g->texture->x_width, _g->texture->x_hight);
 	_g->texture->xpm[1] = mlx_xpm_file_to_image(_g->mlx_s->mlx_ptr, \
 		_g->maps->south, &_g->texture->x_width, &_g->texture->x_hight);
+	exit_size_error(_g->texture->x_width, _g->texture->x_hight);
 	_g->texture->xpm[2] = mlx_xpm_file_to_image(_g->mlx_s->mlx_ptr, \
 		_g->maps->east, &_g->texture->x_width, &_g->texture->x_hight);
+	exit_size_error(_g->texture->x_width, _g->texture->x_hight);
 	_g->texture->xpm[3] = mlx_xpm_file_to_image(_g->mlx_s->mlx_ptr, \
 		_g->maps->west, &_g->texture->x_width, &_g->texture->x_hight);
+	exit_size_error(_g->texture->x_width, _g->texture->x_hight);
 	while (++i < 4)
 		if (_g->texture->xpm[i] == NULL)
 			exit_msg("Error in xpm file\n");

@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:55:23 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/22 22:13:57 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:18:47 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	minimap_mlx_pixel_put(t_minilx *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if ((x > 0 && x < MINI_WIDTH) && (y > 0 && y < MINI_HEIGHT))
+	if ((x >= 0 && x <= MINI_WIDTH) && (y >= 0 && y <= MINI_HEIGHT))
 	{
 		dst = data->mn_addr + (y * data->l_l + x * (data->b_p_l / 8));
 		*(int *)dst = color;

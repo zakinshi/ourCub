@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:49:35 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:25:12 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:46:42 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	check_isdiget(char *str)
 }
 
 int	pars_color(char *color, t_cub3d *cub)
-{                                                                                                                                                          
+{
 	if (check_isdiget(color) == -1)
 		return (-1);
 	if (get_color(color, cub) == -1)

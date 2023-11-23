@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/22 22:12:09 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:44:27 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@ void	xpm_driver(t_global *_g)
 	i = -1;
 	_g->texture->xpm[0] = mlx_xpm_file_to_image(_g->mlx_s->mlx_ptr, \
 		_g->maps->north, &_g->texture->x_width, &_g->texture->x_hight);
+	exit_size_error(_g->texture->x_width, _g->texture->x_hight);
 	_g->texture->xpm[1] = mlx_xpm_file_to_image(_g->mlx_s->mlx_ptr, \
 		_g->maps->south, &_g->texture->x_width, &_g->texture->x_hight);
+	exit_size_error(_g->texture->x_width, _g->texture->x_hight);
 	_g->texture->xpm[2] = mlx_xpm_file_to_image(_g->mlx_s->mlx_ptr, \
 		_g->maps->east, &_g->texture->x_width, &_g->texture->x_hight);
+	exit_size_error(_g->texture->x_width, _g->texture->x_hight);
 	_g->texture->xpm[3] = mlx_xpm_file_to_image(_g->mlx_s->mlx_ptr, \
 		_g->maps->west, &_g->texture->x_width, &_g->texture->x_hight);
+	exit_size_error(_g->texture->x_width, _g->texture->x_hight);
 	while (++i < 4)
 		if (_g->texture->xpm[i] == NULL)
 			exit_msg("Error in xpm file\n");
@@ -74,16 +78,14 @@ void	texture_offset(t_global *_g, int i)
 
 	j = _g->texture->walltoppixl;
 	if (_g->rays[i]->hit_vertical)
-		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhity * \
-		(_g->texture->x_hight / GRID_SIZE), GRID_SIZE);
+		_g->texture->textureoffsetx = fmod((_g->rays[i]->wallhity), GRID_SIZE);
 	else
-		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhitx * \
-		(_g->texture->x_width / GRID_SIZE), GRID_SIZE);
+		_g->texture->textureoffsetx = fmod((_g->rays[i]->wallhitx), GRID_SIZE);
 	while (j < _g->texture->wallbotmpixl)
 	{
 		disftop = j + (_g->texture->wallstripht / 2) - (HEIGHT / 2);
-		_g->texture->textureoffsety = (disftop * \
-			(float)GRID_SIZE) / _g->texture->wallstripht;
+		_g->texture->textureoffsety = disftop * \
+			(GRID_SIZE / _g->texture->wallstripht);
 		textcolor = text_comp(_g, i);
 		my_mlx_pixel_put(_g->mlx_s, i, j, textcolor);
 		j++;

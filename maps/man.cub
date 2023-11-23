@@ -1,8 +1,8 @@
 C 137,207,240
 F 30,30,30
 
-NO ./xpmfiles/wallbl2.xpm
-SO ./xpmfiles/wallbl2.xpm
+NO ./xpmfiles/nat.xpm
+SO ./xpmfiles/nat.xpm
 EA ./xpmfiles/wallbl2.xpm
 WE ./xpmfiles/wallbl2.xpm
 
