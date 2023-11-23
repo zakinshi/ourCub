@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:51:28 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:13:58 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ static char	*make_line_insize(char *line, int size)
 	return (NULL);
 }
 
-char	**maping_themap( t_cub3d *cub)
+char	**maping_themap(t_cub3d *cub)
 {
 	char	**mymap;
 	int		i;
 
+	cub->len_l = lenlines(cub->map);
 	i = -1;
 	mymap = malloc(sizeof(char *) * (cub->len_l + 1));
 	if (!mymap)

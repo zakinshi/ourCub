@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:24:26 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 18:04:11 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 20:15:46 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,15 @@ int	case_matrs(t_cub3d *cub, char zero)
 	return (1);
 }
 
+void	handel_condition(char *map, int i)
+{
+	int len;
+	
+	len  = ft_strlen(map);
+	if (len <= i)
+		exit_msg("Error: nothing in top of player or 0\n");
+}
+
 int	matrise(t_cub3d *cub)
 {
 	int	i;
@@ -82,6 +91,7 @@ int	matrise(t_cub3d *cub)
 			{
 				cub->next_i = cub->map[i + 1][j];
 				cub->next_j = cub->map[i][j + 1];
+				handel_condition(cub->map[i - 1], j);
 				cub->old_i = cub->map[i - 1][j];
 				cub->old_j = cub->map[i][j - 1];
 				if (!case_matrs(cub, cub->map[i][j]))
