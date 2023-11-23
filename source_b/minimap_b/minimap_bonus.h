@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:20:18 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/22 22:15:34 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 10:57:03 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void		_daa_line_mini(t_minilx *mlx_s, t_coord pos0, \
 void		_player(t_global *_g, t_minilx *mn_mlx_s);
 
 int			_transp(char color);
+
+void	draw_minimap(t_global *_g);
 
 void	minimap_mlx_pixel_put(t_minilx *data, int x, int y, int color);
 
