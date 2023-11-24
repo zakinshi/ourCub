@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/25 00:13:35 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/25 00:33:04 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,5 @@ int	parsing_(t_global *_g)
 		return (free_txt(cub));
 	data_copy(_g, cub);
 	free(cub);
-	printf(" | %s\n", _g->maps->north);
 	return (1);
 }

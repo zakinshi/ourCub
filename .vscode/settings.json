@@ -1,5 +1,17 @@
 {
 	"files.associations": {
-		"minimap.h": "c"
+		"cub3d.h": "c",
+		"*.cub": "cpp",
+		"chrono": "c",
+		"cub3d_bonus.h": "c",
+		"minimap_bonus.h": "c",
+		"__config": "c",
+		"__errc": "c",
+		"__hash_table": "c",
+		"__locale": "c",
+		"__tuple": "c",
+		"bitset": "c",
+		"ios": "c",
+		"locale": "c"
 	}
 }

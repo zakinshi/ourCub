@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/25 00:03:01 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/25 00:31:55 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	xpm_driver(t_global *_g)
 	int	i;
 
 	i = -1;
-	printf("%s\n", _g->maps->north);
 	_g->texture->xpm[0] = mlx_xpm_file_to_image(_g->mlx_s->mlx_ptr, \
 		_g->maps->north, &_g->texture->x_width, &_g->texture->x_hight);
 	exit_size_error(_g->texture->x_width, _g->texture->x_hight);
