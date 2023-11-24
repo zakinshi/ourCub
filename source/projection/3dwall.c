@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:57:18 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:43:17 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int	int_xpm(t_global *_g)
 	xpm->textureoffsetx = 0;
 	xpm->textureoffsety = 0;
 	xpm->wallbotmpixl = 0;
-	xpm->wallstripht = 0;
 	xpm->walltext = 0;
 	xpm->walltoppixl = 0;
 	xpm->x_hight = 0;

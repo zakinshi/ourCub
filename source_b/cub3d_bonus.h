@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/24 10:37:00 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:44:56 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ typedef struct s_text
 	double			per_dist;
 	double			distpropln;
 	double			projwallht;
-	double			wallstripht;
 	int				walltoppixl;
 	int				wallbotmpixl;
 	int				textureoffsetx;

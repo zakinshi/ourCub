@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:44:34 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void	texture_offset(t_global *_g, int i)
 		_g->texture->textureoffsetx = fmod((_g->rays[i]->wallhitx), GRID_SIZE);
 	while (j < _g->texture->wallbotmpixl)
 	{
-		disftop = j + (_g->texture->wallstripht / 2) - (HEIGHT / 2);
+		disftop = j + (_g->texture->projwallht / 2) - (HEIGHT / 2);
 		_g->texture->textureoffsety = disftop * \
-			(GRID_SIZE / _g->texture->wallstripht);
+			(GRID_SIZE / _g->texture->projwallht);
 		textcolor = text_comp(_g, i);
 		my_mlx_pixel_put(_g->mlx_s, i, j, textcolor);
 		j++;
@@ -99,11 +99,10 @@ void	calcule_text(t_global *_g, int i)
 	_g->texture->distpropln = (WIDTH / 2) / tan(_g->fov_angle / 2);
 	_g->texture->projwallht = (GRID_SIZE / _g->texture->per_dist) * \
 		_g->texture->distpropln;
-	_g->texture->wallstripht = _g->texture->projwallht;
-	_g->texture->walltoppixl = (HEIGHT / 2) - (_g->texture->wallstripht / 2);
+	_g->texture->walltoppixl = (HEIGHT / 2) - (_g->texture->projwallht / 2);
 	if (_g->texture->walltoppixl < 0)
 		_g->texture->walltoppixl = 0;
-	_g->texture->wallbotmpixl = (HEIGHT / 2) + (_g->texture->wallstripht / 2);
+	_g->texture->wallbotmpixl = (HEIGHT / 2) + (_g->texture->projwallht / 2);
 	if (_g->texture->wallbotmpixl > HEIGHT)
 		_g->texture->wallbotmpixl = HEIGHT;
 	sky_floor_color(_g, i, _g->texture->walltoppixl, _g->texture->wallbotmpixl);

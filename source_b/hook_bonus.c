@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:17:01 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/22 22:18:10 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:25:32 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	mouse_move(int x, int y, t_global *_g)
 		deriction = get_direction(x, copy_cord);
 		angle_new = ((atan(fabs(delta.x) / fabs(delta.y))) \
 			* (M_PI / 180)) * deriction;
-		_g->player->rotation_angle += angle_new;
+		_g->player->rotation_angle += (angle_new);
 	}
 	copy_cord.x = x;
 	copy_cord.y = y;
