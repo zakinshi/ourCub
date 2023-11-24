@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dda.c                                              :+:      :+:    :+:   */
+/*   dda_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:11:55 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/25 00:00:01 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 double	disatnce_between2points(double x1, double y1, double x2, double y2)
 {
@@ -26,7 +26,6 @@ double	disatnce_between2points(double x1, double y1, double x2, double y2)
 
 void	exit_size_error(int width, int height)
 {
-	printf("%d -- %d\n", width, height);
 	if (width != 64 || height != 64)
 		exit_msg("Error: width or height of xpm is bigger of 64 try[64]\n");
 }

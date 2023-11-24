@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/25 00:22:54 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:06:32 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	driver(t_global	*_g)
 {
@@ -69,22 +69,17 @@ static int	main_driver(char *path)
 	all_free(_g);
 	return (0);
 }
-void leaks()
-{
-	system("leaks cub3D");
-}
 
 int	main(int ac, char **av)
 {
 	int	i;
 
-	atexit(leaks);
 	if (ac != 2)
-		exit_msg("Error: \n\t./Cub3D ./[Path_map]\n");
+		exit_msg("Error: Warnning :\n\t./Cub3D ./[Path_map]\n");
 	i = ft_strlen(av[1]);
 	while (i >= 0 && av[1][--i] != '.')
 		;
 	if (ft_cmp(av[1] + i, ".cub", 4))
-		exit_msg("Error: \n\t./Cub3D not found .cub\n");
+		exit_msg("Error: Warnning :\n\t./Cub3D not found .cub\n");
 	return (main_driver(av[1]));
 }

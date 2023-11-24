@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calcul_text.c                                      :+:      :+:    :+:   */
+/*   calcul_text_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/25 00:03:01 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:44:34 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 void	xpm_driver(t_global *_g)
 {
 	int	i;
 
 	i = -1;
-	printf("%s\n", _g->maps->north);
 	_g->texture->xpm[0] = mlx_xpm_file_to_image(_g->mlx_s->mlx_ptr, \
 		_g->maps->north, &_g->texture->x_width, &_g->texture->x_hight);
 	exit_size_error(_g->texture->x_width, _g->texture->x_hight);
@@ -79,14 +78,14 @@ void	texture_offset(t_global *_g, int i)
 
 	j = _g->texture->walltoppixl;
 	if (_g->rays[i]->hit_vertical)
-		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhity, GRID_SIZE);
+		_g->texture->textureoffsetx = fmod((_g->rays[i]->wallhity), GRID_SIZE);
 	else
-		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhitx, GRID_SIZE);
+		_g->texture->textureoffsetx = fmod((_g->rays[i]->wallhitx), GRID_SIZE);
 	while (j < _g->texture->wallbotmpixl)
 	{
 		disftop = j + (_g->texture->projwallht / 2) - (HEIGHT / 2);
-		_g->texture->textureoffsety = (disftop * \
-			(float)GRID_SIZE) / _g->texture->projwallht;
+		_g->texture->textureoffsety = disftop * \
+			(GRID_SIZE / _g->texture->projwallht);
 		textcolor = text_comp(_g, i);
 		my_mlx_pixel_put(_g->mlx_s, i, j, textcolor);
 		j++;
