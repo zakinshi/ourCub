@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:40:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/24 10:44:05 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,9 @@ void	texture_offset(t_global *_g, int i)
 
 	j = _g->texture->walltoppixl;
 	if (_g->rays[i]->hit_vertical)
-		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhity * \
-		(_g->texture->x_hight / GRID_SIZE), GRID_SIZE);
+		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhity, GRID_SIZE);
 	else
-		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhitx * \
-		(_g->texture->x_width / GRID_SIZE), GRID_SIZE);
+		_g->texture->textureoffsetx = fmod(_g->rays[i]->wallhitx, GRID_SIZE);
 	while (j < _g->texture->wallbotmpixl)
 	{
 		disftop = j + (_g->texture->wallstripht / 2) - (HEIGHT / 2);

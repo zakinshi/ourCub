@@ -1,5 +1,5 @@
-NAME_BONUS		= cub3D_bonus
-NAME			= cub3D
+NAME_BONUS	= cub3D_bonus
+NAME		= cub3D
 
 ADDRESS		= -fsanitize=address
 CC			= cc 
@@ -167,4 +167,4 @@ clean_b :
 fclean_b : clean_b
 		@rm -rf $(NAME_BONUS)
 
-re_b		: fclean bonus
+re_b	: fclean_b bonus
