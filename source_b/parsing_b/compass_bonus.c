@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/26 14:46:28 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:53:38 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	data_copy(t_global *_g, t_cub3d *cub)
 int	init_cub(t_cub3d *cub, char *path)
 {
 	int	fd;
-	
+
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{

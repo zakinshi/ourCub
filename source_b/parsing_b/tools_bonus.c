@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 14:31:46 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/26 14:47:37 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:53:47 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	close_exit(int fd)
 {
 	close(fd);
-	exit_msg("Error: Elements Not Valid\n");	
+	exit_msg("Error: Elements Not Valid\n");
 }
 
 void	check_all_elements_of_map(int fd)

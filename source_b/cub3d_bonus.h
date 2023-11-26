@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/26 14:47:59 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:52:54 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ typedef struct global_s
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 void	image_driver(t_mlx *mlx_s);
 void	init_mlx_s(t_global *_g);
-int	exit_msg(char *msg);
+int		exit_msg(char *msg);
 int		return_msg(char *msg);
 
 // 		--> main.c

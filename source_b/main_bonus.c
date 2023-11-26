@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/26 11:45:38 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:53:17 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,16 @@ static int	main_driver(char *path)
 	return (0);
 }
 
-void	leaks()
-{
-	system("leaks cub3D_bonus");
-}
+// void	leaks()
+// {
+// 	system("leaks cub3D_bonus");
+// }
+	// atex0it(leaks);
 
 int	main(int ac, char **av)
 {
 	int	i;
 
-	atexit(leaks);
 	if (ac != 2)
 		exit_msg("Error: Warnning :\n\t./Cub3D ./[Path_map]\n");
 	i = ft_strlen(av[1]);
