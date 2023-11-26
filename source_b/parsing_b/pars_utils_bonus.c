@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:21:45 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/23 18:04:11 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/26 11:50:06 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void	check_pars(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == 9 || (s[i] >= 13 && s[i] <= 32))
+		if (s[i] == ' ')
 			s[i] = '2';
+		else if (ft_chr("\t\v", s[i]))
+			exit_msg("Error: Please only use Spaces In Map\n");
 		i++;
 	}
 }

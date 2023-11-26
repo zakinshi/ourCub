@@ -27,7 +27,7 @@ RAY_OBJ		= $(addprefix $(PATH_RAY_B), $(FILE_RAY_B))
 #**
 PATH_PARS	= ./parsing/
 FILE_PARS_C	= color.c color_utile.c color_utile1.c compass.c compass_utile.c get_next_line.c get_next_line_utile.c libft.c \
-			makemap.c map_pars.c pars_utile2.c pars_utils.c pars_utils1.c compass_utile1.c
+			makemap.c map_pars.c pars_utile2.c pars_utils.c pars_utils1.c compass_utile1.c tools.c
 
 
 PATH_PARS_B	= $(PATH_OBJ)parsing/
@@ -105,7 +105,7 @@ RAY_OBJ_BNS			= $(addprefix $(PATH_RAY_B_BNS), $(FILE_RAY_OBJ_BNS))
 #**
 PATH_PARS_BNS		= ./parsing_b/
 FILE_PARS_BNS_C		= color_bonus.c color_utile_bonus.c color_utile1_bonus.c compass_bonus.c compass_utile_bonus.c get_next_line_bonus.c get_next_line_utile_bonus.c libft_bonus.c \
-					makemap_bonus.c map_pars_bonus.c pars_utile2_bonus.c pars_utils_bonus.c pars_utils1_bonus.c compass_utile1_bonus.c
+					makemap_bonus.c map_pars_bonus.c pars_utile2_bonus.c pars_utils_bonus.c pars_utils1_bonus.c compass_utile1_bonus.c tools_bonus.c
 
 PATH_PARS_B_BNS		= $(PATH_OBJ_BNS)parsing_b/
 FILE_PARS_B_BNS		= $(FILE_PARS_BNS_C:.c=.o)

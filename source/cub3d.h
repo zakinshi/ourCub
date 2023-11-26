@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:38:27 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/25 00:31:45 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:48:23 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,5 +285,7 @@ void	loop_map(char **map, int len, int fd);
 //
 void	exit_size_error(int width, int height);
 void	handel_condition(char *map, int i);
+void	check_all_elements_of_map(int fd);
+int		free_txt(t_cub3d *cub);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/25 00:33:04 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:48:34 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,6 @@ static void	data_copy(t_global *_g, t_cub3d *cub)
 	_g->maps->east = cub->ea;
 }
 
-int	free_txt(t_cub3d *cub)
-{
-	if (cub->no)
-		free(cub->no);
-	if (cub->ea)
-		free(cub->ea);
-	if (cub->we)
-		free(cub->we);
-	if (cub->so)
-		free(cub->so);
-	free(cub);
-	return (-1);
-}
-
 int	init_cub(t_cub3d *cub, char *path)
 {
 	int	fd;
@@ -88,7 +74,7 @@ int	init_cub(t_cub3d *cub, char *path)
 	if (fd == -1)
 	{
 		free(cub);
-		exit_msg("Error: fd -1");
+		exit_msg("Error: map not found\n");
 	}
 	cub->no = NULL;
 	cub->so = NULL;
@@ -107,6 +93,8 @@ int	parsing_(t_global *_g)
 		return (return_msg("Allocation failed CUB..\n"));
 	fd = init_cub(cub, _g->path);
 	cub->path = _g->path;
+	check_all_elements_of_map(fd);
+	fd = open(_g->path, O_RDONLY);
 	if (ft_compass(cub, fd) == -1)
 		return (free_txt(cub), -1);
 	close(fd);
