@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:14:46 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/28 00:22:45 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 
 void	image_driver(t_mlx *mlx_s)
 {
-	mlx_clear_window(mlx_s->mlx_ptr, mlx_s->win);
 	mlx_s->img = mlx_new_image(mlx_s->mlx_ptr, WIDTH, HEIGHT);
 	if (!mlx_s->img)
 		exit_msg("Error: Allocation Failed for mlx_s->img");
@@ -33,6 +32,7 @@ void	image_driver(t_mlx *mlx_s)
 		&(mlx_s->l_l), &(mlx_s->dian));
 	if (!mlx_s->addr)
 		exit_msg("Error: Allocation Failed for mlx_s->addr");
+	mlx_clear_window(mlx_s->mlx_ptr, mlx_s->win);
 }
 
 void	init_mlx_s(t_global *_g)

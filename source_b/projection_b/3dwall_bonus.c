@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:57:18 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/24 11:44:46 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:56:32 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ void	_fake3d_wall(t_global *_g)
 		texture_offset(_g, i);
 		i++;
 	}
+	i = -1;
+	while (++i < 4)
+		mlx_destroy_image(_g->mlx_s->mlx_ptr, _g->texture->xpm[i]);
 }
 
 void	_addr_x(t_global *_g)

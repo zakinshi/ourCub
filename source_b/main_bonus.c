@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:57:33 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/26 14:54:58 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:43:54 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	driver(t_global	*_g)
 	update_player(_g->player, _g->maps);
 	rays_cast(_g);
 	draw_all(_g);
-	mlx_destroy_image(_g->mlx_s->mlx_ptr, _g->mlx_s->img);
 	free_rays(_g->rays);
 	free(_g->texture);
 	return (0);

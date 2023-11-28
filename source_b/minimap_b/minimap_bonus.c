@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:19:29 by zakbouha          #+#    #+#             */
-/*   Updated: 2023/11/23 18:02:17 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:45:12 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void	draw_minimap(t_global *_g)
 	draw_walls(_g, mnlx_s);
 	_player(_g, mnlx_s);
 	mlx_put_image_to_window(mnlx_s->mlx_ptr, mnlx_s->win, mnlx_s->mn_img, 0, 0);
+	mlx_destroy_image(mnlx_s->mlx_ptr, mnlx_s->mn_img);
 	free(mnlx_s);
 }
