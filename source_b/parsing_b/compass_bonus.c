@@ -6,7 +6,7 @@
 /*   By: zakbouha <zakbouha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:50:07 by enaam             #+#    #+#             */
-/*   Updated: 2023/11/26 14:53:38 by zakbouha         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:14:12 by zakbouha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	init_cub(t_cub3d *cub, char *path)
 	if (fd == -1)
 	{
 		free(cub);
-		exit_msg("Error: fd -1");
+		exit_msg("Error: map not found\n");
 	}
 	cub->no = NULL;
 	cub->so = NULL;
