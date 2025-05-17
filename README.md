@@ -105,3 +105,18 @@ make all
 ```
 
 > ### ⚠️ **You Should Have MinilibX Installed ^_^ [Install MiniLibX](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
+
+## References
+* [vinibiavatti1 - RayCastingTutoria](https://github.com/vinibiavatti1/RayCastingTutorial/wiki)
+* [Lode's Tutorial Part 1](https://lodev.org/cgtutor/raycasting.html)
+* [Lode's Tutorial Part 2](https://lodev.org/cgtutor/raycasting2.html)
+* [Lode's Tutorial Part 3](https://lodev.org/cgtutor/raycasting3.html)
+* [42docs - miniLibX](https://harm-smits.github.io/42docs/libs/minilibx)
+
+## Summary
+We built a simple 3D game in C using raycasting, just like the old Wolfenstein shooter.
+With only a 2D map, [MyMate](https://github.com/Mehdi-Naam) made walls, textures, for me I did the RayCasting Calculationd and player movement come to life in first-person.
+Using MiniLibX, I rendered every frame by hand, pixel by pixel.
+[Mehdi](https://github.com/Mehdi-Naam) handled parsing Map, also I Handled Wall Collisions and Math — all without external engines.
+It was one of the most challenging and wonderful projects I’ve ever done.
+We didn’t just code a game — We created a world 🎮🧱
