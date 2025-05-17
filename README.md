@@ -5,11 +5,7 @@
 - 🗺️ [Map Parsing](#map-parsing)  
 - 🎥 [Raycasting](#raycasting)  
 - 🧱 [Walls](#walls)  
-- 🎨 [Textures](#textures)  
-- 🎮 [Controls](#controls)  
-- ✨ [Bonus](#bonus)  
-- 🚀 [Extras](#extras)  
-- 🕹️ [Gameplay](#gameplay)  
+- 🎨 [Textures](#textures)   
 - 📦 [Installation](#installation)  
 - 📚 [References](#references)  
 - 📝 [Summary](#summary)  
@@ -91,3 +87,21 @@ Raycasting renders a 3D perspective from a 2D map by “casting” rays from the
 ```c
   wall_height = window_height / (1.5 * distance);
 ```
+
+### Textures
+Once we have hit a wall and know its position and distance to the player, we must check which side was hit and choose the correct texture for that side of the wall. With the correct texture file and the proper height of the wall at hand it we can read pixels from the texture file at a given width and copy them to the screen, following this formula:
+```c
+/* Get the color from image i at the given x and y pixel */
+color = my_mlx_pixel_get(i, (int)(i->width * (g->x + g->y)) % i->width, z);
+```
+Note: in some cases the sprite's height is smaller than the height of the sprite we have to draw. We have an algorithm that effectively 'stretches' the sprite to fit the proper height
+
+## Installation
+### Clone The Repositories
+```bash
+gcl https://github.com/zakinshi/cub3d.git
+cd cub3d
+make all
+```
+
+> ### ⚠️ **You Should Have MinilibX Installed ^_^ [Install MiniLibX](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
