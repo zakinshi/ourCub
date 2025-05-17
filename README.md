@@ -51,9 +51,7 @@ C 51,198,227
 1111 1000000cococococ00000001
 1111 111111111111111111111111
 ```
-
 ## Raycasting 🎥
-
 Raycasting renders a 3D perspective from a 2D map by “casting” rays from the player’s viewpoint and measuring the distance to the nearest wall. That distance determines the height of each vertical slice drawn on screen.
 
 | Attribute            | Description                                     | Value                      |
@@ -67,7 +65,6 @@ Raycasting renders a 3D perspective from a 2D map by “casting” rays from the
 | **Player’s position**| Starting point of rays (center of player square)| `(int)(x+0.5), (int)(y+0.5)` |
 
 ### Algorithm Steps
-
 1. **Initialize** all attributes (FOV, HFOV, ray angle, increment, precision, limit, player pos).  
 2. **For each ray** across the screen (window_width rays):
    - Compute direction:  
