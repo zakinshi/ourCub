@@ -3,8 +3,7 @@
 ## Table of Contents
 - 🎯 [Introduction](#introduction)  
 - 🗺️ [Map Parsing](#map-parsing)  
-- 🎥 [Raycasting](#raycasting)  
-- 🧱 [Walls](#walls)  
+- 🎥 [Raycasting](#raycasting) 
 - 🎨 [Textures](#textures)   
 - 📦 [Installation](#installation)  
 - 📚 [References](#references)  
