@@ -115,8 +115,10 @@ make all
 
 ## Summary
 We built a simple 3D game in C using raycasting, just like the old Wolfenstein shooter.
-With only a 2D map, [MyMate](https://github.com/Mehdi-Naam) made walls, textures, for me I did the RayCasting Calculationd and player movement come to life in first-person.
+With only a 2D map, [MyMate](https://github.com/Mehdi-Naam) made walls, textures,
+for me I did the RayCasting Calculationd and player movement come to life in first-person.
 Using MiniLibX, I rendered every frame by hand, pixel by pixel.
-[Mehdi](https://github.com/Mehdi-Naam) handled parsing Map, also I Handled Wall Collisions and Math — all without external engines.
+[Mehdi](https://github.com/Mehdi-Naam) handled parsing Map, also I Handled Wall Collisions and Math , all without external engines.
 It was one of the most challenging and wonderful projects I’ve ever done.
-We didn’t just code a game — We created a world 🎮🧱
+We didn’t just code a game..
+We created a world 🎮 🧱
