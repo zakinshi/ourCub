@@ -51,7 +51,7 @@ C 51,198,227
 1111 1000000cococococ00000001
 1111 111111111111111111111111
 ```
-## Raycasting 🎥
+## Raycasting
 Raycasting renders a 3D perspective from a 2D map by “casting” rays from the player’s viewpoint and measuring the distance to the nearest wall. That distance determines the height of each vertical slice drawn on screen.
 
 | Attribute            | Description                                     | Value                      |
